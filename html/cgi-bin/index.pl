@@ -7,12 +7,21 @@ use CGI::Session;
 use Data::Dumper;
 use lib 'lib_websmsit';
 use miJSON;
+use miHtml;
 use validaciones;
 
 
 my $q = CGI->new;
 my %params = $q->Vars;
  print $q->header();
+
+
+
+
+
+# if (EXISTE_SESSION_LOGEADA){
+	#  redireccionar al siguiente scritp
+# }
 
 # han enviado el formulario
 if($params{usuario} and $params{contra}){
@@ -28,11 +37,10 @@ if($params{usuario} and $params{contra}){
 	# LOGEADO OK:
 	# si todo va bien almacenar en session que ya estan logados
 	print "SIIISISISIS\n";
-}
-else{
-	print "NOOOOO\n";
-}
 
+	# redireccionar a siguiente script
+}
+&generarFormLogin();
 
 
 
