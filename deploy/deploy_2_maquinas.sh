@@ -12,7 +12,7 @@
 # path_origen/cgi
 
 # ORIGEN SCRIPTS
-path_origen="/home/dan/cosas_hechas/92.webSMSIT/"   # el '/' final es importante
+path_origen="/home/dan/cosas_hechas/92.webSMSIT/html/"   # el '/' final es importante
 # DESTINO SCRIPTS
 path_destino="/var/www/html"    # aqui se va a concatenar nombre_app_destino
 
@@ -50,7 +50,7 @@ function sincronizar(){
 	# Todo el contenido de html/
 	# las entradas y salidas estaban en este directorio en pruebas mias.
 	# ahora estan en directorios donde HERMES va a escribir
-	rsync -vr  $path_origen --exclude=".git" --exclude="deploy*" --exclude="docs" --exclude="utils" --exclude="prueba*" op1@$host_destino:$path_destino/$nombre_app_destino
+	rsync -avz  $path_origen --exclude=".git" --exclude="deploy*" --exclude="docs" --exclude="utils" --exclude="prueba*" op1@$host_destino:$path_destino/$nombre_app_destino
 	if [ ! $? -eq 0 ]; then
 		echo "=========================>ERROR EN rsync[1]"
 	fi
