@@ -1,0 +1,3 @@
+curl -s  --request POST --data "afs&sdfa"  http://10.0.223.103/websmsit/cgi-bin/index.pl
+curl -s  --request POST --data "usuario=valor_user&contra=valor_contra"  http://10.0.223.103/websmsit/cgi-bin/index.pl
+

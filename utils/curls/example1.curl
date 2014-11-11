@@ -1,1 +1,0 @@
- curl -s  --request POST --data "afs&sdfa"  http://10.0.223.103/websmsit/cgi-bin/index.pl

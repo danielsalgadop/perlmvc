@@ -4,21 +4,34 @@ use strict;
 use CGI::Carp qw(fatalsToBrowser);
 use CGI qw(:standard);
 use CGI::Session;
+use Data::Dumper;
 use lib 'lib_websmsit';
 use miJSON;
+use validaciones;
 
 
 my $q = CGI->new;
 my %params = $q->Vars;
+ print $q->header();
+
+# han enviado el formulario
+if($params{usuario} and $params{contra}){
+	# SANITIZAR valores desde perl
+
+	# comprobar si coinciden las contraseñas
+	# print Dumper(%params);
+
+	# LOGEADO ERROR:
+	# 
 
 
-
-# if(%params){
-# 	print "SIIISISISIS\n";
-# }
-# else{
-# 	print "NOOOOO\n";
-# }
+	# LOGEADO OK:
+	# si todo va bien almacenar en session que ya estan logados
+	print "SIIISISISIS\n";
+}
+else{
+	print "NOOOOO\n";
+}
 
 
 
@@ -58,5 +71,4 @@ my %params = $q->Vars;
 
 
 
-print "Content-type: text/html\n\n";
 print "<h1>Index</h1>";
