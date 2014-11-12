@@ -23,7 +23,6 @@ $q->param(-name=>'contra',-value=>'contra');
 my %params = $q->Vars;
 # print Dumper(%params);
 
-
 my $cookie_logeado; # put / get cookie logiado
 # my $cookie1 = $q->cookie(-name=>'logeado', -value=>12);
 
@@ -50,7 +49,6 @@ print $q->start_html(
 print "cookie_logeado xxxx".$cookie_logeado."\nxxxx<br>" if $cookie_logeado;
 print "cookie_logeado ".$cookie_logeado."\n<br>" if $cookie_logeado;
 
-
 print $q->h1("Index3");
 print $q->div({id=>"errores"},"");
 # if exite en cookies logeado
@@ -66,13 +64,11 @@ print "\n<br>";
 	#  redireccionar al siguiente scritp
 # }
 
-
 # han enviado el formulario
 if($params{usuario} and $params{contra}){
 	print "SIIISISISIS han enviado el formulario\n<br>";
 	# SANITIZAR valores desde perl ¿todo ok?
 	# NO => mostrar error
-
 
 	# TRAER datos de users.json donde estan las contraseñas
 	my %r_fileJSON2Hash = fileJSON2Hash("../configs/users.json");
@@ -89,10 +85,8 @@ if($params{usuario} and $params{contra}){
 		# # getting the effective session id:
 		my $CGISESSID = $session->id();
 
-		print "<br>CGISESSID ".$CGISESSID."\n<br>";
-
 		# # storing data in the session
-		$session->param('logeado', 1); # equivalent to $session->param(-name=>'l_name', -value=>'Ruzmetov');
+		$session->param('logeado', $CGISESSID); # equivalent to $session->param(-name=>'l_name', -value=>'Ruzmetov');
 
 		my $esta_logeado = $session->param('logeado');  # equivalent to $esta_logeado = $session->param(-name=>'logeado');
 		if($esta_logeado){
@@ -103,7 +97,6 @@ if($params{usuario} and $params{contra}){
 	else{
 		# LOGEADO ERROR:
 		&errores2DivErrores("Problema en LOGIN. Revisa usuario y/o Contraseña");
-
 	}
 	# redireccionar a siguiente script
 }
