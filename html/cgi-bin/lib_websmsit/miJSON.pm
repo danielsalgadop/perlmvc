@@ -148,8 +148,21 @@ sub fileJSON2Hash($){
   my $path_to_file = shift;
   my %return;
   $return{status} = "OK";
-  
+  my %hash_with_jsons;
 
+  open (FILEJSON, $path_to_file);
+  my @file = <FILEJSON>;
+  close FILEJSON;
+
+  my $cont = 0;
+  foreach my $unalinea(@file){
+    $cont++;
+    my %hash_unalinea = DecodificaJson($unalinea);
+    $hash_with_jsons{$cont} = \%hash_unalinea;
+  }
+
+  $return{hash}= \%hash_with_jsons;
+  return(%return);
 
 }
 

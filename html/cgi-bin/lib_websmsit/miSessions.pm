@@ -1,5 +1,5 @@
 #### SED, borrar anteriores sessiones
-`rm /tmp/cgisess*`;
+`rm -f /tmp/cgisess*`;
 #### SED, borrar anteriores sessiones
 
 
