@@ -26,7 +26,6 @@ print $q->header(
 
 
 
-
 print $q->start_html(
     -title   	=> 'WEB SMS IT',
     -dtd 		=> "4.0",
@@ -50,9 +49,9 @@ print "cookie_logeado ".$cookie_logeado."\n<br>";
 
 print $q->h1("Index3");
 # if exite en cookies logeado
-my  $sid = $q->cookie("logeado") || undef;
-if($sid){
-	print "COOKIE logeado!";
+$cookie_logeado = $q->cookie("logeado") || undef;
+if($cookie_logeado){
+	redirectUsingJavascript("logeado.pl");
 }
 else{
 	print "NO ENCUENTRO COOKIE";
@@ -62,7 +61,6 @@ print "\n<br>";
 	#  redireccionar al siguiente scritp
 # }
 
-# redirectUsingJavascript("index2.pl");
 
 # han enviado el formulario
 if($params{usuario} and $params{contra}){
@@ -73,6 +71,40 @@ if($params{usuario} and $params{contra}){
 
 	# LOGEADO ERROR:
 	# 
+	my $session = new CGI::Session("driver:File", undef, {Directory=>'/tmp'});
+
+	# # getting the effective session id:
+	my $CGISESSID = $session->id();
+
+	print "CGISESSID ".$CGISESSID."\n<br>";
+
+	# use CGI::Cookie;
+	# Create new cookies and send them
+	# my $cookie1 = CGI::Cookie->new(-name=>'logeado',-value=>$CGISESSID); #  mas seguro si valor logeado es el de session
+	# my $cookie1 = CGI::Cookie->new(-name=>'logeado',-value=>1);
+
+	# my %cookies = CGI::Cookie->fetch;
+	# my $cookie_logeado = $cookies{'logeado'}->value;
+
+
+	# $q->cookie("logeado",1);
+	# $sid = $q->cookie("logeado") || undef;
+	# if($cookie_logeado){
+	# 	print "YA ESTAS LOGEADO";
+	# }
+	# else{
+	# 	print "NO ESATS LOGEADO";
+	# }
+	# print "\n<br>";
+
+	# # storing data in the session
+	$session->param('logeado', 1); # equivalent to $session->param(-name=>'l_name', -value=>'Ruzmetov');
+
+
+	my $esta_logeado = $session->param('logeado');  # equivalent to $esta_logeado = $session->param(-name=>'logeado');
+	if( $esta_logeado){
+		print "SIII esta logeado";
+	}
 
 
 	# LOGEADO OK:
@@ -81,45 +113,8 @@ if($params{usuario} and $params{contra}){
 
 	# redireccionar a siguiente script
 }
-else{
-	print "NOOOOOOOOOOOOO han enviado el formulario\n<br>";
-}
 &generarFormLogin();
 
-my $session = new CGI::Session("driver:File", undef, {Directory=>'/tmp'});
-
-# # getting the effective session id:
-my $CGISESSID = $session->id();
-
-print "CGISESSID ".$CGISESSID."\n<br>";
-
-use CGI::Cookie;
-# Create new cookies and send them
-# my $cookie1 = CGI::Cookie->new(-name=>'logeado',-value=>$CGISESSID); #  mas seguro si valor logeado es el de session
-# my $cookie1 = CGI::Cookie->new(-name=>'logeado',-value=>1);
-
-# my %cookies = CGI::Cookie->fetch;
-# my $cookie_logeado = $cookies{'logeado'}->value;
-
-
-# $q->cookie("logeado",1);
-# $sid = $q->cookie("logeado") || undef;
-# if($cookie_logeado){
-# 	print "YA ESTAS LOGEADO";
-# }
-# else{
-# 	print "NO ESATS LOGEADO";
-# }
-# print "\n<br>";
-
-# # storing data in the session
-$session->param('logeado', 1); # equivalent to $session->param(-name=>'l_name', -value=>'Ruzmetov');
-
-
-my $esta_logeado = $session->param('logeado');  # equivalent to $esta_logeado = $session->param(-name=>'logeado');
-if( $esta_logeado){
-	print "SIII esta logeado";
-}
 
 # # clearing a certain session parameter
 # $session->clear(["_IS_LOGGED_IN"]);
