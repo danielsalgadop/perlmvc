@@ -64,7 +64,14 @@ print "\n<br>";
 
 # han enviado el formulario
 if($params{usuario} and $params{contra}){
-	# SANITIZAR valores desde perl
+	# SANITIZAR valores desde perl ¿todo ok?
+	# NO => mostrar error
+
+	# TRAER datos de users.json donde estan las contraseñas
+
+
+
+
 
 	# comprobar si coinciden las contraseñas
 	# print Dumper(%params);
