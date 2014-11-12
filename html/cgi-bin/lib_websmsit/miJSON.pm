@@ -139,4 +139,18 @@ sub CodificaJson($){
 
 }#Cierra sub CodificaJson($)
 
+
+# Function: FileJSON2Hash
+# Receives a path to file
+# Returns a hash{status}
+# Returns a hash{hash} = Content of file (json) as hash
+sub fileJSON2Hash($){
+  my $path_to_file = shift;
+  my %return;
+  $return{status} = "OK";
+
+
+}
+
+
 1;

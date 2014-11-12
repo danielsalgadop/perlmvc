@@ -68,7 +68,7 @@ if($params{usuario} and $params{contra}){
 	# NO => mostrar error
 
 	# TRAER datos de users.json donde estan las contraseñas
-
+	my %r_fileJSON2Hash = fileJSON2Hash("../configs/users.json");
 
 
 
