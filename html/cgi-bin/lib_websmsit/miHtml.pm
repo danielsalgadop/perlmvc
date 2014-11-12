@@ -1,3 +1,7 @@
+#!/usr/bin/perl
+use warnings;
+use strict;
+
 sub generarFormLogin {
  # use CGI qw/:standard/;
 print

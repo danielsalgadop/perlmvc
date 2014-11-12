@@ -9,8 +9,9 @@ use lib 'lib_websmsit';
 use miJSON;
 use miHtml;
 use validaciones;
+use variables_globales;
 
-my $q = CGI->new;
+our $q;
 my %params = $q->Vars;
 print $q->header();
 print $q->start_html(
@@ -26,7 +27,7 @@ print $q->start_html(
     ]
 );
  
-print $q->h1("Index22");
+print $q->h1("Index3");
 # if (EXISTE_SESSION_LOGEADA){
 	#  redireccionar al siguiente scritp
 # }
