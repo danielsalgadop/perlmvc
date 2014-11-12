@@ -10,15 +10,23 @@ use miJSON;
 use miHtml;
 use validaciones;
 
-
 my $q = CGI->new;
 my %params = $q->Vars;
- print $q->header();
-
-
-
-
-
+print $q->header();
+print $q->start_html(
+    -title   	=> 'WEB SMS IT',
+    -dtd 		=> "4.0",
+    -style   	=> {'src' => '../css/css.css'},
+    -lang		=>'es-ES',
+    -script		=>[
+    				{
+    					-type => 'text/javascript',
+    					-src => '../js/js.js',
+    				}
+    ]
+);
+ 
+print $q->h1("Index22");
 # if (EXISTE_SESSION_LOGEADA){
 	#  redireccionar al siguiente scritp
 # }
@@ -41,10 +49,6 @@ if($params{usuario} and $params{contra}){
 	# redireccionar a siguiente script
 }
 &generarFormLogin();
-
-
-
-
 
 # my $session = new CGI::Session("driver:File", undef, {Directory=>'/tmp'});
 
@@ -76,7 +80,5 @@ if($params{usuario} and $params{contra}){
 
 
 
-
-
-
-print "<h1>Index</h1>";
+# print  $q->redirect('http://www.google.com');  # no funciona
+print $q->end_html;
