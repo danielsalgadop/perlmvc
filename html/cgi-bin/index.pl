@@ -45,9 +45,12 @@ if($params{usuario} and $params{contra}){
 
 	# LOGEADO OK:
 	# si todo va bien almacenar en session que ya estan logados
-	print "SIIISISISIS\n";
+	print "SIIISISISIS\n<br>";
 
 	# redireccionar a siguiente script
+}
+else{
+	print "NOOOOOOOOOOOOO\n<br>";
 }
 &generarFormLogin();
 
