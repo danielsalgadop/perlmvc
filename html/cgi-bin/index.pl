@@ -14,12 +14,14 @@ use miSessions;
 
 our $q;
 my %params = $q->Vars;
-print $q->header();
+# print $q->header();
 
-my $cookie1 = $q->cookie(-name=>'logeado', -value=>1);
+
+my $cookie_logeado; # put / get cookie logiado
+# my $cookie1 = $q->cookie(-name=>'logeado', -value=>12);
 
 print $q->header(
-	-cookie => $cookie1
+	-cookie => $cookie_logeado
 	);
 
 
@@ -42,22 +44,25 @@ print $q->start_html(
 # existe la cookie 'logeado'
 # SI => rediccionar
 
-
+print "cookie_logeado xxxx".$cookie_logeado."\nxxxx<br>";
+print "cookie_logeado ".$cookie_logeado."\n<br>";
 
 
 print $q->h1("Index3");
 # if exite en cookies logeado
 my  $sid = $q->cookie("logeado") || undef;
 if($sid){
-	print "YA ESTAS LOGEADO";
+	print "COOKIE logeado!";
 }
 else{
-	print "NO ESATS LOGEADO";
+	print "NO ENCUENTRO COOKIE";
 }
 print "\n<br>";
  # (EXISTE_SESSION_LOGEADA){
 	#  redireccionar al siguiente scritp
 # }
+
+# redirectUsingJavascript("index2.pl");
 
 # han enviado el formulario
 if($params{usuario} and $params{contra}){
@@ -91,21 +96,21 @@ print "CGISESSID ".$CGISESSID."\n<br>";
 use CGI::Cookie;
 # Create new cookies and send them
 # my $cookie1 = CGI::Cookie->new(-name=>'logeado',-value=>$CGISESSID); #  mas seguro si valor logeado es el de session
-my $cookie1 = CGI::Cookie->new(-name=>'logeado',-value=>1);
+# my $cookie1 = CGI::Cookie->new(-name=>'logeado',-value=>1);
 
-my %cookies = CGI::Cookie->fetch;
-my $cookie_logeado = $cookies{'logeado'}->value;
+# my %cookies = CGI::Cookie->fetch;
+# my $cookie_logeado = $cookies{'logeado'}->value;
 
 
 # $q->cookie("logeado",1);
 # $sid = $q->cookie("logeado") || undef;
-if($cookie_logeado){
-	print "YA ESTAS LOGEADO";
-}
-else{
-	print "NO ESATS LOGEADO";
-}
-print "\n<br>";
+# if($cookie_logeado){
+# 	print "YA ESTAS LOGEADO";
+# }
+# else{
+# 	print "NO ESATS LOGEADO";
+# }
+# print "\n<br>";
 
 # # storing data in the session
 $session->param('logeado', 1); # equivalent to $session->param(-name=>'l_name', -value=>'Ruzmetov');
