@@ -10,10 +10,21 @@ use miJSON;
 use miHtml;
 use validaciones;
 use variables_globales;
+use miSessions;
 
 our $q;
 my %params = $q->Vars;
 print $q->header();
+
+my $cookie1 = $q->cookie(-name=>'logeado', -value=>1);
+
+print $q->header(
+	-cookie => $cookie1
+	);
+
+
+
+
 print $q->start_html(
     -title   	=> 'WEB SMS IT',
     -dtd 		=> "4.0",
@@ -26,9 +37,25 @@ print $q->start_html(
     				}
     ]
 );
- 
+
+
+# existe la cookie 'logeado'
+# SI => rediccionar
+
+
+
+
 print $q->h1("Index3");
-# if (EXISTE_SESSION_LOGEADA){
+# if exite en cookies logeado
+my  $sid = $q->cookie("logeado") || undef;
+if($sid){
+	print "YA ESTAS LOGEADO";
+}
+else{
+	print "NO ESATS LOGEADO";
+}
+print "\n<br>";
+ # (EXISTE_SESSION_LOGEADA){
 	#  redireccionar al siguiente scritp
 # }
 
@@ -45,29 +72,49 @@ if($params{usuario} and $params{contra}){
 
 	# LOGEADO OK:
 	# si todo va bien almacenar en session que ya estan logados
-	print "SIIISISISIS\n<br>";
+	print "SIIISISISIS han enviado el formulario\n<br>";
 
 	# redireccionar a siguiente script
 }
 else{
-	print "NOOOOOOOOOOOOO\n<br>";
+	print "NOOOOOOOOOOOOO han enviado el formulario\n<br>";
 }
 &generarFormLogin();
 
-# my $session = new CGI::Session("driver:File", undef, {Directory=>'/tmp'});
+my $session = new CGI::Session("driver:File", undef, {Directory=>'/tmp'});
 
 # # getting the effective session id:
-# my $CGISESSID = $session->id();
+my $CGISESSID = $session->id();
+
+print "CGISESSID ".$CGISESSID."\n<br>";
+
+use CGI::Cookie;
+# Create new cookies and send them
+# my $cookie1 = CGI::Cookie->new(-name=>'logeado',-value=>$CGISESSID); #  mas seguro si valor logeado es el de session
+my $cookie1 = CGI::Cookie->new(-name=>'logeado',-value=>1);
+
+my %cookies = CGI::Cookie->fetch;
+my $cookie_logeado = $cookies{'logeado'}->value;
+
+
+# $q->cookie("logeado",1);
+# $sid = $q->cookie("logeado") || undef;
+if($cookie_logeado){
+	print "YA ESTAS LOGEADO";
+}
+else{
+	print "NO ESATS LOGEADO";
+}
+print "\n<br>";
 
 # # storing data in the session
-# $session->param('f_name', 'Sherzod');
-# # or
-# $session->param(-name=>'l_name', -value=>'Ruzmetov');
+$session->param('logeado', 1); # equivalent to $session->param(-name=>'l_name', -value=>'Ruzmetov');
 
-# # retrieving data
-# my $f_name = $session->param('f_name');
-# # or
-# my $l_name = $session->param(-name=>'l_name');
+
+my $esta_logeado = $session->param('logeado');  # equivalent to $esta_logeado = $session->param(-name=>'logeado');
+if( $esta_logeado){
+	print "SIII esta logeado";
+}
 
 # # clearing a certain session parameter
 # $session->clear(["_IS_LOGGED_IN"]);
@@ -81,8 +128,6 @@ else{
 
 # # delete the session for good
 # $session->delete();
-
-
 
 # print  $q->redirect('http://www.google.com');  # no funciona
 print $q->end_html;
