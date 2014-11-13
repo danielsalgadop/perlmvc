@@ -2,9 +2,14 @@
 use warnings;
 use strict;
 
+our $q;
 sub generarFormLogin {
+
+print $q->start_form(
+		-method=>"POST",
+		-action=>$q->self_url,  # auto-call
+	);
 print
-	start_form,
 	"Usuario ",textfield('usuario'),br,
 	"Contraseña (ponerlo con asteriscos)",password_field('contra'),br,
 	submit,

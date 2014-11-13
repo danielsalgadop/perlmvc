@@ -17,8 +17,8 @@ use autenticacion;
 our $q;
 
 # SED para ahorrarme tener que escribir el formulario
-$q->param(-name=>'usuario',-value=>'nombre');
-$q->param(-name=>'contra',-value=>'contra');
+# $q->param(-name=>'usuario',-value=>'nombre');
+# $q->param(-name=>'contra',-value=>'contra');
 # SED para ahorrarme tener que escribir el formulario
 my %params = $q->Vars;
 # print Dumper(%params);
