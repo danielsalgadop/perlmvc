@@ -80,8 +80,10 @@ if($params{usuario} and $params{contra}){
 	if(&estaAtenticado($params{usuario},$params{contra},\%users)){
 		# LOGEADO OK:
 		print "<br> HAS LOGEADO<br>";
+		our $path_aboluto_sessiones_cgi;
+
 		# si todo va bien almacenar en session que ya estan logados
-		my $session = new CGI::Session("driver:File", undef, {Directory=>'/tmp'});
+		my $session = new CGI::Session("driver:File", undef, {Directory=>$path_aboluto_sessiones_cgi});
 
 		# # getting the effective session id:
 		my $CGISESSID = $session->id();

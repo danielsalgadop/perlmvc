@@ -1,5 +1,6 @@
 #### SED, borrar anteriores sessiones
-`rm -f /tmp/cgisess*`;
+# our $path_aboluto_sessiones_cgi;
+# `rm -f $path_aboluto_sessiones_cgi/cgisess*`;
 #### SED, borrar anteriores sessiones
 
 
