@@ -19,6 +19,10 @@ sub estaAtenticado($$$){
 	my $ref_hash_users = shift;
 	my %hash_users = %{$ref_hash_users};
 
+	# SED para evitar tener que escribir un usuario/password verdaderos
+	return(1);
+
+
 	print "RECIBIDO en estaAtenticado user=".$user." contra=".$contra."\n<br>";
 	# print Dumper(%hash_users);
 
