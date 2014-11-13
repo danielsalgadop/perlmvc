@@ -31,25 +31,39 @@ our $path_aboluto_sessiones_cgi;
 
 
 
+# $sid toma el valor de la cookie (que es el valor del id de session (si existe)) 'logeado', en caso de que no exista toma 'undef'
+my $sid = $q->cookie("logeado") || undef;
 
-my $sid = $q->cookie("logeado") || undef;    # $sid valdra: o el contenido de cookie (que es el valor del session_id) o 'undef'
+my $toe=($sid)?"valor recuperado [$sid] ":" UNDEFFFF";
 
-my $toe=($sid)?"valor recuperado $sid":" UNDEFFFF";
-
+# $sid = "123";  # provocar que la session id tenga valor falso (como generado por usuario)
 my $session = new CGI::Session("driver:File", $sid, {Directory=>$path_aboluto_sessiones_cgi."/"}) or die CGI::Session->errstr;
 
-# Como ya hay id para la session lo recupero (o esta recien creado (session nueva) o tiene el valor de anterior sesion)
-$sid = $session->id();
-# Pinto la cabecera del cgi, con la cookie generada
-my $cookie_logeado = cookie(
-	-name=>'logeado',
-    -value=>$sid,
-    -expires=>'+20m',
-    );
 
-print $q->header(   # la cookie logeado tiene el valor de la id de la session
-	-cookie => $cookie_logeado
-	);
+# Como ya hay id para la session lo recupero (o esta recien creado (session nueva) o tiene el valor de anterior sesion)
+my $sid_actual_session = $session->id();
+
+if($sid_actual_session == $sid){    # la session id alamcenada en servidor equivale a la almacenada en cookie
+	$toe.="valores de ids COINCICENTES \$sid_actual_session == \$sid HUBIERA REDIRECCIONADO";
+	# redireccionar
+	# print $q->redirect('http://somewhere.else/in/movie/land');
+	print $q->header();  #SED, para q no de error, se puede quitar en produccion
+}
+else{
+
+	# Pinto la cabecera del cgi, con la cookie generada
+	my $cookie_logeado = cookie(
+		-name=>'logeado',
+	    -value=>$sid_actual_session,
+	    -expires=>'+20m',
+	    );
+
+	print $q->header(   # la cookie logeado tiene el valor de la id de la session
+		-cookie => $cookie_logeado
+		);
+}
+
+
 
 print $q->start_html(
     -title   	=> 'WEB SMS IT',
@@ -64,13 +78,14 @@ print $q->start_html(
     ]
 );
 
-if($q->cookie('logeado')){
-	print "EXISTE cookie logeado";	
-}
-else{
-	print "NO ESTA cookie logeado";
-}
-print "\n<br>toe $toe\n<br>";
+# 	print "\n<br>";	
+# if($q->cookie('logeado')){
+# 	print "EXISTE cookie logeado";	
+# }
+# else{
+# 	print "NO ESTA cookie logeado";
+# }
+# print "\n<br>toe $toe\n<br>";
 # mirar si existe la session con el valor de logeado como id
 
 
@@ -95,7 +110,7 @@ print "\n<br>toe $toe\n<br>";
 # # $q->param(-name=>'usuario',-value=>'nombre');
 # # $q->param(-name=>'contra',-value=>'contra');
 # # SED para ahorrarme tener que escribir el formulario
-# my %params = $q->Vars;
+my %params = $q->Vars;
 # # print Dumper(%params);
 
 # my $cookie_logeado; # put / get cookie logiado
@@ -139,42 +154,42 @@ print "\n<br>toe $toe\n<br>";
 # 	#  redireccionar al siguiente scritp
 # # }
 
-# # han enviado el formulario
-# if($params{usuario} and $params{contra}){
-# 	print "SIIISISISIS han enviado el formulario\n<br>";
-# 	# SANITIZAR valores desde perl ¿todo ok?
-# 	# NO => mostrar error
+# han enviado el formulario
+if($params{usuario} and $params{contra}){
+	print "SIIISISISIS han enviado el formulario\n<br>";
+	# SANITIZAR valores desde perl ¿todo ok?
+	# NO => mostrar error
 
-# 	# TRAER datos de users.json donde estan las contraseñas
-# 	my %r_fileJSON2Hash = fileJSON2Hash("../configs/users.json");
-# 	my %users = %{$r_fileJSON2Hash{hash}};
-# 	# print Dumper(%users);
+	# TRAER datos de users.json donde estan las contraseñas
+	my %r_fileJSON2Hash = fileJSON2Hash("../configs/users.json");
+	my %users = %{$r_fileJSON2Hash{hash}};
+	# print Dumper(%users);
 
-# 	# comprobar si coinciden usuario/contraseñas
-# 	if(&estaAtenticado($params{usuario},$params{contra},\%users)){
-# 		# LOGEADO OK:
-# 		print "<br> HAS LOGEADO y path_aboluto_sessiones_cgi es[$path_aboluto_sessiones_cgi]<br>";
+	# comprobar si coinciden usuario/contraseñas
+	if(&estaAtenticado($params{usuario},$params{contra},\%users)){
+		# LOGEADO OK:
+		print "<br> HAS LOGEADO y path_aboluto_sessiones_cgi es[$path_aboluto_sessiones_cgi]<br>";
 
-# 		# # si todo va bien almacenar en session que ya estan logados
-# 		# my $session = new CGI::Session("driver:File", undef, {Directory=>$path_aboluto_sessiones_cgi."/"}) or die CGI::Session->errstr;
+		# # si todo va bien almacenar en session que ya estan logados
+		# my $session = new CGI::Session("driver:File", undef, {Directory=>$path_aboluto_sessiones_cgi."/"}) or die CGI::Session->errstr;
 
-# 		# # # getting the effective session id:
-# 		# my $CGISESSID = $session->id();
+		# # # getting the effective session id:
+		# my $CGISESSID = $session->id();
 
-# 		# # # storing data in the session
-# 		# $session->param('logeado', $CGISESSID); # equivalent to $session->param(-name=>'l_name', -value=>'Ruzmetov');
+		# # # storing data in the session
+		# $session->param('logeado', $CGISESSID); # equivalent to $session->param(-name=>'l_name', -value=>'Ruzmetov');
 
-# 		# my $esta_logeado = $session->param('logeado');  # equivalent to $esta_logeado = $session->param(-name=>'logeado');
-# 		# if($esta_logeado){
-# 		# 	print "SIII esta logeado";
-# 		# 	&redirectUsingJavascript("logeado.pl");
-# 		# }
-# 	}
-# 	else{
-# 		# LOGEADO ERROR:
-# 		&errores2DivErrores("Problema en LOGIN. Revisa usuario y/o Contraseña");
-# 	}
-# 	# redireccionar a siguiente script
-# }
-# &generarFormLogin();
+		# my $esta_logeado = $session->param('logeado');  # equivalent to $esta_logeado = $session->param(-name=>'logeado');
+		# if($esta_logeado){
+		# 	print "SIII esta logeado";
+		# 	&redirectUsingJavascript("logeado.pl");
+		# }
+	}
+	else{
+		# LOGEADO ERROR:
+		&errores2DivErrores("Problema en LOGIN. Revisa usuario y/o Contraseña");
+	}
+	# redireccionar a siguiente script
+}
+&generarFormLogin();
 print $q->end_html;
