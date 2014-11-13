@@ -43,7 +43,7 @@ my $session = new CGI::Session("driver:File", $sid, {Directory=>$path_aboluto_se
 # Como ya hay id para la session lo recupero (o esta recien creado (session nueva) o tiene el valor de anterior sesion)
 my $sid_actual_session = $session->id();
 
-if($sid_actual_session == $sid){    # la session id alamcenada en servidor equivale a la almacenada en cookie
+if($sid_actual_session eq $sid){    # la session id alamcenada en servidor equivale a la almacenada en cookie
 	$toe.="valores de ids COINCICENTES \$sid_actual_session == \$sid HUBIERA REDIRECCIONADO";
 	# redireccionar
 	# print $q->redirect('http://somewhere.else/in/movie/land');
@@ -55,7 +55,7 @@ else{
 	my $cookie_logeado = cookie(
 		-name=>'logeado',
 	    -value=>$sid_actual_session,
-	    -expires=>'+20m',
+	    -expires=>'+1m',     # SED lo pongo solo 1 minutos para ver como se auto-borra, valor produccion +1m
 	    );
 
 	print $q->header(   # la cookie logeado tiene el valor de la id de la session
