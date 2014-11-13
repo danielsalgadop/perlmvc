@@ -5,6 +5,7 @@ use strict;
 # must be readable
 # users.json grupos.json
 
-# must be 
+# must be writable
+# $path_aboluto_sessiones_cgi
 
 1;
