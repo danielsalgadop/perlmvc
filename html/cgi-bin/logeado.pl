@@ -7,41 +7,47 @@ use CGI::Session;
 use Data::Dumper;
 use lib 'lib_websmsit';
 use miJSON;
-use miHtml;
-use validaciones;
+# use miHtml;
+# use validaciones;
 use variables_globales;
-use miSessions;
+use variables_paths;
+# use miSessions;
 
 our $q;
-my %params = $q->Vars;
-# print $q->header();
 
+unless($q->cookie("logeado")){   # la cookie debe existir
+        print $q->redirect('index.pl');
+}
+else{
+    # el valor de la cookie debe existir en el id de alguna session
+    our $path_aboluto_sessiones_cgi;
+    my $session = new CGI::Session("driver:File", $q->cookie("logeado"), {Directory=>$path_aboluto_sessiones_cgi."/"}) or die CGI::Session->errstr;
+    if($session->id() ne $q->cookie("logeado")){   # la cookie era antigua (o generada malintencionadamente)
+        print $q->redirect('index.pl');
+    }
+}
+# almacenar 'usuario' en cookie
+# my $cookie_user = $q->cookie(-name=>'logeado', -value=>12);
+# 
+    # -cookie => $cookie_logeado
+    # );
 
-my $cookie_logeado; # put / get cookie logiado
-# my $cookie1 = $q->cookie(-name=>'logeado', -value=>12);
-
-print $q->header(
-	-cookie => $cookie_logeado
-	);
-
-
-
-
+print $q->header();
 print $q->start_html(
-    -title   	=> 'WEB SMS IT',
-    -dtd 		=> "4.0",
-    -style   	=> {'src' => '../css/css.css'},
-    -lang		=>'es-ES',
-    -script		=>[
-    				{
-    					-type => 'text/javascript',
-    					-src => '../js/js.js',
-    				}
+    -title      => 'WEB SMS IT',
+    -dtd        => "4.0",
+    -style      => {'src' => '../css/css.css'},
+    -lang       =>'es-ES',
+    -script     =>[
+                    {
+                        -type => 'text/javascript',
+                        -src => '../js/js.js',
+                    }
     ]
 );
 
 print $q->h1("ESTAS LOGEADO");
+print $q->div({id=>"col_izq"},ul(li("ver LOGS"),li("enviar SMS")));
+print $q->div({id=>"col_dere"},"Bienvenido a la web donde enviar SMS");
 
-
-# print  $q->redirect('http://www.google.com');  # no funciona
 print $q->end_html;

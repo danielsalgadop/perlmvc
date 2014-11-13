@@ -4,3 +4,15 @@
 #errores{
 	background-color: red;
 }
+#col_izq{
+	border-style:solid;
+	border-color: blue;
+	width: 20%;
+}
+#col_dere{
+	border:2px;
+	width:75%;
+}
+#col_izq, #col_dere{
+	float:left;
+}

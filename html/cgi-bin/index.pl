@@ -44,10 +44,10 @@ my $session = new CGI::Session("driver:File", $sid, {Directory=>$path_aboluto_se
 my $sid_actual_session = $session->id();
 
 if($sid_actual_session eq $sid){    # la session id alamcenada en servidor equivale a la almacenada en cookie
-	$toe.="valores de ids COINCICENTES \$sid_actual_session == \$sid HUBIERA REDIRECCIONADO";
+	# $toe.="valores de ids COINCICENTES \$sid_actual_session == \$sid HUBIERA REDIRECCIONADO";
 	# redireccionar
-	# print $q->redirect('http://somewhere.else/in/movie/land');
-	print $q->header();  #SED, para q no de error, se puede quitar en produccion
+	print $q->redirect('logeado.pl');
+	# print $q->header();  #SED, para q no de error, se puede quitar en produccion
 }
 else{
 
