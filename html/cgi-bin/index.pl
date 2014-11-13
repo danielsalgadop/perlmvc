@@ -79,11 +79,11 @@ if($params{usuario} and $params{contra}){
 	# comprobar si coinciden usuario/contraseñas
 	if(&estaAtenticado($params{usuario},$params{contra},\%users)){
 		# LOGEADO OK:
-		print "<br> HAS LOGEADO<br>";
 		our $path_aboluto_sessiones_cgi;
+		print "<br> HAS LOGEADO y path_aboluto_sessiones_cgi es[$path_aboluto_sessiones_cgi]<br>";
 
 		# si todo va bien almacenar en session que ya estan logados
-		my $session = new CGI::Session("driver:File", undef, {Directory=>$path_aboluto_sessiones_cgi});
+		my $session = new CGI::Session("driver:File", undef, {Directory=>$path_aboluto_sessiones_cgi."/"}) or die CGI::Session->errstr;
 
 		# # getting the effective session id:
 		my $CGISESSID = $session->id();
