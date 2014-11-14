@@ -22,15 +22,6 @@ our $path_aboluto_sessiones_cgi;
 # my $esta_logeado = $session->param('logeado');  # equivalent to $esta_logeado = $session->param(-name=>'logeado');
 
 
-#  # Create new cookies and send them
-# my $cookie1 = CGI::Cookie->new(-name=>'logeado',-value=>123456);
-# print header(-cookie=>[$cookie1,$cookie2]);
-# # fetch existing cookies
-# %cookies = CGI::Cookie->fetch;
-# $id = $cookies{'ID'}->value;
-
-
-
 # $sid toma el valor de la cookie (que es el valor del id de session (si existe)) 'logeado', en caso de que no exista toma 'undef'
 my $sid = $q->cookie("logeado") || undef;
 
@@ -65,94 +56,12 @@ else{
 
 
 &miStartHtml();
-# print $q->start_html(
-#     -title   	=> 'WEB SMS IT',
-#     -dtd 		=> "4.0",
-#     -style   	=> {'src' => '../css/css.css'},
-#     -lang		=>'es-ES',
-#     -script		=>[
-#     				{
-#     					-type => 'text/javascript',
-#     					-src => '../js/js.js',
-#     				}
-#     ]
-# );
-
-# 	print "\n<br>";	
-# if($q->cookie('logeado')){
-# 	print "EXISTE cookie logeado";	
-# }
-# else{
-# 	print "NO ESTA cookie logeado";
-# }
-# print "\n<br>toe $toe\n<br>";
-# mirar si existe la session con el valor de logeado como id
-
-
-
-
-# # Creo una session sin cookie
-# our $path_aboluto_sessiones_cgi;
-# my $session = CGI::Session->new("driver:File", undef, {Directory=>$path_aboluto_sessiones_cgi."/"}) or die CGI::Session->errstr;
-# # my $session = CGI::Session->new("driver:File", undef, {'Directory'=>'/tmp/encuestas/'}) or die CGI::Session->errstr;
-# # Cojo el ID de la session
-# my $sid = $session->id();
-
-# # Creo una cookie y la asocio a la session 
-# my $cookie = $q->cookie(-name=>"session_id",
-# 						  -value=> $session->id);
 
 # # Pinto la cabecera del cgi, con la cookie generada print $cgi->header(-cookie => $cookie );
 
-
-
-# # SED para ahorrarme tener que escribir el formulario
-# # $q->param(-name=>'usuario',-value=>'nombre');
-# # $q->param(-name=>'contra',-value=>'contra');
-# # SED para ahorrarme tener que escribir el formulario
 my %params = $q->Vars;
-# # print Dumper(%params);
-
-# my $cookie_logeado; # put / get cookie logiado
-# # my $cookie1 = $q->cookie(-name=>'logeado', -value=>12);
-
-# print $q->header(
-# 	-cookie => $cookie_logeado
-# 	);
-
-# print $q->start_html(
-#     -title   	=> 'WEB SMS IT',
-#     -dtd 		=> "4.0",
-#     -style   	=> {'src' => '../css/css.css'},
-#     -lang		=>'es-ES',
-#     -script		=>[
-#     				{
-#     					-type => 'text/javascript',
-#     					-src => '../js/js.js',
-#     				}
-#     ]
-# );
-
 # # existe la cookie 'logeado'
 # # SI => rediccionar
-
-# print "cookie_logeado xxxx".$cookie_logeado."\nxxxx<br>" if $cookie_logeado;
-# print "cookie_logeado ".$cookie_logeado."\n<br>" if $cookie_logeado;
-
-# print $q->h1("Index3");
-# print $q->div({id=>"errores"},"");
-# # if exite en cookies logeado
-# $cookie_logeado = $q->cookie("logeado") || undef;
-# if($cookie_logeado){
-# 	&redirectUsingJavascript("logeado.pl");
-# }
-# else{
-# 	print "NO ENCUENTRO COOKIE";
-# }
-# print "\n<br>";
-#  # (EXISTE_SESSION_LOGEADA){
-# 	#  redireccionar al siguiente scritp
-# # }
 
 # han enviado el formulario
 if($params{usuario} and $params{contra}){
