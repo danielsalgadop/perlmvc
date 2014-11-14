@@ -16,6 +16,7 @@ use variables_paths;
 use miSessions;
 use miHtml;
 use autenticacion;
+use controladores;
 
 our $q; # our $q = CGI->new;
 our $path_aboluto_sessiones_cgi;
@@ -29,7 +30,9 @@ my $sid = $q->cookie("logeado") || undef;
 my $toe=($sid)?"valor recuperado [$sid] ":" UNDEFFFF";
 
 # $sid = "123";  # provocar que la session id tenga valor falso (como generado por usuario)
-my $session = new CGI::Session("driver:File", $sid, {Directory=>$path_aboluto_sessiones_cgi."/"}) or die CGI::Session->errstr;
+# he puesto session como 'our' para intentar recuperar el valor de "user_name", no lo consiguo
+our $session;
+$session = new CGI::Session("driver:File", $sid, {Directory=>$path_aboluto_sessiones_cgi."/"}) or die CGI::Session->errstr;
 
 unless($sid){  # to avoid warning Use of uninitialized value $sid in string eq at
 	$sid="";
@@ -38,8 +41,10 @@ unless($sid){  # to avoid warning Use of uninitialized value $sid in string eq a
 my $sid_actual_session = $session->id();
 
 
-
 $session->param("user_name" => "nombre" );  # SED pongo a fuego el nombre del clinte en la session
+
+# our $nombre_user_logeado;
+# $nombre_user_logeado = "nombre"; # no puedo recuperar la variable de sesion ?? lo hago asi por ahora
 
 
 
