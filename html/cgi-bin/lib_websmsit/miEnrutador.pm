@@ -8,29 +8,38 @@ use webTemplates;
 use variables_globales;
 use variables_paths;
 
+
+
+# Analiza la URI
+# escribe el template correspondiente
 sub enrutador{
 	# use URI;
 	# Analizar REQUEST_URI
 	our $path_web_rutas;
 	our $server_ip;
-	print "server_ip/env_requesturi [".$server_ip.$ENV{REQUEST_URI}."]\n<br>";
-	print $path_web_rutas."\n<br>";
+	# print "server_ip/env_requesturi [".$server_ip.$ENV{REQUEST_URI}."]\n<br>";
+	# print $path_web_rutas."\n<br>";
 
 	# Sanitizar url
 	# # quitar la agregacion de links (al pinchar un link se agrega a la url)
 	if($server_ip.$ENV{REQUEST_URI} eq $path_web_rutas){ # estamos en landing tras login.pl
 		&wtHome(); # home
-	# 	my @url_troceada = split('index.pl',$ENV{REQUEST_URI});
-	# 	# # me interesa la ultima parte la uri
-	# 	my $nueva_url = "index.pl".$url_troceada[-1];
-	# 	my $uri = URI->new($nueva_url);
-	# 	# # redireccionar alli
-	# 	# $ENV{REQUEST_URI} = $nueva_url;
-	# 	print $q->redirect($nueva_url);
-	# 	# print $q->redirect("http:/NOOOOOOO_estas_en_home");
 	}
-	else{
-		&wtDefault();
+	else{ # 
+		my @url_troceada = split("index.pl", $ENV{REQUEST_URI});
+		# TODO detectar niveles 1 solo / 2, 3 etc...
+		print "<br><br>".Dumper($ENV{REQUEST_URI})."<br><br>";
+		print "<br><br>".Dumper(@url_troceada)."<br><br>";
+		print "<br><br>".Dumper($url_troceada[-1])."<br><br>";
+		if ($ENV{REQUEST_URI} =~ m/logs$/){
+			&wtLogs();
+		}
+		elsif ($ENV{REQUEST_URI} =~ m/sms$/){
+			&wtSms();
+		}
+		else{
+			&wtError();
+		}
 	}
 }
 

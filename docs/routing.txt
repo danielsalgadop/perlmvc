@@ -1,0 +1,6 @@
+1 Nivel:
+/logs => Todos los logs de todos los grupos del usuario
+/sms => Pagina para escribir y mandar la peticio de envio a los grupos seleccionados
+
+2 Niveles:
+/logs/nombre_grupo => Logs de ese grupo

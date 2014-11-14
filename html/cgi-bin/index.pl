@@ -38,7 +38,4 @@ our $nombre_app;
 print $q->header();
 &miStartHtml();
 &enrutador();
-# print Dumper(%ENV);
-	our $path_web_rutas;
-	print Dumper($path_web_rutas);
 print $q->end_html;
