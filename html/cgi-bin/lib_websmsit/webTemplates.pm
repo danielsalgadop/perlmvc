@@ -28,10 +28,16 @@ sub wtError(){
 	print Dumper(%ENV);
 	&wtFooter;
 }
-sub wtLogs(){
+sub wtLogs($){
+	my $grupo = shift;
 	&wtHeader();
 	&colIzq;
-	print $q->h1("logs");
+	if($grupo){
+		print $q->h1("logs de Grupo ".$grupo);
+	}
+	else{
+		print $q->h1("logs TODOS LOS  GrupoS");
+	}
 	&wtFooter;
 }
 
@@ -43,7 +49,14 @@ sub wtSms(){
 	&wtFooter;	
 }
 
-
+sub wtDebug($){
+	my $mensaje = shift;
+	&wtHeader();
+	&colIzq;
+	print $q->h1($mensaje);
+	
+	&wtFooter;	
+}
 ################################### COMUNES a todas
 sub wtHeader(){
 	print $q->h1("Envio SMS IT");
