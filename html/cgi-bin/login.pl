@@ -43,7 +43,7 @@ my $session = new CGI::Session("driver:File", $sid, {Directory=>$path_aboluto_se
 # Como ya hay id para la session lo recupero (o esta recien creado (session nueva) o tiene el valor de anterior sesion)
 my $sid_actual_session = $session->id();
 
-if($sid_actual_session eq $sid){    # la session id alamcenada en servidor equivale a la almacenada en cookie
+if($sid_actual_session eq $sid and 0){    # la session id alamcenada en servidor equivale a la almacenada en cookie
 	# $toe.="valores de ids COINCICENTES \$sid_actual_session == \$sid HUBIERA REDIRECCIONADO";
 	# redireccionar
 	print $q->redirect('index.pl');
@@ -64,19 +64,19 @@ else{
 }
 
 
-
-print $q->start_html(
-    -title   	=> 'WEB SMS IT',
-    -dtd 		=> "4.0",
-    -style   	=> {'src' => '../css/css.css'},
-    -lang		=>'es-ES',
-    -script		=>[
-    				{
-    					-type => 'text/javascript',
-    					-src => '../js/js.js',
-    				}
-    ]
-);
+&miStartHtml();
+# print $q->start_html(
+#     -title   	=> 'WEB SMS IT',
+#     -dtd 		=> "4.0",
+#     -style   	=> {'src' => '../css/css.css'},
+#     -lang		=>'es-ES',
+#     -script		=>[
+#     				{
+#     					-type => 'text/javascript',
+#     					-src => '../js/js.js',
+#     				}
+#     ]
+# );
 
 # 	print "\n<br>";	
 # if($q->cookie('logeado')){
@@ -192,4 +192,5 @@ if($params{usuario} and $params{contra}){
 	# redireccionar a siguiente script
 }
 &generarFormLogin();
+
 print $q->end_html;

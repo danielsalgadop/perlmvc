@@ -33,19 +33,10 @@ else{
     # -cookie => $cookie_logeado
     # );
 
+our $path_web_css;
+
 print $q->header();
-print $q->start_html(
-    -title      => 'WEB SMS IT',
-    -dtd        => "4.0",
-    -style      => {'src' => '../css/css.css'},
-    -lang       =>'es-ES',
-    -script     =>[
-                    {
-                        -type => 'text/javascript',
-                        -src => '../js/js.js',
-                    }
-    ]
-);
+&miStartHtml();
 
 print $q->h1("ESTAS LOGEADO");
 print $q->div({id=>"col_izq"},ul(li(a({href=>"http://crete.org/"},"Ver LOGS")),li(a({href=>"http://crete.org/"},"Enviar SMS"))));

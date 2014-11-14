@@ -15,6 +15,7 @@ print
 	submit,
 	end_form,
 	hr,"\n";
+	print $q->p({class=>"prueba"},"toe toe");
 }
 
 # Could not use $q->redirect, because it is must be delcared in header
@@ -39,6 +40,24 @@ sub errores2DivErrores($){
 	x.innerHTML="'.$mensaje.'"
 	</script>
 	';
+}
+
+# wrapper para CGI->start_html
+sub miStartHtml{
+	our $path_web_css;
+	our $path_web_js;
+	print $q->start_html(
+	    -title      => 'WEB SMS IT',
+	    -dtd        => "4.0",
+	    -style      => {'src' => $path_web_css.'/css.css'},
+	    -lang       =>'es-ES',
+	    -script     =>[
+	                    {
+	                        -type => 'text/javascript',
+	                        -src => $path_web_js.'/js.js',
+	                    }
+	    ]
+	);
 }
 
 1;
