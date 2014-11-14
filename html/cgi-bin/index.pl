@@ -8,7 +8,7 @@ use Data::Dumper;
 use lib 'lib_websmsit';
 use miJSON;
 use miEnrutador;
-# use miHtml;
+use miHtml;
 # use validaciones;
 use variables_globales;
 use variables_paths;
@@ -41,7 +41,8 @@ print $q->header();
 print $q->h1("ESTAS LOGEADO");
 print $q->div({id=>"col_izq"},ul(li(a({href=>"http://crete.org/"},"Ver LOGS")),li(a({href=>"http://crete.org/"},"Enviar SMS"))));
 print $q->div({id=>"col_dere"},"Bienvenido a la web donde enviar SMS");
-print $q->a({href=>"http://crete.org/"},"Crete");
+print $q->hr;
+print $q->div(a({href=>"index.pl/unnivel"},"un solo nivel"),a({href=>"index.pl/unnivel/dosnivel"},"dos niveles"));
 
 
 # print Dumper(%ENV);
