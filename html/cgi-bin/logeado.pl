@@ -47,7 +47,8 @@ print $q->start_html(
 );
 
 print $q->h1("ESTAS LOGEADO");
-print $q->div({id=>"col_izq"},ul(li("ver LOGS"),li("enviar SMS")));
+print $q->div({id=>"col_izq"},ul(li(a({href=>"http://crete.org/"},"Ver LOGS")),li(a({href=>"http://crete.org/"},"Enviar SMS"))));
 print $q->div({id=>"col_dere"},"Bienvenido a la web donde enviar SMS");
+print $q->a({href=>"http://crete.org/"},"Crete");
 
 print $q->end_html;
