@@ -17,7 +17,7 @@ use variables_paths;
 our $q;
 
 unless($q->cookie("logeado")){   # la cookie debe existir
-        print $q->redirect('index.pl');
+        print $q->redirect('login.pl');
 }
 else{
     # el valor de la cookie debe existir en el id de alguna session

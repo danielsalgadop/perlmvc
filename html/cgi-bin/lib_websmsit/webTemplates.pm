@@ -13,6 +13,8 @@ our $path_web_rutas;
 
 #################################### Templates de paginas
 sub wtHome(){
+	my $ref_params = shift;
+	my %params = %{$ref_params};
 	&wtHeader();
 	&colIzq;
 	print $q->div({id=>"col_dere"},"Bienvenido a la web donde enviar SMS");
@@ -29,11 +31,12 @@ sub wtError(){
 	&wtFooter;
 }
 sub wtLogs($){
-	my $grupo = shift;
+	my $ref_params = shift;
+	my %params = %{$ref_params};
 	&wtHeader();
 	&colIzq;
-	if($grupo){
-		print $q->h1("logs de Grupo ".$grupo);
+	if($params{grupo}){
+		print $q->h1("logs de Grupo ".$params{grupo});
 	}
 	else{
 		print $q->h1("logs TODOS LOS  GrupoS");

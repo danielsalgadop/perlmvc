@@ -8,6 +8,7 @@ use variables_globales;
 # hace los calculos necesarios y llama a los templates
 
 our $q;
+our $nombre_user_logeado;
 sub cHome{
 	# NO CONSIGO recuperar el valor de variable de session 'user_name'  !!!!
 	# uso la ULTRA CUTREZ de our varibles_globales $nombre_user_logeado (escrito a fuego en variables_globales)
@@ -23,8 +24,12 @@ sub cHome{
 	# print "nombre_user_logeado [$nombre_user_logeado]\n<br>";
 
 
-	#### Home no necesita ningun calculo
-	&wtHome();
+	#### Home calcula a que grupos pertenece el usuario
+
+	my %params ={
+		nombre_user => $nombre_user_logeado,
+	};
+	&wtHome(\%params);
 }
 
 
@@ -33,10 +38,13 @@ sub cError(){
 }
 
 sub cLogs($){
-	
-	
 	my $grupo = shift;
-	&wtLogs($grupo);
+
+	my %params =(
+		grupo=>$grupo,
+		nombre_user=>$nombre_user_logeado
+	);
+	&wtLogs(\%params);
 }
 
 sub cSms(){
