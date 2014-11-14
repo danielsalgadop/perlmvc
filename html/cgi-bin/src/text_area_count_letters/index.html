@@ -2,6 +2,20 @@
 http://www.plus2net.com/javascript_tutorial/textarea-counter.php
  -->
 <html><head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script language="javascript">
+var templates_sms = {
+	1:"1111 sasljfs ldkfaj ldkfajs lkdfja skldjfalsk flaskj ",
+	2:"222sasljfs ldkfaj ldkfajs lkdfja skldjfalsk flaskj ",
+	3:"333 sasljfs ldkfaj ldkfajs lkdfja skldjfalsk flaskj ",
+
+};
+$(document).ready(function(){
+       $(".pais").change(function(){
+                alert("Has seleccionado un país");
+       });
+});
+</script>
 <title>(Type a title for your page here)</title>
 
 <script language=JavaScript>
@@ -26,12 +40,22 @@ alert(msg);
 </head>
 
 <body>
-<form name=my_form method=post>
-<textarea onKeyPress=check_length(this.form); onKeyDown=check_length(this.form);
- name=my_text rows=4 cols=30></textarea>
+<form name="my_form" method="post">
+<textarea onKeyPress="check_length(this.form)"; onKeyDown="check_length(this.form");
+ name="my_text" rows=4 cols=30></textarea>
     <br>
 <input size=1 value=50 name=text_num> Characters Left
 </form>
+<form name="template" method="post">
+<select name="OS">
+   <option value="1">Temaplate 1 - Descripcion</option>
+   <option value="2">Template 2</option>
+   <option value="3">Template 3</option>
+   <option value="4">Template 4</option>
+</select>
+<textarea name="my_text" rows=4 cols=30></textarea>
 
+    <br>
+</form>
 </body>
 </html>
