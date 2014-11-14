@@ -26,9 +26,9 @@ sub cHome{
 
 	#### Home calcula a que grupos pertenece el usuario
 
-	my %params ={
+	my %params =(
 		nombre_user => $nombre_user_logeado,
-	};
+	);
 	&wtHome(\%params);
 }
 

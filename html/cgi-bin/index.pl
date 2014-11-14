@@ -13,6 +13,7 @@ use miHtml;
 use variables_globales;
 use variables_paths;
 # use miSessions;
+use cargarModelos;
 
 our $q;
 
@@ -32,6 +33,9 @@ else{
 # 
     # -cookie => $cookie_logeado
     # );
+
+# cargar esto solo si los keys son 0 (para evitarlo hacerlo CADA vez)
+&cargarTodosModelos();  # rellena %userJson y %gruposJson
 
 # our $path_web_css;
 our $nombre_app;

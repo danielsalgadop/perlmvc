@@ -12,6 +12,7 @@ use variables_paths;
 # Analiza la URI
 # llama al controlador correspondiente
 sub enrutador{
+
 	# use URI;
 	# Analizar REQUEST_URI
 	our $path_web_rutas;
@@ -52,6 +53,9 @@ sub enrutador{
 			# logs concretos de un solo grupo
 			if ($ENV{REQUEST_URI} =~ m/logs\/(.*)$/){
 				&cLogs($1);
+			}
+			else{
+				&cError();
 			}
 		}
 		else{

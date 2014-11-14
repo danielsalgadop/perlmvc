@@ -18,6 +18,12 @@ use miHtml;
 use autenticacion;
 use controladores;
 
+# TODO boot_app
+
+
+
+
+
 our $q; # our $q = CGI->new;
 our $path_aboluto_sessiones_cgi;
 # mirar si tiene la cookie logeado

@@ -156,6 +156,7 @@ sub fileJSON2Hash($){
 
   my $cont = 0;
   foreach my $unalinea(@file){
+    # print "\$unalinea".$unalinea."<br>";
     $cont++;
     my %hash_unalinea = DecodificaJson($unalinea);
     $hash_with_jsons{$cont} = \%hash_unalinea;

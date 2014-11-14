@@ -15,9 +15,11 @@ our $path_web_rutas;
 sub wtHome(){
 	my $ref_params = shift;
 	my %params = %{$ref_params};
+	our %userJson;
+	print Dumper(%userJson);
 	&wtHeader();
 	&colIzq;
-	print $q->div({id=>"col_dere"},"Bienvenido a la web donde enviar SMS");
+	print $q->div({id=>"col_dere"},"Bienvenido, ".$params{nombre_user}." a la web donde enviar SMSxxxx");
 	print $q->hr;
 	print $q->div(a({href=>$path_web_rutas."/unnivel"},"un solo nivel"),a({href=>$path_web_rutas."/dosniveles1/dosniveles2"},"dos niveles"));
 	&wtFooter;
