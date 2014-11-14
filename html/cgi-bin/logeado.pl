@@ -7,6 +7,7 @@ use CGI::Session;
 use Data::Dumper;
 use lib 'lib_websmsit';
 use miJSON;
+use miEnrutador;
 # use miHtml;
 # use validaciones;
 use variables_globales;
@@ -51,4 +52,7 @@ print $q->div({id=>"col_izq"},ul(li(a({href=>"http://crete.org/"},"Ver LOGS")),l
 print $q->div({id=>"col_dere"},"Bienvenido a la web donde enviar SMS");
 print $q->a({href=>"http://crete.org/"},"Crete");
 
+
+# print Dumper(%ENV);
+&enrutador();
 print $q->end_html;
