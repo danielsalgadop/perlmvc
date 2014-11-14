@@ -33,18 +33,12 @@ else{
     # -cookie => $cookie_logeado
     # );
 
-our $path_web_css;
-
+# our $path_web_css;
+our $nombre_app;
 print $q->header();
 &miStartHtml();
-
-print $q->h1("ESTAS LOGEADO");
-print $q->div({id=>"col_izq"},ul(li(a({href=>"http://crete.org/"},"Ver LOGS")),li(a({href=>"http://crete.org/"},"Enviar SMS"))));
-print $q->div({id=>"col_dere"},"Bienvenido a la web donde enviar SMS");
-print $q->hr;
-print $q->div(a({href=>"index.pl/unnivel"},"un solo nivel"),a({href=>"index.pl/unnivel/dosnivel"},"dos niveles"));
-
-
-# print Dumper(%ENV);
 &enrutador();
+# print Dumper(%ENV);
+	our $path_web_rutas;
+	print Dumper($path_web_rutas);
 print $q->end_html;

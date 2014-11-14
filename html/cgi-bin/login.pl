@@ -31,11 +31,13 @@ my $toe=($sid)?"valor recuperado [$sid] ":" UNDEFFFF";
 # $sid = "123";  # provocar que la session id tenga valor falso (como generado por usuario)
 my $session = new CGI::Session("driver:File", $sid, {Directory=>$path_aboluto_sessiones_cgi."/"}) or die CGI::Session->errstr;
 
-
+unless($sid){  # to avoid warning Use of uninitialized value $sid in string eq at
+	$sid="";
+}
 # Como ya hay id para la session lo recupero (o esta recien creado (session nueva) o tiene el valor de anterior sesion)
 my $sid_actual_session = $session->id();
 
-if($sid_actual_session eq $sid){    # la session id alamcenada en servidor equivale a la almacenada en cookie
+if( $sid_actual_session eq $sid ){    # la session id alamcenada en servidor equivale a la almacenada en cookie
 	# $toe.="valores de ids COINCICENTES \$sid_actual_session == \$sid HUBIERA REDIRECCIONADO";
 	# redireccionar
 	print $q->redirect('index.pl');
