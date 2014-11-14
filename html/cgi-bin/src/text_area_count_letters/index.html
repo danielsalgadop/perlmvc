@@ -3,11 +3,15 @@ http://www.plus2net.com/javascript_tutorial/textarea-counter.php
  -->
 <html><head>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="../../../js/js.js"></script>
 <script language="javascript">
+prueba();
+// el valor de templates_sms es
 var templates_sms = {
-	1:"1111 sasljfs ldkfaj ldkfajs ",
+	1:"1111 sasljfs XXX ldkfaj YYY ldkfajs ",
 	2:"222sasljfs ldkfaj ldkfajs ",
 	3:"333 sasljfs ldkfaj ldkfajs ",
+	debug:"LARGO LARGO LARGO LARGO LARGO LARGO LARGO LARGO LARGO LARGO LARGO LARGO asdf3 sasljfs ldkfaj ldkfajs ",
 
 };
 $(document).ready(function(){
@@ -18,7 +22,7 @@ $(document).ready(function(){
        $("#template_select").change(function(){
        		var cargar_este_template = $("#template_select").val();
        		$("#textarea").val(templates_sms[cargar_este_template]);
-       		check_length(my_form);
+       		check_length_textarea(my_form);
 
        });
 });
@@ -33,34 +37,23 @@ $("#textarea").keyup(function(){
  -->
 <script language=JavaScript>
 <!--
-function check_length(my_form)
-	{
-		maxLen = 50; // max number of characters allowed
-		if (my_form.my_text.value.length >= maxLen) {
-// Alert message if maximum limit is reached.
-// If required Alert can be removed.
-var msg = "You have reached your maximum limit of characters allowed";
-alert(msg);
-		// Reached the Maximum length so trim the textarea
-			my_form.my_text.value = my_form.my_text.value.substring(0, maxLen);
-		 }
-		else{ // Maximum length not reached so update the value of my_text counter
-			my_form.text_num.value = maxLen - my_form.my_text.value.length;}
-	}
+
 //-->
 </script>
 
 </head>
 
 <body>
+	<div id="errores" style="background-color:red;width:100%">ERROR MOCK, va a estar en header</div>
 <form name="my_form" method="post">
 <select id="template_select">
+   <option value="noexiteIndex">LIBRE</option>
    <option value="1">Temaplate 1 - Descripcion</option>
    <option value="2">Template 2</option>
    <option value="3">Template 3</option>
-   <option value="4">Template 4</option>
+   <option value="debug">DEBUG</option>
 </select>
-<textarea id="textarea" onKeyPress="check_length(this.form)"; onKeyDown="check_length(this.form)";
+<textarea id="textarea" onKeyPress="check_length_textarea(this.form)"; onKeyDown="check_length_textarea(this.form)";
  name="my_text" rows=4 cols=30></textarea>
     <br>
 <input size=1 value=50 name=text_num> Characters Left

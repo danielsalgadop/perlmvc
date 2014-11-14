@@ -18,7 +18,7 @@ print
 	print $q->p({class=>"prueba"},"toe toe");
 }
 
-# Could not use $q->redirect, because it is must be delcared in header
+# NOT IN USE:
 # expects things like 'http://www.google.com' or 'script2.pl'
 sub redirectUsingJavascript($){
 	my $url_destiny = shift;
@@ -33,6 +33,7 @@ sub redirectUsingJavascript($){
 
 # TODO: que acepte un array
 sub errores2DivErrores($){
+	# NO se como pero habria que pasar esto a la parte html/js/
 	my $mensaje = shift;
 	print '
 	<script language="javascript" type="text/javascript">
