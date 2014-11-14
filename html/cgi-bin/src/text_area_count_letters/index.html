@@ -5,19 +5,32 @@ http://www.plus2net.com/javascript_tutorial/textarea-counter.php
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script language="javascript">
 var templates_sms = {
-	1:"1111 sasljfs ldkfaj ldkfajs lkdfja skldjfalsk flaskj ",
-	2:"222sasljfs ldkfaj ldkfajs lkdfja skldjfalsk flaskj ",
-	3:"333 sasljfs ldkfaj ldkfajs lkdfja skldjfalsk flaskj ",
+	1:"1111 sasljfs ldkfaj ldkfajs ",
+	2:"222sasljfs ldkfaj ldkfajs ",
+	3:"333 sasljfs ldkfaj ldkfajs ",
 
 };
 $(document).ready(function(){
-       $(".pais").change(function(){
-                alert("Has seleccionado un país");
+	// TODO detectar si ha hecho keydown (ha cambiado template).
+	// var done_keydown = 0
+
+	// Detectar que han seleccionado alguna template
+       $("#template_select").change(function(){
+       		var cargar_este_template = $("#template_select").val();
+       		$("#textarea").val(templates_sms[cargar_este_template]);
+       		check_length(my_form);
+
        });
 });
 </script>
 <title>(Type a title for your page here)</title>
 
+
+<!-- Ojo que puedo contar el contenido de text Area con jqeury asin de facil
+$("#textarea").keyup(function(){
+  $("#count").text($(this).val().length);
+});
+ -->
 <script language=JavaScript>
 <!--
 function check_length(my_form)
@@ -41,21 +54,16 @@ alert(msg);
 
 <body>
 <form name="my_form" method="post">
-<textarea onKeyPress="check_length(this.form)"; onKeyDown="check_length(this.form");
- name="my_text" rows=4 cols=30></textarea>
-    <br>
-<input size=1 value=50 name=text_num> Characters Left
-</form>
-<form name="template" method="post">
-<select name="OS">
+<select id="template_select">
    <option value="1">Temaplate 1 - Descripcion</option>
    <option value="2">Template 2</option>
    <option value="3">Template 3</option>
    <option value="4">Template 4</option>
 </select>
-<textarea name="my_text" rows=4 cols=30></textarea>
-
+<textarea id="textarea" onKeyPress="check_length(this.form)"; onKeyDown="check_length(this.form)";
+ name="my_text" rows=4 cols=30></textarea>
     <br>
+<input size=1 value=50 name=text_num> Characters Left
 </form>
 </body>
 </html>
