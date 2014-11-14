@@ -37,6 +37,14 @@ unless($sid){  # to avoid warning Use of uninitialized value $sid in string eq a
 # Como ya hay id para la session lo recupero (o esta recien creado (session nueva) o tiene el valor de anterior sesion)
 my $sid_actual_session = $session->id();
 
+
+
+$session->param("user_name" => "nombre" );  # SED pongo a fuego el nombre del clinte en la session
+
+
+
+
+# TODO controlar aqui que existe el parametro session_name (donde se almacena el nombre del cliente)
 if( $sid_actual_session eq $sid ){    # la session id alamcenada en servidor equivale a la almacenada en cookie
 	# $toe.="valores de ids COINCICENTES \$sid_actual_session == \$sid HUBIERA REDIRECCIONADO";
 	# redireccionar

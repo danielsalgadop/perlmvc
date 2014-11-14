@@ -27,10 +27,11 @@ sub enrutador{
 	else{ # 
 		my @url_troceada = split("index.pl", $ENV{REQUEST_URI});
 		# TODO detectar niveles 1 solo / 2, 3 etc...
-		print "<br><br>".Dumper($ENV{REQUEST_URI})."<br><br>";
-		print "<br><br>".Dumper(@url_troceada)."<br><br>";
-		print "<br><br>".Dumper($url_troceada[-1])."<br><br>";
+		# print "<br><br>".Dumper($ENV{REQUEST_URI})."<br><br>";
+		# print "<br><br>".Dumper(@url_troceada)."<br><br>";
+		# print "<br><br>".Dumper($url_troceada[-1])."<br><br>";
 
+		# detectar niveles de routing
 		my $count_niveles = () = $url_troceada[-1] =~ /\//g;
 		# $count = () = $string =~ /colou?r/g; # count the number of  colours (and colors).
 		# my @count_niveles = $url_troceada[-1] =~ /\//\//g;

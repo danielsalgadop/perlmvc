@@ -6,7 +6,10 @@ use webTemplates;
 # Es llamado desde miEnrutador
 # hace los calculos necesarios y llama a los templates
 
+our $q;
 sub cHome{
+	my $user = $q->session("user_name");
+	print "USER ".$user."\n<br>";
 	&wtHome();
 }
 
