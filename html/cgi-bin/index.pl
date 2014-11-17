@@ -43,7 +43,7 @@ else{
     # );
 
 # cargar esto solo si los keys son 0 (para evitarlo hacerlo CADA vez)
-&cargarTodosModelos();  # rellena %usersJson y %gruposJson
+
 print $q->header();
 our %user;
 print Dumper(%user);
