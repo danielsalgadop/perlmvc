@@ -20,7 +20,7 @@ sub print2File($){
 
 	my $titulo = ($options_hash{titulo}) ? $options_hash{titulo} : "titulo_generico";
 
-	print DEB "\n===PRINCIPIO de " . uc($titulo) . "=====\n";
+	print DEB "\n===PRINCIPIO de " . $titulo . "=====\n";
 	if($options_hash{ref}){
 
 
@@ -39,7 +39,7 @@ sub print2File($){
 	}else{
 		print DEB "mala llamada [2] a print2File\n";
 	}
-	print DEB "\n===END de " . uc($titulo) . "=====\n";
+	print DEB "\n==================END de " . $titulo . "=====\n\n\n";
 	close DEB;
 }
 
@@ -57,7 +57,7 @@ sub print2File($){
  #   my $ref_var = shift;
   #  my $titulo  = shift;
    # $titulo = ($titulo) ? $titulo : "titulo_generico";
- #   print "\n\n\n===PRINCIPIO de " . uc($titulo) . "=====\n";
+ #   print "\n\n\n===PRINCIPIO de " . $titulo . "=====\n";
 #
  #   if (ref($ref_var) eq "SCALAR") {
   #      my $var = $$ref_var;
@@ -71,7 +71,7 @@ sub print2File($){
 #        my %has = %{$ref_var};
 #        print Dumper(%has);
 #    }
-#    print "==FIN_DE " . uc($titulo) . "===\n\n\n";
+#    print "==FIN_DE " . $titulo . "===\n\n\n";
 #}
 
 1;

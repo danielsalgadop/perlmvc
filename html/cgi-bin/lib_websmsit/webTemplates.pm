@@ -10,17 +10,19 @@ use variables_paths;
 
 our $q;
 our $path_web_rutas;
+our %user;
 
 #################################### Templates de paginas
 sub wtHome(){
-	my $ref_params = shift;
-	my %params = %{$ref_params};
-
+	# my $ref_params = shift;
+	# my %params = %{$ref_params};
 	&wtHeader();
 	&colIzq;
-	print $q->div({id=>"col_dere"},"Bienvenido, ".$params{nombre_user}." a la web donde enviar SMSxxxx");
+	print '<div id="col_dere">';
+	print $q->p("Bienvenido, ",b($user{nombre})," a la web donde enviar SMSxxxx"),p("Grupos a los que perteneces ").$user{grupos_q_pertenece};
+	print '</div>';
 	print $q->hr;
-	print $q->div(a({href=>$path_web_rutas."/unnivel"},"un solo nivel"),a({href=>$path_web_rutas."/dosniveles1/dosniveles2"},"dos niveles"));
+	# print $q->div(a({href=>$path_web_rutas."/unnivel"},"un solo nivel"),a({href=>$path_web_rutas."/dosniveles1/dosniveles2"},"dos niveles"));
 	&wtFooter;
 }
 

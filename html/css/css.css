@@ -12,6 +12,8 @@
 #col_dere{
 	border:2px;
 	width:75%;
+	border-style:solid;
+	border-color: red;
 }
 #col_izq, #col_dere{
 	float:left;
