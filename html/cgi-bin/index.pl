@@ -6,6 +6,7 @@ use CGI qw(:standard);
 use CGI::Session;
 use Data::Dumper;
 use lib 'lib_websmsit';
+use debug;
 use miJSON;
 use miEnrutador;
 use miHtml;
@@ -36,9 +37,8 @@ else{
 
 # cargar esto solo si los keys son 0 (para evitarlo hacerlo CADA vez)
 &cargarTodosModelos();  # rellena %usersJson y %gruposJson
-
-# our $path_web_css;
-our $nombre_app;
+our %usersJson;
+# our $nombre_app;
 print $q->header();
 &miStartHtml();
 &enrutador();

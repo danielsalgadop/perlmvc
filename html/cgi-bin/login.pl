@@ -91,6 +91,7 @@ if($params{usuario} and $params{contra}){
 	# SANITIZAR valores desde perl ¿todo ok?
 	# NO => mostrar error
 
+	# TODO usar cargarModelos y %usersJson para comprobar las contraseñas
 	# TRAER datos de users.json donde estan las contraseñas
 	my %r_fileJSON2Hash = fileJSON2Hash("../configs/users.json");
 	my %users = %{$r_fileJSON2Hash{hash}};

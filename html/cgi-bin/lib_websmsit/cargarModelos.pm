@@ -10,7 +10,6 @@ our $path_aboluto_jsones_modelos;
 our %usersJson; # memory representation of users.json
 our %gruposJson; # memory representation of grupos.json
 
-
 sub cargarTodosModelos(){
 	&cargarUsersJson;
 	&cargarGruposJson;

@@ -114,6 +114,7 @@ sub LeeJson($){
 }#Cierra sub LeeJson($)
 
 # --- Decodifica JSON. --- #
+# bad formated json should be detected
 sub DecodificaJson($){
 
   my $dato=shift;
@@ -140,29 +141,30 @@ sub CodificaJson($){
 }#Cierra sub CodificaJson($)
 
 
-# Function: FileJSON2Hash  (OJO NO espera agregacion de jsons, sino un unico json)
+# Function: FileJSON2Hash  (OJO NO espera agregacion de jsons, sino un unico json EN UNA UNICA LINEA) Es parece mucho a DecodificaJson
 # Receives a path to file. These file must be unique jsons
 # Returns a hash{status}
 # Returns a hash{hash} = Content of file (json) as hash
+# TODO,bad formated json should be detected by DecodificaJson
 sub fileJSON2Hash($){
   my $path_to_file = shift;
   my %return;
   $return{status} = "OK";
-  my %hash_with_jsons;
+  my %hash_with_json;
 
   open (FILEJSON, $path_to_file);
   my @file = <FILEJSON>;
   close FILEJSON;
+  chomp(@file);
 
-  my $cont = 0;
-  foreach my $unalinea(@file){
-    # print "\$unalinea".$unalinea."<br>";
-    $cont++;
-    my %hash_unalinea = DecodificaJson($unalinea);
-    $hash_with_jsons{$cont} = \%hash_unalinea;
-  }
+  my %hash_unalinea = DecodificaJson($file[0]);  # es una sola linea, por eso $file[0]
+  $return{hash}= \%hash_unalinea;
+  # my %hash = (
+    # ref=>\%return{hash},
+    # titulo=>"fileJSON2Hash para $path_to_file",
+  # );
+  # print2File(\%hash);
 
-  $return{hash}= \%hash_with_jsons;
   return(%return);
 
 }

@@ -32,7 +32,7 @@ sub estaAtenticado($$$){
 	foreach my $num_linea(keys %hash_users){ # ojo $num_linea es HUMANA (empieza en 1)
 		print "<br>num_linea ".$num_linea."<br>";
 		my %hash_datos_un_user = %{$hash_users{$num_linea}};
-		print Dumper(%hash_datos_un_user);
+		# print Dumper(%hash_datos_un_user);
 		if($hash_datos_un_user{$user}){ # the user exists
 			if($contra eq $hash_datos_un_user{$user}){ # the password coincide
 				return(1);
