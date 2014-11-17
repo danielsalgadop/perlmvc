@@ -18,8 +18,8 @@ use cargarModelos; # rellena %usersJson, %gruposJson y %user
 
 our %usersJson;
 our %gruposJson;
-&print2File({titulo=>"comprobat que Existe \%usersJson",ref=>\%usersJson});
-&print2File({titulo=>"comprobat que Existe \%gruposJson",ref=>\%gruposJson});
+# &print2File({titulo=>"comprobat que Existe \%usersJson",ref=>\%usersJson});
+# &print2File({titulo=>"comprobat que Existe \%gruposJson",ref=>\%gruposJson});
 
 
 use userHelpers;

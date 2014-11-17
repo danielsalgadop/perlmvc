@@ -41,18 +41,23 @@ sub cargarUsersJson(){
 
 sub cargarGruposJson(){
 	my %r_fileJSON2Hash = fileJSON2Hash($path_aboluto_jsones_modelos."/grupos.json");
-	&print2File({titulo=>"Dumper en cargarUsersJson grupos.json",ref=>\%r_fileJSON2Hash});
+	# &print2File({titulo=>"Dumper en cargarUsersJson grupos.json",ref=>\%r_fileJSON2Hash});
 	if($r_fileJSON2Hash{status} eq "OK"){
 		%gruposJson=%{$r_fileJSON2Hash{hash}};
 	}
 }
+
+&cargarTodosModelos();
+
+
 our $nombre_user_logeado;
+	&print2File({titulo=>"[antes] cargarModelos \$nombre_user_logeado[$nombre_user_logeado] Dumper de \%gruposJson",ref=>\%gruposJson});
 my @grupos_q_pertenece = &gruposAlosQuePerteneceUser($nombre_user_logeado);
 
 #           hash{ref} = (scalar|array|hash)
 #           hash{titulo} = (scalar) 
 
-&print2File({titulo=>"LLEGAS [mmmmmmfffffaaaatt] grupos_q_pertenece dentro de cargarModelos para \$nombre_user_logeado [$nombre_user_logeado]",ref=>\@grupos_q_pertenece});
+# &print2File({titulo=>"LLEGAS [mmmmmmfffffaaaatt] grupos_q_pertenece dentro de cargarModelos para \$nombre_user_logeado [$nombre_user_logeado]",ref=>\@grupos_q_pertenece});
 our %user;
 %user = (
 	nombre=>$nombre_user_logeado,
