@@ -16,6 +16,7 @@ sub cargarTodosModelos(){
 	&cargarGruposJson;
 }
 
+# TODO gestionar error al cargar JSON
 sub cargarUsersJson(){
 	my %r_fileJSON2Hash = fileJSON2Hash($path_aboluto_jsones_modelos."/users.json");
 	if($r_fileJSON2Hash{status} eq "OK"){

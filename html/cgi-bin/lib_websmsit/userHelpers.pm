@@ -8,8 +8,12 @@ sub gruposAlosQuePerteneceUser($){
 	my $nombre_user = shift;
 	our %usersJson;
 	our %gruposJson;
-	foreach my $nombre_grupo(keys(%gruposJson)){
-		print "un grupo [".$nombre_grupo."]<br>\n";
+	print Dumper(%gruposJson);
+	print "<hr>";
+	print Dumper(%usersJson);
+
+	foreach my $numero_linea(keys(%gruposJson)){
+		print "un grupo [".$numero_linea."]<br>\n";
 	}
 }
 

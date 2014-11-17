@@ -26,14 +26,14 @@ sub cHome{
 
 
 	#### Home calcula a que grupos pertenece el usuario
-
+	&gruposAlosQuePerteneceUser();
 	my %params =(
 		nombre_user => $nombre_user_logeado,
 	);
-	our %usersJson;
-	print Dumper(%usersJson);
-	our %gruposJson;
-	print Dumper(%gruposJson);
+	# our %usersJson;
+	# print Dumper(%usersJson);
+	# our %gruposJson;
+	# print Dumper(%gruposJson);
 	&wtHome(\%params);
 }
 

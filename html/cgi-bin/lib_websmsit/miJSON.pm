@@ -140,8 +140,8 @@ sub CodificaJson($){
 }#Cierra sub CodificaJson($)
 
 
-# Function: FileJSON2Hash
-# Receives a path to file. These file must be an agregation of jsons
+# Function: FileJSON2Hash  (OJO NO espera agregacion de jsons, sino un unico json)
+# Receives a path to file. These file must be unique jsons
 # Returns a hash{status}
 # Returns a hash{hash} = Content of file (json) as hash
 sub fileJSON2Hash($){
