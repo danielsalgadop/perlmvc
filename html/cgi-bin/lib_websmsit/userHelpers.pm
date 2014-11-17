@@ -10,17 +10,20 @@ sub gruposAlosQuePerteneceUser($){
 	our %usersJson;
 	our %gruposJson;
 	my @grupos_q_pertenece_user;
-	print Dumper(%gruposJson);
 	# print "<hr>";
 	# print Dumper(%usersJson);
 
 	foreach my $nombre_grupo(keys(%gruposJson)){
-		print "un grupo s [".$nombre_grupo."]<br>\n";
+		# print "un grupo s [".$nombre_grupo."]<br>\n";
 		foreach my $users_en_grupo(@{$gruposJson{$nombre_grupo}}){
 			push(@grupos_q_pertenece_user,$nombre_grupo);
-			print "un user $users_en_grupo<br>\n";
+			# print "un user $users_en_grupo<br>\n";
 		}
 	}
+
+	print "<hr>";
+	print Dumper(@grupos_q_pertenece_user);
+	print "<hr>";
 	return(@grupos_q_pertenece_user);
 }
 
