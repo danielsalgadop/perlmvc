@@ -46,12 +46,12 @@ else{
 
 print $q->header();
 our %user;
-print Dumper(%user);
-print "<hr>";
-print Dumper(%usersJson);
-print "<hr>";
-print Dumper(%gruposJson);
-print "<hr>";
+# print Dumper(%user);
+# print "<hr>";
+# print Dumper(%usersJson);
+# print "<hr>";
+# print Dumper(%gruposJson);
+# print "<hr>";
 &miStartHtml();
 &enrutador();
 print $q->end_html;
