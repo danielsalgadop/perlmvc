@@ -3,6 +3,26 @@ use warnings;
 use strict;
 
 our $q;
+
+# wrapper para CGI->start_html
+sub miStartHtml{
+	our $path_web_css;
+	our $path_web_js;
+	print $q->start_html(
+	    -title      => 'WEB SMS IT',
+	    -dtd        => "4.0",
+	    -style      => {'src' => $path_web_css.'/css.css'},
+	    -lang       =>'es-ES',
+	    -script     =>[
+	                    {
+	                        -type => 'text/javascript',
+	                        -src => $path_web_js.'/js.js',
+	                    }
+	    ]
+	);
+}
+
+
 sub generarFormLogin {
 
 print $q->start_form(
@@ -43,22 +63,14 @@ sub errores2DivErrores($){
 	';
 }
 
-# wrapper para CGI->start_html
-sub miStartHtml{
-	our $path_web_css;
-	our $path_web_js;
-	print $q->start_html(
-	    -title      => 'WEB SMS IT',
-	    -dtd        => "4.0",
-	    -style      => {'src' => $path_web_css.'/css.css'},
-	    -lang       =>'es-ES',
-	    -script     =>[
-	                    {
-	                        -type => 'text/javascript',
-	                        -src => $path_web_js.'/js.js',
-	                    }
-	    ]
-	);
+
+
+# Receives a ref_hash
+# hash{grupo} = (string) grupo a mostrar
+# Returns a html table with logs
+sub mostrarTablaLogs($){
+	my $ref_params = shift;
+	my %params = %{$ref_params};
 }
 
 1;

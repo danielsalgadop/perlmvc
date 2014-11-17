@@ -19,7 +19,14 @@ sub wtHome(){
 	&wtHeader();
 	&colIzq;
 	print '<div id="col_dere">';
-	print $q->p("Bienvenido, ",b($user{nombre})," a la web donde enviar SMSxxxx"),p("Grupos a los que perteneces ").$user{grupos_q_pertenece};
+	print $q->p("Bienvenido, ",b($user{nombre})," a la web donde enviar SMSxxxx"),p("perteneces a estos grupos: ");
+	print "<ul>";
+	foreach my $nombre_grupo(@{$user{grupos_q_pertenece}}){
+		print $q->li($nombre_grupo);
+	}
+	print "</ul>";
+	
+
 	print '</div>';
 	print $q->hr;
 	# print $q->div(a({href=>$path_web_rutas."/unnivel"},"un solo nivel"),a({href=>$path_web_rutas."/dosniveles1/dosniveles2"},"dos niveles"));
@@ -74,7 +81,7 @@ sub wtFooter(){
 # va a tener la logica de poner en otro color la pagina en la que estamos
 sub colIzq(){
 	my $boton_seleccionado = ""; # futuro shift
-	print $q->div({id=>"col_izq"},ul(li(a({href=>$path_web_rutas."/logs"},"Ver LOGS")),li(a({href=>$path_web_rutas."/sms"},"Enviar SMS"))));
+	print $q->div({id=>"col_izq"},ul(li(a({href=>$path_web_rutas."/logs"},"Ver LOGS")),li(a({href=>$path_web_rutas."/sms"},"Enviar SMS"))),div("tus datos sonXXX (TODO)"));
 }
 
 1;
