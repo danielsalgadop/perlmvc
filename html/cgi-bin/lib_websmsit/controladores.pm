@@ -4,6 +4,7 @@ use strict;
 use lib '.';
 use webTemplates;
 use variables_globales;
+use userHelpers;
 # Es llamado desde miEnrutador
 # hace los calculos necesarios y llama a los templates
 
@@ -29,6 +30,10 @@ sub cHome{
 	my %params =(
 		nombre_user => $nombre_user_logeado,
 	);
+	our %usersJson;
+	print Dumper(%usersJson);
+	our %gruposJson;
+	print Dumper(%gruposJson);
 	&wtHome(\%params);
 }
 

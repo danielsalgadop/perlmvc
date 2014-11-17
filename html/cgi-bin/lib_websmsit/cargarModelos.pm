@@ -7,7 +7,7 @@ use lib '.';
 # los carga en variables_globales
 
 our $path_aboluto_jsones_modelos;
-our %userJson; # memory representation of users.json
+our %usersJson; # memory representation of users.json
 our %gruposJson; # memory representation of grupos.json
 
 
@@ -19,7 +19,7 @@ sub cargarTodosModelos(){
 sub cargarUsersJson(){
 	my %r_fileJSON2Hash = fileJSON2Hash($path_aboluto_jsones_modelos."/users.json");
 	if($r_fileJSON2Hash{status} eq "OK"){
-		%userJson=%{$r_fileJSON2Hash{hash}};
+		%usersJson=%{$r_fileJSON2Hash{hash}};
 	}
 }
 

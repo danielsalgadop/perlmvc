@@ -35,7 +35,7 @@ else{
     # );
 
 # cargar esto solo si los keys son 0 (para evitarlo hacerlo CADA vez)
-&cargarTodosModelos();  # rellena %userJson y %gruposJson
+&cargarTodosModelos();  # rellena %usersJson y %gruposJson
 
 # our $path_web_css;
 our $nombre_app;
