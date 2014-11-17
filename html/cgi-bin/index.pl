@@ -37,7 +37,7 @@ else{
 
 # cargar esto solo si los keys son 0 (para evitarlo hacerlo CADA vez)
 &cargarTodosModelos();  # rellena %usersJson y %gruposJson
-our %usersJson;
+# our %usersJson;
 # our $nombre_app;
 print $q->header();
 &miStartHtml();

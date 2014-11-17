@@ -26,9 +26,10 @@ sub cHome{
 
 
 	#### Home calcula a que grupos pertenece el usuario
-	&gruposAlosQuePerteneceUser();
+	my @grupos_user = &gruposAlosQuePerteneceUser($nombre_user_logeado);
 	my %params =(
 		nombre_user => $nombre_user_logeado,
+		grupos_user => @grupos_user,
 	);
 	# our %usersJson;
 	# print Dumper(%usersJson);

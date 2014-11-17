@@ -6,15 +6,22 @@ use cargarModelos;
 
 sub gruposAlosQuePerteneceUser($){
 	my $nombre_user = shift;
+	# print "RECIBIDO EN gruposAlosQuePerteneceUser \$nombre_user [$nombre_user]\n<br>";
 	our %usersJson;
 	our %gruposJson;
-	# print Dumper(%gruposJson);
+	my @grupos_q_pertenece_user;
+	print Dumper(%gruposJson);
 	# print "<hr>";
 	# print Dumper(%usersJson);
 
-	foreach my $numero_linea(keys(%gruposJson)){
-		print "un grupo [".$numero_linea."]<br>\n";
+	foreach my $nombre_grupo(keys(%gruposJson)){
+		print "un grupo s [".$nombre_grupo."]<br>\n";
+		foreach my $users_en_grupo(@{$gruposJson{$nombre_grupo}}){
+			push(@grupos_q_pertenece_user,$nombre_grupo);
+			print "un user $users_en_grupo<br>\n";
+		}
 	}
+	return(@grupos_q_pertenece_user);
 }
 
 1;

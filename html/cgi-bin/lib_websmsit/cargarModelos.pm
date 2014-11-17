@@ -5,6 +5,14 @@ use lib '.';
 
 # lee user.json grupos.json
 # los carga en variables_globales
+# genera la info de %user
+# %user= (
+# 	nombre=>valor_nombre,
+# 	grupos_q_pertenece=>[grupo1,grupo3,grupox]
+# 	rol=>super_admin|admin|user
+# );
+
+# %user{nombre}=>valor_nombre
 
 our $path_aboluto_jsones_modelos;
 our %usersJson; # memory representation of users.json
