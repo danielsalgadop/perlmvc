@@ -169,5 +169,31 @@ sub fileJSON2Hash($){
 
 }
 
+# Function: FileJSON2HashAgregado similar to FileJSON2Hash but the origin file is an agregation of jsons
+# Receives a path to file. These file must be an agregation of jsons
+# Returns a return{status}
+# Returns a return{hash} = Content of file (json) as hash. The keys are the number of line of the origin file
+sub fileJSON2HashAgregado($){
+  my $path_to_file = shift;
+  my %return;
+  $return{status} = "OK";
+  my %hash_with_jsons;
+
+  open (FILEJSON, $path_to_file);
+  my @file = <FILEJSON>;
+  close FILEJSON;
+
+  my $cont = 0;
+  foreach my $unalinea(@file){
+    # print "\$unalinea".$unalinea."<br>";
+    $cont++;
+    my %hash_unalinea = DecodificaJson($unalinea);
+    $hash_with_jsons{$cont} = \%hash_unalinea;
+  }
+
+  $return{hash}= \%hash_with_jsons;
+  return(%return);
+
+}
 
 1;

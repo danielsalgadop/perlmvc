@@ -1,1 +1,3 @@
-{"user":"nombre_user","ip":"1.2.3.4","accion":"envio_sms","mensaje":"sdasfasdf XXX asdfsadfas YYYY sdfasdfasdfadfs RRRR asdfasdfasd dddd", "destinatarios":["email1@bt.com","email2@bt.com"]}
+{"user":"nombre_user","ip":"1.2.3.4","accion":"envio_sms","mensaje":"sdasfasdf XXX asdfsadfas YYYY sdfasdfasdfadfs RRRR asdfasdfasd dddd", "destinatarios":["email1@bt.com","email2@bt.com"],"timestamp":"20141107 19:40"}
+{"user":"nombre_user2","ip":"2.2.2.2","accion":"envio_sms","mensaje":"22222 22222 XX 222 YYYY sdfasdfasdfadfs RRRR asdfasdfasd dddd", "destinatarios":["email22222@bt.com","email2222222@bt.com"],"timestamp":"20141108 20:25"}
+{"user":"nombre_user3","ip":"33.33.33.33","accion":"envio_sms","mensaje":"3333333333 3333333333 XX 333333 YYYY sdfasdfasdfadfs RRRR asdfasdfasd dddd", "destinatarios":["email3333333333@bt.com","email33333333333333@bt.com"],"timestamp":"20140808 07:29"}
