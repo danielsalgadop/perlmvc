@@ -48,11 +48,16 @@ sub wtLogs($){
 	print '<div id="col_dere">';
 	print $q->h1("logs de Grupo ".$params{grupo});
 
-	if($params{mensaje_error}){
+	if($params{mensaje_error}){   # ha ocurrido error (no tiene permisos)
 		print $q->p($params{mensaje_error});
 	}
 	else{
-		mostrarTablaLogs($params{logs_as_hash});
+		if($params{logs_as_hash} == 0){ # logs estaban vacios
+			print $q->p("No existen logs, es un grupo muy nuevo");
+		}
+		else{ # tiene permiso y log esta relleno
+			mostrarTablaLogs($params{logs_as_hash});
+		}
 	}
 	print '</div>';  # close div id="col_dere"
 	# print Dumper(%params);
