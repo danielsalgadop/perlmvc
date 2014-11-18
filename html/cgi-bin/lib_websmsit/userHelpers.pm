@@ -10,6 +10,7 @@ use lib'.';
 # receives nombre_user_logeado
 # Returns (array) grupos_q_pertenece_user
 sub gruposAlosQuePerteneceUser($){
+	# sacar nombre_user_logeado de %user
 	my $nombre_user_logeado= shift;
 	my @grupos_q_pertenece_user;
 	our %gruposJson;
