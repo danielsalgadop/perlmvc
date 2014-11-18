@@ -45,12 +45,13 @@ sub wtLogs($){
 	my %params = %{$ref_params};
 	&wtHeader();
 	&colIzq;
-	if($params{grupo}){
+	# if($params{grupo}){
 		print $q->h1("logs de Grupo ".$params{grupo});
-	}
-	else{
-		print $q->h1("logs TODOS LOS  GrupoS");
-	}
+	# }
+	# else{
+		# $params{grupo} MUST exist
+		# print $q->h1("TODO mostrar ERROR");
+	# }
 	&wtFooter;
 }
 

@@ -46,18 +46,21 @@ sub cError(){
 # $grupo MUST exist
 sub cLogs($){
 	my $grupo = shift;
+
+	# $grupo MUST exist !! 
+
 	# detect if user has permissions see these group
 	# TODO print a message (you dont have permission)
 
-	my %representation_of_group_log;   # a hash with the log
-	my %r_logs2Hash1Grupo = logs2Hash1Grupo($grupo);
+	my %params;
 
+	my %r_logs2Hash1Grupo = logs2Hash1Grupo($grupo);
 	if($r_logs2Hash1Grupo{status} eq "OK"){
-		%representation_of_group_log = $r_logs2Hash1Grupo{hash};
+		$params{logs_in_hash} = $r_logs2Hash1Grupo{hash}; # a hash with the log
 	}
 	# TODO print a ERROR page when error
 
-	my %params =(
+	%params =(
 		grupo=>$grupo,
 		nombre_user=>$nombre_user_logeado
 	);
