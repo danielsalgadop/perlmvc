@@ -41,20 +41,20 @@ sub enrutador{
 			if ($ENV{REQUEST_URI} =~ m/sms$/){
 				&cSms();
 			}
-			else{
+			else{ # nivel 1 sin ruta
 				&cError();
 			}
 		}
 		elsif($count_niveles  == 2){
 			# logs concretos de un solo grupo
-			if ($ENV{REQUEST_URI} =~ m/logs\/(.*)$/){
+			if ($ENV{REQUEST_URI} =~ m/logs\/(\w+)$/){
 				&cLogs($1);
 			}
-			else{
+			else{ # nivel 2 sin ruta
 				&cError();
 			}
 		}
-		else{
+		else{  # no son de nivel adecuado
 			&cError();
 		}
 	}
