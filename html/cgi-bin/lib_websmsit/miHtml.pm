@@ -16,8 +16,13 @@ sub miStartHtml{
 	    -script     =>[
 	                    {
 	                        -type => 'text/javascript',
+	                        -src => $path_web_js.'/jquery.2.1.1.js',
+	                    },
+	                    {
+	                        -type => 'text/javascript',
 	                        -src => $path_web_js.'/js.js',
-	                    }
+	                    },
+
 	    ]
 	);
 }

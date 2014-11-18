@@ -3,6 +3,11 @@ function prueba(){
 	// alert("prueba en js.js IS WORKING2");
 	console.log("prueba en js.js IS WORKING2");
 }
+// function pruebaJquery(){
+	// $( document ).ready(function() {
+		// console.log( "jquery WORKING!" );
+	// });
+// }
 
 // existe ESTA funcion embebido en perl en miHtml.pm::errores2DivErrores
 // habria que unificarlas
