@@ -93,22 +93,26 @@ sub wtFooter(){
 # quizas pueda usar template toolkit
 sub colIzq(){
 	my $boton_seleccionado = ""; # futuro shift
-	my @r_gruposAlosQuePerteneceUser = ("grupo1", "grupo3"); #esto vendra de gruposAlosQuePerteneceUser
+	# my @r_gruposAlosQuePerteneceUser = ("grupo1", "grupo3"); #esto vendra de gruposAlosQuePerteneceUser
+	my @r_gruposAlosQuePerteneceUser = gruposAlosQuePerteneceUser();
 
 
 
-
-print '<div id="col_izq">';
-print "<ul>";
-print "<li>";
-	print "VER LOGS";
+	print '<div id="col_izq">';
 	print "<ul>";
-	foreach my $un_grupo(@{$user{grupos_q_pertenece}}){
-		print '<li><a href="'.$path_web_rutas."/logs/".$un_grupo.'">'.$un_grupo.'</a></li>';
-	}
-	print "</ul>";
-print "</li>";
-print "</div>";
+	print "<li>";
+		print "VER LOGS";
+		print "<ul>";
+		foreach my $un_grupo(@{$user{grupos_q_pertenece}}){
+			print '<li><a href="'.$path_web_rutas."/logs/".$un_grupo.'">'.$un_grupo.'</a></li>';
+		}
+		print "</ul>";
+	print "</li>";
+	print "<li>";
+	print '<a href="'.$path_web_rutas.'/sms">Enivar SMS</a>';
+	print "</li>";
+	print "<div>tus datos son XXXX (TODO)</div>";
+	print "</div>";   # cierro div id="col_izq"
 
 	# TODO recorrer $user{groups} ( HE ESTADO PROBANDO, debo usar Template Toolkit, ya que no puedo recorrer @{user{grupos_q_pertenece}} y generar dimanicametne una li con $q)
 	# print $q->div({id=>"col_izq"},
