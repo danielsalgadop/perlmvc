@@ -25,11 +25,11 @@ sub miStartHtml{
 
 sub generarFormLogin {
 
-print $q->start_form(
+	print $q->start_form(
 		-method=>"POST",
 		-action=>$q->self_url,  # auto-call
 	);
-print
+	print
 	"Usuario ",textfield('usuario'),br,
 	"Contraseña (ponerlo con asteriscos)",password_field('contra'),br,
 	submit,
@@ -65,12 +65,39 @@ sub errores2DivErrores($){
 
 
 
-# Receives a ref_hash
+# Receives a ref_hash of a logs_as_hash. A hash representation of a log
 # hash{grupo} = (string) grupo a mostrar
 # Returns a html table with logs
 sub mostrarTablaLogs($){
-	my $ref_params = shift;
-	my %params = %{$ref_params};
+	my $ref_logs_as_hash = shift;
+	my %logs_as_hash = %{$ref_logs_as_hash};
+
+
+	my @header; # saco el header como keys de la primera linea
+	@header = reverse sort keys %{$logs_as_hash{1}};  # reverse sort so user and timestamp are first data
+
+	print "<table>";
+	print "<thead>";
+	print "<tr>";
+	foreach my $unheader(@header){
+		print "<th>".$unheader."</th>";
+	}
+	print "</tr>";
+	print "</thead>";
+	print "<tbody>";
+	foreach my $num_linea(sort keys %logs_as_hash){  # sort keys so every tr is the same numbre of line
+		my %hash_datos_una_linea = %{$logs_as_hash{$num_linea}};
+		my @data = reverse sort keys %hash_datos_una_linea; # reverse sort keys as in header
+		print "<tr>";
+		foreach my $un_key(@data){
+			print "<td>".$hash_datos_una_linea{$un_key}."</td>";
+		}
+		print "</tr>";
+		# print "num_linea ".$num_linea."<br>";
+	}
+	print "</tbody>";
+	print "</table>";
+	# print "<h1>mostrarTablaLogs</h1>";
 }
 
 1;

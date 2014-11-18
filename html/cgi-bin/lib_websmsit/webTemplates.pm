@@ -45,8 +45,11 @@ sub wtLogs($){
 	my %params = %{$ref_params};
 	&wtHeader();
 	&colIzq;
+	print '<div id="col_dere">';
 	print $q->h1("logs de Grupo ".$params{grupo});
-	print Dumper(%params);
+	mostrarTablaLogs($params{logs_as_hash});
+	print '</div>';
+	# print Dumper(%params);
 	&wtFooter;
 }
 
