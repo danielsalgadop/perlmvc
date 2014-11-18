@@ -76,6 +76,7 @@ sub mostrarTablaLogs($){
 	my @header; # saco el header como keys de la primera linea
 	@header = reverse sort keys %{$logs_as_hash{1}};  # reverse sort so user and timestamp are first data
 
+	# print Dumper(%logs_as_hash);
 	print "<table>";
 	print "<thead>";
 	print "<tr>";
@@ -85,12 +86,31 @@ sub mostrarTablaLogs($){
 	print "</tr>";
 	print "</thead>";
 	print "<tbody>";
-	foreach my $num_linea(sort keys %logs_as_hash){  # sort keys so every tr is the same numbre of line
+	foreach my $num_linea(sort {$a<=>$b} keys %logs_as_hash){  # sort keys so every tr is the same numbre of line
 		my %hash_datos_una_linea = %{$logs_as_hash{$num_linea}};
 		my @data = reverse sort keys %hash_datos_una_linea; # reverse sort keys as in header
 		print "<tr>";
 		foreach my $un_key(@data){
-			print "<td>".$hash_datos_una_linea{$un_key}."</td>";
+			print "<td>";
+			my $dato = $hash_datos_una_linea{$un_key};
+			if(ref($dato)){  # It is a ref! Nowadays the ONLY ref is array 'destinatarios'
+				# por alguna razon (que desconozco) al intentar hacer un ul li con destinatarios, me parecia un <li> vacio entre cada destinatario
+				
+				# print "<ul>";
+				my $lista_destinatarios;
+				foreach my $destinatario(@{$dato}){
+					# print "<li>$destinatario<li>";
+					$lista_destinatarios .= $destinatario.", ";
+				}
+				chop($lista_destinatarios); # remove last space
+				chop($lista_destinatarios); # remove last comma
+				print $lista_destinatarios;
+				# print "</ul>";
+			}
+			else{
+				print $dato;
+			}
+			print "</td>";
 		}
 		print "</tr>";
 		# print "num_linea ".$num_linea."<br>";
