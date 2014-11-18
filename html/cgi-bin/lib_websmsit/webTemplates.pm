@@ -47,8 +47,14 @@ sub wtLogs($){
 	&colIzq;
 	print '<div id="col_dere">';
 	print $q->h1("logs de Grupo ".$params{grupo});
-	mostrarTablaLogs($params{logs_as_hash});
-	print '</div>';
+
+	if($params{mensaje_error}){
+		print $q->p($params{mensaje_error});
+	}
+	else{
+		mostrarTablaLogs($params{logs_as_hash});
+	}
+	print '</div>';  # close div id="col_dere"
 	# print Dumper(%params);
 	&wtFooter;
 }

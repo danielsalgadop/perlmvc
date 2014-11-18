@@ -47,23 +47,28 @@ sub cError(){
 # $grupo MUST exist
 sub cLogs($){
 	my $grupo = shift;
+	my %params_to_template;
+	$params_to_template{grupo} =$grupo;  # add grupo
 
-	# $grupo MUST exist !! 
+	my $flag_usar_has_permissions_to_see_group = 0;
+	# detect if user has permissions to see these group
+	foreach my $un_grupo_candidato(@{$user{grupos_q_pertenece}}){
+		if($un_grupo_candidato eq $grupo){
+			# TODO print a message (you dont have permission)
 
-	# detect if user has permissions see these group
-	# TODO print a message (you dont have permission)
-
-	my %params;
-
-	my %r_logs2Hash1Grupo = logs2Hash1Grupo($grupo);
-	if($r_logs2Hash1Grupo{status} eq "OK"){
-		$params{logs_as_hash} = $r_logs2Hash1Grupo{hash}; # a hash with the log
+			my %r_logs2Hash1Grupo = logs2Hash1Grupo($grupo);
+			if($r_logs2Hash1Grupo{status} eq "OK"){
+				$params_to_template{logs_as_hash} = $r_logs2Hash1Grupo{hash}; # a hash with the log
+			}
+			# TODO print a ERROR page when error
+			$flag_usar_has_permissions_to_see_group = 1;
+			last;
+		}
 	}
-	# TODO print a ERROR page when error
-
-	$params{grupo} =$grupo;  # add grupo
-
-	&wtLogs(\%params);
+	if($flag_usar_has_permissions_to_see_group == 0){
+		$params_to_template{mensaje_error} = "NO TIENES PERMISOS PARA VER este grupo";
+	}
+	&wtLogs(\%params_to_template);
 }
 
 sub cSms(){
