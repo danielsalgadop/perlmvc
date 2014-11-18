@@ -10,6 +10,7 @@ use logsHelpers;
 # hace los calculos necesarios y llama a los templates
 
 our $q;
+our %user;
 our $nombre_user_logeado;
 sub cHome{
 	# NO CONSIGO recuperar el valor de variable de session 'user_name'  !!!!
@@ -48,6 +49,8 @@ sub cLogs($){
 	my $grupo = shift;
 
 	print "<h1>crystal castles</h1>";
+
+	print Dumper(%user);
 	# $grupo MUST exist !! 
 
 	# detect if user has permissions see these group
@@ -57,14 +60,12 @@ sub cLogs($){
 
 	my %r_logs2Hash1Grupo = logs2Hash1Grupo($grupo);
 	if($r_logs2Hash1Grupo{status} eq "OK"){
-		$params{logs_in_hash} = $r_logs2Hash1Grupo{hash}; # a hash with the log
+		$params{logs_as_hash} = $r_logs2Hash1Grupo{hash}; # a hash with the log
 	}
 	# TODO print a ERROR page when error
 
-	%params =(
-		grupo=>$grupo,
-		nombre_user=>$nombre_user_logeado
-	);
+	$params{grupo} =$grupo;  # add grupo
+
 	&wtLogs(\%params);
 }
 
