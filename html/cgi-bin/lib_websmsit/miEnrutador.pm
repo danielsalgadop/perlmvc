@@ -38,11 +38,7 @@ sub enrutador{
 		# my @count_niveles = $url_troceada[-1] =~ /\//\//g;
 		# nivel 1
 		if($count_niveles == 1){
-			# Todos los logs
-			if ($ENV{REQUEST_URI} =~ m/logs$/){
-				&cLogs();
-			}
-			elsif ($ENV{REQUEST_URI} =~ m/sms$/){
+			if ($ENV{REQUEST_URI} =~ m/sms$/){
 				&cSms();
 			}
 			else{
