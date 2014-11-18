@@ -81,7 +81,24 @@ sub wtFooter(){
 # va a tener la logica de poner en otro color la pagina en la que estamos
 sub colIzq(){
 	my $boton_seleccionado = ""; # futuro shift
-	print $q->div({id=>"col_izq"},ul(li(a({href=>$path_web_rutas."/logs"},"Ver LOGS")),li(a({href=>$path_web_rutas."/sms"},"Enviar SMS"))),div("tus datos sonXXX (TODO)"));
+	# TODO recorrer $user{groups} ( HE ESTADO PROBANDO, debo usar Template Toolkit, ya que no puedo recorrer @{user{grupos_q_pertenece}} y generar dimanicametne una li con $q)
+	print $q->div({id=>"col_izq"},
+		ul(
+			li(
+				"Ver LOGS",
+				ul(
+					li(
+						a({href=>$path_web_rutas."/logs/grupo1"},"GRUPO1")
+					)
+				)
+			),li(
+				a({href=>$path_web_rutas."/sms"},"Enviar SMS")
+			)
+		),div("tus datos sonXXX (TODO)"));
+	# print Dumper(%user);
+	# foreach my $un_grupo(@{$user{grupos_q_pertenece}}){
+	# 	print "<li>$un_grupo</li>";	
+	# }
 }
 
 1;

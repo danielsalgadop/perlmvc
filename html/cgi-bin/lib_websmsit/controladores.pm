@@ -5,6 +5,7 @@ use lib '.';
 use webTemplates;
 use variables_globales;
 use userHelpers;
+use logsHelpers;
 # Es llamado desde miEnrutador
 # hace los calculos necesarios y llama a los templates
 
@@ -42,9 +43,19 @@ sub cHome{
 sub cError(){
 	&wtError();
 }
-
+# $grupo MUST exist
 sub cLogs($){
 	my $grupo = shift;
+	# detect if user has permissions see these group
+	# TODO print a message (you dont have permission)
+
+	my %representation_of_group_log;   # a hash with the log
+	my %r_logs2Hash1Grupo = logs2Hash1Grupo($grupo);
+
+	if($r_logs2Hash1Grupo{status} eq "OK"){
+		%representation_of_group_log = $r_logs2Hash1Grupo{hash};
+	}
+	# TODO print a ERROR page when error
 
 	my %params =(
 		grupo=>$grupo,

@@ -17,6 +17,7 @@ sub logs2Hash1Grupo($){
 	my $filename_log = $nombre_grupo.".log";
 	our $path_aboluto_logs;  # variables_paths
 	$filename_log = $path_aboluto_logs."/".$filename_log;
+	# print "Inside logs2Hash1Grupo \$filename_log [$filename_log]\n";
 
 	my %return;
 	$return{status} = "OK";
@@ -30,9 +31,10 @@ sub logs2Hash1Grupo($){
 	if($r_fileJSON2HashAgregado{status} eq "OK"){
 		$return{hash} = $r_fileJSON2HashAgregado{hash};
 	}
-	# $return{toe}=$filename_log;
+	else{
+		# Since fileJSON2HashAgregado has no ERROR (for now) I cant have more details
+		$return{status} = "ERROR";
+	}
 	return(%return);
-	# unless(-s ) # -s  File has nonzero size (returns size in bytes).
-
 }
 1;
