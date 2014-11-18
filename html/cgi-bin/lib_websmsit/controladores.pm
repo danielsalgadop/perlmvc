@@ -47,6 +47,7 @@ sub cError(){
 sub cLogs($){
 	my $grupo = shift;
 
+	print "<h1>crystal castles</h1>";
 	# $grupo MUST exist !! 
 
 	# detect if user has permissions see these group
