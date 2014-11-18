@@ -16,3 +16,4 @@ our $path_aboluto_jsones_modelos = $path_aboluto_app."/".$nombre_app."/configs";
 
 
 our $path_web_rutas				= $server_ip."/".$nombre_app."/cgi-bin/index.pl";  # todas las rutas cuelgan de aqui
+our $path_aboluto_logs			= $path_aboluto_app."/".$nombre_app."/logs";
