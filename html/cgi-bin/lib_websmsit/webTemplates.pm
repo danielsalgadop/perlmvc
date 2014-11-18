@@ -68,7 +68,26 @@ sub wtSms(){
 	&wtHeader();
 	&colIzq;
 	print $q->h1("sms");
-	
+	print '<div id="col_dere">';
+	print '
+	<div id="errores" style="background-color:red;width:100%">
+		ERROR MOCK, va a estar en header
+	</div>
+	<form name="my_form" method="post">
+		<select id="template_select">
+			<option value="noexiteIndex">LIBRE</option>
+			<option value="1">Temaplate 1 - Descripcion</option>
+			<option value="2">Template 2</option>
+			<option value="3">Template 3</option>
+			<option value="debug">DEBUG</option>
+		</select>
+		<textarea id="textarea" onKeyPress="check_length_textarea(this.form)"; onKeyDown="check_length_textarea(this.form)"; name="my_text" rows=4 cols=30>
+		</textarea>
+		<br>
+		<input size=1 value=50 name=text_num> Characters Left
+	</form>
+	';
+	print "</div>";
 	&wtFooter;	
 }
 
