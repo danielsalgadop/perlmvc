@@ -22,7 +22,7 @@ function removeDivErrors(){
 
 
 // SMS 
-// para contar number of letters of a given text_area
+// para contar number of letters of a given text_area4
 function check_length_textarea(my_form)
 {
 	maxLen = 50; // max number of characters allowed
@@ -34,14 +34,7 @@ function check_length_textarea(my_form)
 		removeDivErrors();
 		my_form.text_num.value = maxLen - my_form.my_text.value.length;}
 }
-// el valor de templates_sms (ahora se carga desde templates_sms.json)
-var templates_sms_borrar = {
-	1:"1111 sasljfs XXX ldkfaj YYY ldkfajs ",
-	2:"222sasljfs ldkfaj ldkfajs ",
-	3:"333 sasljfs ldkfaj ldkfajs ",
-	debug:"LARGO LARGO LARGO LARGO LARGO LARGO LARGO LARGO LARGO LARGO LARGO LARGO asdf3 sasljfs ldkfaj ldkfajs ",
 
-};
 $(document).ready(function(){
 	// TODO detectar si ha hecho keydown (ha cambiado template).
 	// var done_keydown = 0

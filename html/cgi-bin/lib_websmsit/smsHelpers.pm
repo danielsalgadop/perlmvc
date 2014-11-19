@@ -7,7 +7,7 @@ our $q;
 # Function construirFormTextAreaYSelectAndTemplateJsonFromHash
 # Recieves - (ref_hash) de los templates_sms.json
 # Returns  - (string) $return. Contains form_textarea_y_select_and_template_json_to_return
-# This functions constructs the content of the route sms
+# This functions constructs most of the content of the route sms
 # 
 sub construirFormTextAreaYSelectAndTemplateJsonFromHash($){
 	my $ref_templates_sms = shift;
