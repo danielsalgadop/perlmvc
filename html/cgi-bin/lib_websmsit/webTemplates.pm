@@ -67,16 +67,13 @@ sub wtLogs($){
 sub wtSms($){
 	my $ref_params = shift;
 	my %params = %{$ref_params};
-	# my %templates_sms = %{$params{templates_sms}};
-
 
 	&wtHeader();
-	print $q->h1("sms");
 	&colIzq;
-
 	print '<div id="col_dere">';
+	print $q->h1("sms");
 	print '<form name="my_form" method="post">';
-	print $params{form_text_area_select_and_template_json};
+	print $params{text_area_select_and_template_json};
 	print '</form>';
 	print "</div>";
 	&wtFooter;	
@@ -96,7 +93,7 @@ sub wtHeader(){
 	print $q->div({id=>"errores"},"");
 }
 sub wtFooter(){
-	print $q->h3("contacto Grupo PMS");
+	print $q->div({id=>"footer"},h3("contacto Grupo PMS"));
 }
 
 # va a tener la logica de poner en otro color la pagina en la que estamos

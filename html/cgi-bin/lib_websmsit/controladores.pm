@@ -79,7 +79,7 @@ sub cSms(){
 	my %params;
 	if ($r_devolverTemplatesSms{status} eq "OK"){  # nowadays there is no error control
 		# $params{templates_sms} = $r_devolverTemplatesSms{templates_sms};
-		$params{form_text_area_select_and_template_json} = construirFormTextAreaYSelectAndTemplateJsonFromHash($r_devolverTemplatesSms{templates_sms});
+		$params{text_area_select_and_template_json} = construirTextAreaYSelectAndTemplateJsonFromHash($r_devolverTemplatesSms{templates_sms});
 	}
 	&wtSms(\%params);
 }

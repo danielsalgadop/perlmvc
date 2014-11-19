@@ -19,5 +19,14 @@
 	float:left;
 }
 #errores{    /* errores que salen en header */
-	background-color:red;width:100%;
+	background-color:red;
+	width:100%;
+}
+#footer{
+	background-color:grey;
+	clear: both;
+    position: relative;
+    z-index: 10;
+    height: 3em;
+    margin-top: -3em;	
 }
