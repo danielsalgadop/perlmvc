@@ -47,11 +47,8 @@ sub construirFormTextAreaYSelectAndTemplateJsonFromHash($){
 	$return .= "</script>";
 
 	# construct html select template_select
-	$return .= '<div id="col_dere">';
-	$return .= $q->h1("sms");
-
-	$return .= '<form name="my_form" method="post">
-			<select id="template_select">';
+	
+	$return .='<select id="template_select">';
 	$cont=0;
 	foreach my $nombre(@nombre_for_select){
 		$return .= '<option value="'.$values_for_select_and_keys_for_js_json[$cont].'">'.$nombre.'</option>';
@@ -59,10 +56,8 @@ sub construirFormTextAreaYSelectAndTemplateJsonFromHash($){
 	}
 	$return .= 	'</select>
 				<textarea id="textarea" onKeyPress="check_length_textarea(this.form)"; onKeyDown="check_length_textarea(this.form)"; name="my_text" rows=4 cols=30 ></textarea>
-		<input size=1 value=50 name=text_num> Characters Left
-	</form>
-	';
-	$return .= "</div>";
+		<input size=1 value=50 name=text_num> Characters Left';
+
 	return($return);
 }
 1;

@@ -71,10 +71,14 @@ sub wtSms($){
 
 
 	&wtHeader();
+	print $q->h1("sms");
 	&colIzq;
 
+	print '<div id="col_dere">';
+	print '<form name="my_form" method="post">';
 	print $params{form_text_area_select_and_template_json};
-
+	print '</form>';
+	print "</div>";
 	&wtFooter;	
 }
 
