@@ -51,22 +51,26 @@ sub cLogs($){
 	my %params_to_template;
 	$params_to_template{grupo} =$grupo;  # add grupo
 
-	my $flag_usar_has_permissions_to_see_group = 0;
+	my $flag_error = 0; # user dont have permissions
 	# detect if user has permissions to see these group
 	foreach my $un_grupo_candidato(@{$user{grupos_q_pertenece}}){
-		if($un_grupo_candidato eq $grupo){
-			# TODO print a message (you dont have permission)
 
+		if($un_grupo_candidato eq $grupo){
 			my %r_logs2Hash1Grupo = logs2Hash1Grupo($grupo);
 			if($r_logs2Hash1Grupo{status} eq "OK"){
-				$params_to_template{logs_as_hash} = $r_logs2Hash1Grupo{hash}; # a hash with the log
+				$flag_error = 1;
+				if($r_logs2Hash1Grupo{hash} == 0){
+					$params_to_template{mensaje_error} = "No existen logs, es un grupo muy nuevo";
+				}
+				else{
+					$params_to_template{logs_as_hash} = $r_logs2Hash1Grupo{hash}; # a hash with the log
+				}
 			}
 			# TODO print a ERROR page when error
-			$flag_usar_has_permissions_to_see_group = 1;
 			last;
 		}
 	}
-	if($flag_usar_has_permissions_to_see_group == 0){
+	if($flag_error == 0){
 		$params_to_template{mensaje_error} = "NO TIENES PERMISOS PARA VER este grupo";
 	}
 	&wtLogs(\%params_to_template);
