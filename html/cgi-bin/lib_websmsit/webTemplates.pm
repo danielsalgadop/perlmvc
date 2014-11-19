@@ -67,12 +67,9 @@ sub wtLogs($){
 sub wtSms(){
 	&wtHeader();
 	&colIzq;
-	print $q->h1("sms");
 	print '<div id="col_dere">';
+	print $q->h1("sms");
 	print '
-	<div id="errores" style="background-color:red;width:100%">
-		ERROR MOCK, va a estar en header
-	</div>
 	<form name="my_form" method="post">
 		<select id="template_select">
 			<option value="noexiteIndex">LIBRE</option>
@@ -102,6 +99,7 @@ sub wtDebug($){
 ################################### COMUNES a todas
 sub wtHeader(){
 	print $q->h1("Envio SMS IT");
+	print $q->div({id=>"errores"},"");
 }
 sub wtFooter(){
 	print $q->h3("contacto Grupo PMS");
