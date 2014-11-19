@@ -47,6 +47,19 @@ sub cargarGruposJson(){
 	}
 }
 
+# Returns a hash with templates
+sub devolverTemplatesSms(){
+	my %r_fileJSON2Hash = fileJSON2HashAgregado($path_aboluto_jsones_modelos."/templates_sms.json");
+	my %return;
+	$return{status} = "OK";    # Nowadays there is no error control
+
+	# &print2File({titulo=>"Dumper en cargarUsersJson grupos.json",ref=>\%r_fileJSON2Hash});
+	if($r_fileJSON2Hash{status} eq "OK"){
+		$return{templates_sms}=$r_fileJSON2Hash{hash};
+	}
+	return(%return);
+}
+
 &cargarTodosModelos();
 
 

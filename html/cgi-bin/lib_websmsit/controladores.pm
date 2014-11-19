@@ -72,7 +72,14 @@ sub cLogs($){
 }
 
 sub cSms(){
-	&wtSms();
+	# cargar los templates_sms
+	my %r_devolverTemplatesSms = devolverTemplatesSms();
+	# print Dumper($r_devolverTemplatesSms{templates_sms});
+	my %params;
+	if ($r_devolverTemplatesSms{status} eq "OK"){  # nowadays there is no error control
+		$params{templates_sms} = $r_devolverTemplatesSms{templates_sms};
+	}
+	&wtSms(\%params);
 }
 
 sub cDebug($){

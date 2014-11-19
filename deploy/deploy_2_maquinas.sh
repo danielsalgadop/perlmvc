@@ -24,11 +24,12 @@ path_destino="/var/www/html"    # aqui se va a concatenar nombre_app_destino
 ##############
 nombre_app_destino=''
 # if there are no arguments Nombre app es DESARROLLO
-if [ ! $1 ]; then
+# (just in case) Not letting $1 determine the nombre_app_destino
+# if [ ! $1 ]; then
 	nombre_app_destino="websmsit"
-else
-	nombre_app_destino=$1
-fi
+# else
+	# nombre_app_destino=$1 
+# fi
 
 echo "====================PATHS===================="
 echo "path_origen ["$path_origen"]"

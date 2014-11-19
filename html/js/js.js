@@ -34,8 +34,8 @@ function check_length_textarea(my_form)
 		removeDivErrors();
 		my_form.text_num.value = maxLen - my_form.my_text.value.length;}
 }
-// el valor de templates_sms es
-var templates_sms = {
+// el valor de templates_sms (ahora se carga desde templates_sms.json)
+var templates_sms_borrar = {
 	1:"1111 sasljfs XXX ldkfaj YYY ldkfajs ",
 	2:"222sasljfs ldkfaj ldkfajs ",
 	3:"333 sasljfs ldkfaj ldkfajs ",
