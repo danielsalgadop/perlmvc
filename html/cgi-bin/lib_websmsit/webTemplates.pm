@@ -19,7 +19,7 @@ sub wtHome(){
 	&wtHeader();
 	&colIzq;
 	print '<div id="col_dere">';
-	print $q->p("Bienvenido, ",b($user{nombre})," a la web donde enviar SMSxxxx"),p("perteneces a estos grupos: ");
+	print $q->p("Bienvenido, ",b($user{nombre})," a la web donde enviar SMS"),p("perteneces a estos grupos: ");
 	print "<ul>";
 	foreach my $nombre_grupo(@{$user{grupos_q_pertenece}}){
 		print $q->li($nombre_grupo);
@@ -67,8 +67,11 @@ sub wtSms($){
 	&colIzq;
 	print '<div id="col_dere">';
 	print $q->h1("sms");
-	print '<form name="my_form" method="post">';
+	print '<form name="my_form" method="post" action="sms_sender.pl">';
 	print $params{text_area_select_and_template_json};
+	print '<br>Más destinatarios <input type="text" name="fname">';
+	print '<br>';
+	print '<input type="submit" value="Submit">';
 	print '</form>';
 	print "</div>";
 	&wtFooter;	
@@ -84,7 +87,7 @@ sub wtDebug($){
 }
 ################################### COMUNES a todas
 sub wtHeader(){
-	print $q->h1("Envio SMS IT");
+	print $q->h1("Envio SMS");
 	print $q->div({id=>"errores"},"");
 }
 sub wtFooter(){

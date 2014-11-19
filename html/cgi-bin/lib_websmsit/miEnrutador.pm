@@ -26,6 +26,7 @@ sub enrutador{
 		&cHome(); # home
 	}
 	else{ # 
+		# TODO probar usar PATH_INFO
 		my @url_troceada = split("index.pl", $ENV{REQUEST_URI});
 		# TODO detectar niveles 1 solo / 2, 3 etc...
 		# print "<br><br>".Dumper($ENV{REQUEST_URI})."<br><br>";
