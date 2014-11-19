@@ -22,7 +22,7 @@ function removeDivErrors(){
 
 
 // SMS 
-// para contar
+// para contar number of letters of a given text_area
 function check_length_textarea(my_form)
 {
 	maxLen = 50; // max number of characters allowed

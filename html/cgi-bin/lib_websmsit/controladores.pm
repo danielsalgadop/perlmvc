@@ -6,6 +6,7 @@ use webTemplates;
 use variables_globales;
 use userHelpers;
 use logsHelpers;
+use smsHelpers;
 # Es llamado desde miEnrutador
 # hace los calculos necesarios y llama a los templates
 
@@ -77,7 +78,8 @@ sub cSms(){
 	# print Dumper($r_devolverTemplatesSms{templates_sms});
 	my %params;
 	if ($r_devolverTemplatesSms{status} eq "OK"){  # nowadays there is no error control
-		$params{templates_sms} = $r_devolverTemplatesSms{templates_sms};
+		# $params{templates_sms} = $r_devolverTemplatesSms{templates_sms};
+		$params{form_text_area_select_and_template_json} = construirFormTextAreaYSelectAndTemplateJsonFromHash($r_devolverTemplatesSms{templates_sms});
 	}
 	&wtSms(\%params);
 }

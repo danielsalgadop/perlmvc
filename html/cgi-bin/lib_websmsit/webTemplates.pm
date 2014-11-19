@@ -67,78 +67,14 @@ sub wtLogs($){
 sub wtSms($){
 	my $ref_params = shift;
 	my %params = %{$ref_params};
-	my %templates_sms = %{$params{templates_sms}};
+	# my %templates_sms = %{$params{templates_sms}};
 
 
 	&wtHeader();
 	&colIzq;
 
-	
-	# print "<script>";
-	# print 'var templates_sms2={
-	# 1:"1111 sasljfs XXX ldkfaj YYY ldkfajs XXXXXXXXXXXXX",
-	# 2:"222sasljfs ldkfaj ldkfajs XXXXXXXXXXXXX",
-	# 3:"333 sasljfs ldkfaj ldkfajs XXXXXXXXXXXXX",
-	# debug:"template_sms2 template_sms2 template_sms2 template_sms2 template_sms2 template_sms2 template_sms2 template_sms2 template_sms2 template_sms2 template_sms2 template_sms2 asdf3 sasljfs ldkfaj ldkfajs ",
+	print $params{form_text_area_select_and_template_json};
 
-	# }';
-	# print "</script>";
-
-	# I need to construct 2 things from %templates_sms.
-	# 1 - the javascritp json template_sms
-	# 2 - the html select and options
-	# these 3 arrays (@values_for_select_and_keys_for_js_json, @template_for_select_and_js_json, @nombre_for_select) will always have the same number of elements
-	my @values_for_select_and_keys_for_js_json;
-	my @template_for_select_and_js_json;
-	my @nombre_for_select;
-
-	foreach my $numero_de_linea (sort keys %templates_sms){ # el value_es_el_numero_de_linea
-		push(@values_for_select_and_keys_for_js_json,$numero_de_linea);
-		my %nombre_y_template = %{$templates_sms{$numero_de_linea}};
-
-		# print Dumper(%nombre_y_template);
-
-		foreach my $nombre(keys %nombre_y_template){
-			push(@nombre_for_select,$nombre);
-			push(@template_for_select_and_js_json,$nombre_y_template{$nombre});
-		}
-	}
-	# cargar templates_sms to a js variable
-	# construct javascript json template_sms
-	print "<script>";
-	print 'var templates_sms={';	
-	my $cont=0;
-	my $constructed_values_js; # this is needed for removing last comma # IE BUG
-	foreach my $keys(@values_for_select_and_keys_for_js_json){
-		$constructed_values_js .= $keys.':"'.$template_for_select_and_js_json[$cont].'",';
-		# $constructed_values_js .= $keys.':"que buena estasaaaassa",';
-		$cont++;
-	}
-	chop($constructed_values_js);  # remove last comma
-	print $constructed_values_js;
-	print '}';
-	print "</script>";
-
-	# construct html select template_select
-
-
-	print '<div id="col_dere">';
-	print $q->h1("sms");
-	print '<form name="my_form" method="post">
-			<select id="template_select">';
-	$cont=0;
-	foreach my $nombre(@nombre_for_select){
-		print '<option value="'.$values_for_select_and_keys_for_js_json[$cont].'">'.$nombre.'</option>';
-		$cont++;
-	}
-	print 	'</select>
-		<textarea id="textarea" onKeyPress="check_length_textarea(this.form)"; onKeyDown="check_length_textarea(this.form)"; name="my_text" rows=4 cols=30>
-		</textarea>
-		<br>
-		<input size=1 value=50 name=text_num> Characters Left
-	</form>
-	';
-	print "</div>";
 	&wtFooter;	
 }
 
