@@ -16,6 +16,8 @@ sub headHtmlTag{
 	    -title      => $titulo_web,
 	    -encoding => "utf-8",
 	    -dtd        => "4.0",
+	    -head=>meta({-http_equiv => 'X-UA-Compatible',-content=>'IE=9; IE=8; IE=7'}),
+        -head=>meta({-http_equiv => 'X-UA-Compatible',-content=>'IE=edge'}),
 	    -style      =>
 	    {
 	    	'src' => 
