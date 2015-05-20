@@ -1,15 +1,9 @@
-console.log("js.js IS WORKING");
+// console.log("js.js IS WORKING");
 function prueba(){
 	// alert("prueba en js.js IS WORKING2");
-	console.log("prueba en js.js IS WORKING2");
+	// console.log("prueba en js.js IS WORKING2");
 }
-// function pruebaJquery(){
-	// $( document ).ready(function() {
-		// console.log( "jquery WORKING!" );
-	// });
-// }
 
-// existe ESTA funcion embebido en perl en miHtml.pm::errores2DivErrores
 // habria que unificarlas
 function string2DivErrors(error){
 	var x=document.getElementById("errores");
@@ -21,29 +15,8 @@ function removeDivErrors(){
 }
 
 
-// SMS 
-// para contar number of letters of a given text_area4
-function check_length_textarea(my_form)
-{
-	maxLen = 50; // max number of characters allowed
-	if (my_form.my_text.value.length >= maxLen) {
-		string2DivErrors("maximum limit is reached.");
-
-	 }
-	else{ // Maximum length not reached so update the value of my_text counter
-		removeDivErrors();
-		my_form.text_num.value = maxLen - my_form.my_text.value.length;}
-}
 
 $(document).ready(function(){
-	// TODO detectar si ha hecho keydown (ha cambiado template).
-	// var done_keydown = 0
-
-	// Detectar que han seleccionado alguna template
-       $("#template_select").change(function(){
-       		var cargar_este_template = $("#template_select").val();
-       		$("#textarea").val(templates_sms[cargar_este_template]);
-       		check_length_textarea(my_form);
-
-       });
+	// launch datatables using class selector (instead of id selector) is better if you want to have more than 1 datatable in a page
+	$('.table_for_datatable').DataTable();
 });

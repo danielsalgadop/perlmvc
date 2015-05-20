@@ -1,32 +1,51 @@
-.prueba{
-	color:red;
+html{
+  padding:20px;
 }
-#errores{
-	background-color: red;
+/* LOGIN FORM */
+.container {
+    padding: 25px;
+    position: fixed;
 }
-#col_izq{
-	border-style:solid;
-	border-color: blue;
-	width: 20%;
+
+.form-login {
+    background-color: #EDEDED;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    border-color:#d2d2d2;
+    border-width: 5px;
+    box-shadow:0 1px 0 #cfcfcf;
 }
-#col_dere{
-	border:2px;
-	width:75%;
-	border-style:solid;
-	border-color: red;
+
+/*h4 { 
+ border:0 solid #fff; 
+ border-bottom-width:1px;
+ padding-bottom:10px;
+ text-align: center;
 }
-#col_izq, #col_dere{
-	float:left;
+*/
+.form-control {
+    border-radius: 10px;
 }
-#errores{    /* errores que salen en header */
-	background-color:red;
-	width:100%;
+
+.wrapper {
+    text-align: center;
 }
-#footer{
-	background-color:grey;
-	clear: both;
-    position: relative;
-    z-index: 10;
-    height: 3em;
-    margin-top: -3em;	
+.button{
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
 }
+
+
+
+
+/* END OF - LOGIN FORM */

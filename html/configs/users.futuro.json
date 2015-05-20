@@ -1,8 +1,0 @@
-usuario =>
-	nombre= "XX"
-	email= "XX"
-	contraseña = "XXXX"
-	num_telefono = "XXXX"
-	superadmin= 1
-	bloqueado = 0  (un usario y un superadmin no puede enviar sms)
-	fecha_alta="123123"

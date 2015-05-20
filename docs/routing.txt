@@ -1,6 +1,6 @@
-1 Nivel:
-/logs => Todos los logs de todos los grupos del usuario
-/sms => Pagina para escribir y mandar la peticio de envio a los grupos seleccionados
-
-2 Niveles:
-/logs/nombre_grupo => Logs de ese grupo
+# Place to explain routing in this proyect
+#http://showmetheco.de/articles/2011/3/perl-routes-dispatching-comparison.html
+# wich url =>  some function
+example:
+/logs => show all logs of aplication
+/logs/user_name => show logs of a certain user (defined by user_name)
