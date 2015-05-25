@@ -127,11 +127,28 @@ sub wtHeader(){
 	print $q->header();
 	headHtmlTag();
 	print '<div class="container-fluid">';
-	print '<div class="row">';
-
-	print $q->h1($titulo_web);
+	print $q->div({id=>"header"},
+		div
+		(
+			{
+				style=>"padding-right:20px;float:right"
+			},
+			# "Bienvenido [".getterSession("alias")."]".
+			"Bienvenido ".
+			a
+			(
+				{
+					href=>$path_web_rutas."/desconectar"
+				},
+				# "desconectar".imgPrinter("disconnect")
+				"desconectar"
+			)
+		),
+		h1($titulo_web),
+	);
 	miNavigation();
-	print '</div>';
+	# print '</div>';
+	print '<div class="clearfix"></div>';
 	print $q->hr;
 	print $q->div({id=>"errores"},"");
 }
