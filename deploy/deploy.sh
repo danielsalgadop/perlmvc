@@ -12,7 +12,7 @@
 # path_origen/cgi
 
 # ORIGEN SCRIPTS
-path_origen="/home/dan/perl/proyects/perlmvc/"   # el '/' final es importante, sino crea una carpeta extra
+path_origen="/home/dan/perlmvc/"   # el '/' final es importante, sino crea una carpeta extra
 # DESTINO SCRIPTS
 path_destino="/var/www/html"    # aqui se va a concatenar nombre_app_destino
 
