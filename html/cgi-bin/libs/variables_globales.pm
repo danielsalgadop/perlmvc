@@ -7,7 +7,7 @@ our $session;  # creo que no se usa
 our %usersJson; # memory representation of users.json
 our %gruposJson; # memory representation of grupos.json
 
-our $titulo_web = "::PERL MVC::";
+our $titulo_web = "PERL MVC"; # web <title>, header <h1> and login header
 our $name_cookie_that_stores_session_id = "CGISESSIONID_PERLMVC";
 
 # %usersJson=(

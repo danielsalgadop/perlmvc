@@ -128,7 +128,8 @@ sub wtHeader(){
 	headHtmlTag();
 	print '<div class="container-fluid">';
 	print '<div class="row">';
-	print $q->h1("PERLMVC");
+
+	print $q->h1($titulo_web);
 	miNavigation();
 	print '</div>';
 	print $q->hr;
@@ -161,9 +162,9 @@ sub generarFormLogin() {
 	
 	&headHtmlTag();
     my $error = shift;
-    our  $header_login_index;
+
     print ' <div class="container"><div class="row"><div class="col-md-offset-5 col-md-3"><div class="form-login">';
-    print $q->h4($header_login_index);
+    print $q->h4($titulo_web);
     print $q->span({class=>"text-danger"},"USUARIO/CONTRASE&Ntilde;A INCORRECTOS") if $error;
     # Forms
     print $q->start_form(
