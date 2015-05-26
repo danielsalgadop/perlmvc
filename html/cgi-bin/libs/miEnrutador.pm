@@ -29,7 +29,6 @@ sub enrutador{
 	elsif($ENV{REQUEST_URI} =~ m!read_value_from_url[/]*(.*)!)
 	{
 		wtReadValueFromUrl($1);
-		wtReadValueFromUrl($1);
 	}
 	else
 	{
