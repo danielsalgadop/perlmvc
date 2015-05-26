@@ -13,6 +13,20 @@ sub enrutador{
 	{
 		wtHome(); # home
 	}
+ 	elsif($ENV{REQUEST_URI} =~ m!desconectar$!){
+        # esta url no tiene ni controlador ni template
+        # user wants to desconectar
+        disconnectSession();
+        # go to home (that is going to redirect to login)
+        our $q;
+        our $path_web_cgi;
+        our $name_cookie_that_stores_session_id;
+        # create a cookie with negative time to expire, to delete it
+
+        my $cookie = $q->cookie(-name=>$name_cookie_that_stores_session_id,-value=>"going_to_die",-expires=>'-1h');
+        print $q->redirect(-uri=>$path_web_cgi.'/login.pl',-cookie=>$cookie);
+    }
+
 	elsif($ENV{REQUEST_URI} =~ /static_page$/)
 	{
 		wtStaticPage();
@@ -23,6 +37,7 @@ sub enrutador{
 	}
 	elsif($ENV{REQUEST_URI} =~ m!read_value_from_url[/]*(.*)!)
 	{
+		wtReadValueFromUrl($1);
 		wtReadValueFromUrl($1);
 	}
 	else
