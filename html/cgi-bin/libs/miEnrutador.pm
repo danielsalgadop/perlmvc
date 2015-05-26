@@ -17,9 +17,7 @@ sub enrutador{
         # esta url no tiene ni controlador ni template
         # user wants to desconectar
         disconnectSession();
-
     }
-
 	elsif($ENV{REQUEST_URI} =~ /static_page$/)
 	{
 		wtStaticPage();
