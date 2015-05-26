@@ -127,6 +127,7 @@ sub wtHeader(){
 	print $q->header();
 	headHtmlTag();
 	print '<div class="container-fluid">';
+	print '<div class="row">';
 	print $q->div({id=>"header"},
 		div
 		(
@@ -147,8 +148,7 @@ sub wtHeader(){
 		h1($titulo_web),
 	);
 	miNavigation();
-	# print '</div>';
-	print '<div class="clearfix"></div>';
+	print '</div>';
 	print $q->hr;
 	print $q->div({id=>"errores"},"");
 }
