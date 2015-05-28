@@ -23,12 +23,11 @@ if ( $r_estaLogeado{status} eq "OK" ) {
 if( $params{usuario} and $params{passw}){ # Need this $params
 	if( &credencialesOK(\%params)){
         # el usuario y passw coinciden con valores en modelos
-        our $path_absoluto_sessiones_cgi;
         our $name_cookie_that_stores_session_id;
-        # debug2File({ref=>\"credenciales OK = 1",titulo=>"path_absoluto_sessiones_cgi [".$path_absoluto_sessiones_cgi."] name_cookie_that_stores_session_id [".$name_cookie_that_stores_session_id."]"});
+        # debug2File({ref=>\"credenciales OK = 1",titulo=>"Paths::sessiones [".$Paths::sessiones."] name_cookie_that_stores_session_id [".$name_cookie_that_stores_session_id."]"});
 
 	    # genero nueva session ...
-	    my $session = new CGI::Session("driver:File", undef, {Directory=>$path_absoluto_sessiones_cgi}) or die CGI::Session->errstr; # TODO, put here AppError not a die
+	    my $session = new CGI::Session("driver:File", undef, {Directory=>$Paths::sessiones}) or die CGI::Session->errstr; # TODO, put here AppError not a die
 	    # ... y almaceno el identificativo de session en variable cookie
 	    my $cookie = 
             $q->cookie(

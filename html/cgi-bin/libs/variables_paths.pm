@@ -5,7 +5,6 @@ use strict;
 
 our $nombre_app = "perlmvc";
 
-our $path_absoluto_sessiones_cgi = "/tmp/sessiones_".$nombre_app;
 my $path_absoluto_app 			= "/var/www/html";
 our $path_absoluto_debug_app	= "/tmp/debug2file_".$nombre_app;
 my $path_web 					= "/".$nombre_app."/html";    
@@ -37,3 +36,4 @@ my $server_ip 			= "http://10.0.191.102";  # you can use myIp() in some machines
 my $nombre_app 			= "perlmvc";  # TODO bring this from variables_globales
 my $path_absoluto_app 	= "/var/www/html";
 our $modelos 			= $path_absoluto_app."/".$nombre_app."/models"; # usually jsons
+our $sessiones 			= "/tmp/sessiones_".$nombre_app;

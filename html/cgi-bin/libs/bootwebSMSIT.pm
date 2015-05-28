@@ -6,7 +6,7 @@ use strict;
 # users.json grupos.json
 
 # must be writable
-# $path_absoluto_sessiones_cgi
+# $Paths::sessiones
 
 
 # must be readable and writable

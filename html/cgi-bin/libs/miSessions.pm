@@ -6,7 +6,6 @@
 use warnings FATAL=>all;
 use strict;
 our $q;
-our $path_absoluto_sessiones_cgi;
 our $name_cookie_that_stores_session_id;
 
 ###################################
@@ -18,8 +17,8 @@ sub cookieAndSessionEqual($){
 	return(0,"") unless $value_of_cookie;
 
 	# debug2File({ref=>\$value_of_cookie,titulo=>"value_of_cookie"});
-	# debug2File({ref=>\$path_absoluto_sessiones_cgi,titulo=>"path_absoluto_sessiones_cgi en miSessions"});
-	my $session = new CGI::Session("driver:File", $value_of_cookie, {Directory=>$path_absoluto_sessiones_cgi}) or die CGI::Session->errstr;
+	# debug2File({ref=>\$Paths::sessiones,titulo=>"Paths::sessiones en miSessions"});
+	my $session = new CGI::Session("driver:File", $value_of_cookie, {Directory=>$Paths::sessiones}) or die CGI::Session->errstr;
 	
 	my $existe_alias_en_session = $session->param('alias');
 	# debug2File({ref=>\$existe_alias_en_session,titulo=>"existe_alias_en_session"});

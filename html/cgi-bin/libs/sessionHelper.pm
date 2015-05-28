@@ -5,7 +5,6 @@ use Data::Dumper;
 # returns values from session
 our $q;
 our $name_cookie_that_stores_session_id;
-our $path_absoluto_sessiones_cgi;
 
 # POR AHORA, se usa para retreive 'alias'
 # Return '-1' if not founded  # OJO, problemas si el valor buscado ES -1
@@ -20,7 +19,7 @@ sub getterSession($){
 	# my $value_of_cookie = $q->cookie($name_cookie_that_stores_session_id);
 	# if ($value_of_cookie) # solo si la cookie existia creo $session (sino creo sesiones cada vez q recargan pagina al no estar logados)
 	# { 
-	# 	my $session = new CGI::Session("driver:File", $value_of_cookie, {Directory=>$path_absoluto_sessiones_cgi}) or die CGI::Session->errstr;
+	# 	my $session = new CGI::Session("driver:File", $value_of_cookie, {Directory=>$Paths::sessiones}) or die CGI::Session->errstr;
 	# }
 }
 
@@ -38,7 +37,7 @@ sub setterSession($$){
 	# my $value_of_cookie = $q->cookie($name_cookie_that_stores_session_id);
 	# if ($value_of_cookie)
 	# { 
-	# 	my $session = new CGI::Session("driver:File", $value_of_cookie, {Directory=>$path_absoluto_sessiones_cgi}) or die CGI::Session->errstr;
+	# 	my $session = new CGI::Session("driver:File", $value_of_cookie, {Directory=>$Paths::sessiones}) or die CGI::Session->errstr;
 	# }
 	# return 1;
 }
@@ -53,7 +52,7 @@ sub returnActiveSession()
 	my $session;
 	if($value_of_cookie)
 	{
-		$session = new CGI::Session("driver:File", $value_of_cookie, {Directory=>$path_absoluto_sessiones_cgi}) or return 0;
+		$session = new CGI::Session("driver:File", $value_of_cookie, {Directory=>$Paths::sessiones}) or return 0;
 	}
 	return $session;
 }
@@ -61,14 +60,16 @@ sub returnActiveSession()
 
 sub disconnectSession()
 {
-	our $path_absoluto_sessiones_cgi;
-	my $session = new CGI::Session("driver:File", getterSession("_SESSION_ID"), {Directory=>$path_absoluto_sessiones_cgi}) or die CGI::Session->errstr;
+	# DELETE SESSION
+	my $session = new CGI::Session("driver:File", getterSession("_SESSION_ID"), {Directory=>$Paths::sessiones}) or die CGI::Session->errstr;
 	$session->delete();
 	$session->flush(); # Recommended practice says use flush() after delete().
 	        # go to home (that is going to redirect to login)
     our $q;
     our $path_web_cgi;
     our $name_cookie_that_stores_session_id;
+
+    # DELETE COOKIE
     # create a cookie with negative time to expire, to delete it
 
     my $cookie = $q->cookie(-name=>$name_cookie_that_stores_session_id,-value=>"going_to_die",-expires=>'-1h');
