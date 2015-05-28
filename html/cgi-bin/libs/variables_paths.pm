@@ -37,3 +37,4 @@ my $nombre_app 			= "perlmvc";  # TODO bring this from variables_globales
 my $path_absoluto_app 	= "/var/www/html";
 our $modelos 			= $path_absoluto_app."/".$nombre_app."/models"; # usually jsons
 our $sessiones 			= "/tmp/sessiones_".$nombre_app;
+our $debug_app 			= "/tmp/debug2file_".$nombre_app;

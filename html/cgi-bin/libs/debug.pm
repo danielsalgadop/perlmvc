@@ -12,9 +12,8 @@ use strict;
 #           hash{titulo} = (scalar)  (optinal)
 # Example of use debug2File({ref=>\$ref,titulo=>"el titulo chulo"});
 sub debug2File($){
-	our $path_absoluto_debug_app;
 	my $hash_ref = shift;
-	open (DEB, ">>".$path_absoluto_debug_app);
+	open (DEB, ">>".$Paths::debug_app);
 	print DEB "mala llamada [1] a debug\n" unless $hash_ref;
 
 	my %options_hash = %{$hash_ref};
