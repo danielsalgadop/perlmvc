@@ -12,6 +12,7 @@ my %params = $q->Vars;
 
 # esta logeado?
 my %r_estaLogeado = estaLogeado();
+# debug2File({ref=>\%params,titulo=>"params"}) if %params;
 
 # debug2File({ref=>\%r_estaLogeado,titulo=>"estaLogeado"});
 
@@ -44,8 +45,4 @@ if( $params{usuario} and $params{passw}){ # Need this $params
 
 # si has llegado aqui, es que es NO has logeado bien (o acabas de llegar)
 # BAD credenciales
-
-
-(  $params{usuario} or $params{passw} ) ? &generarFormLogin("hay_error"):&generarFormLogin();
-
-
+(%params)?&generarFormLogin("hay_error"):&generarFormLogin();

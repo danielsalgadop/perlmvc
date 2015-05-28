@@ -213,5 +213,6 @@ sub generarFormLogin() {
 	print '</div></div></div></div>'; # cierro class="contaniner" y class="row" class="col-md-offset-5 col-md-3"y class="form-login"
 	# miSyslog( Dumper(%params) );
 	print $q->end_html;
+	exit;
 }
 1;
