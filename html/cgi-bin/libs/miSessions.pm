@@ -78,10 +78,9 @@ sub credencialesOK($){
     ################################
     # logic for credentials
     ################################
-    our $path_absoluto_modelos;
 
 	# TRAER datos de users.json donde estan las relacion usuario=>contraseña
-	my %r_universalJsonReader = universalJsonReader($path_absoluto_modelos."/users.json");
+	my %r_universalJsonReader = universalJsonReader($Paths::modelos."/users.json");
 
     # debug2File({ref=>\%r_universalJsonReader,titulo=>"r_universalJsonReader"});
 
