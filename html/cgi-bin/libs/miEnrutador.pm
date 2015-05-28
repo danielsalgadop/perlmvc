@@ -1,11 +1,11 @@
 #!/usr/bin/perl
-use warnings FATAL=>all;  # use in development
+use warnings FATAL=>all;
 use strict;
-# Analiza la URI
-# llama al controlador correspondiente
+
+# Analyzes URI and usually calls controller or template
 sub enrutador{
 
-	# Analizar REQUEST_URI  # TODO try to use $ENV{PATH_INFO}
+	# TODO study the use of $ENV{PATH_INFO}
 
 	# debug2File({ref=>\$path_web_rutas,titulo=>"path_web_rutas debe ser igual a [".$server_ip.$ENV{REQUEST_URI}."]"});
 
@@ -14,7 +14,7 @@ sub enrutador{
 		wtHome(); # home
 	}
  	elsif($ENV{REQUEST_URI} =~ m!desconectar$!){
-        # esta url no tiene ni controlador ni template
+        # route without controller or template
         # user wants to desconectar
         disconnectSession();
     }

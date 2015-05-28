@@ -8,54 +8,53 @@ our $q;
 our $titulo_web;
 our $path_web_rutas;
 
-
+# content of html's <head> tag
 sub headHtmlTag{
 	our $path_web_css;
 	our $path_web_js;
 	print $q->start_html(
-	    -title      => $titulo_web,
-	    -encoding => "utf-8",
-	    -dtd        => "4.0",
-	    -head=>[
-		meta({
-	    		-http_equiv => 'X-UA-Compatible',
-	    		-content=>'IE=9; IE=8; IE=7'
-	    	}),
-	    	meta({
-	    		-http_equiv => 'X-UA-Compatible',
-	    		-content=>'IE=edge'
-		})
+		-title=> $titulo_web,
+		-encoding=> "utf-8",
+		-dtd=> "4.0",
+		-head=>[
+			meta({
+				-http_equiv => 'X-UA-Compatible',
+				-content=>'IE=9; IE=8; IE=7'
+			}),
+			meta({
+				-http_equiv => 'X-UA-Compatible',
+				-content=>'IE=edge'
+			})
 		],
-
-	    -style      =>
-	    {
-	    	'src' => 
-	    		[
-	    			$path_web_css.'/css.css',
-	    			$path_web_css.'/bootstrap.min.css',
-	    			$path_web_css.'/jquery.dataTables.min.css',
-	    		]
-	    },
-	    -lang       =>'es-ES',
-	    -script     =>
-	    [
-            {
-                -type => 'text/javascript',
-                -src => $path_web_js.'/jquery.1.11.2.min.js',
-            },
-            {
-                -type => 'text/javascript',
-                -src => $path_web_js.'/bootstrap.min.js',
-            },
-            {
-                -type => 'text/javascript',
-                -src => $path_web_js.'/jquery.dataTables.js',
-            },
-            {
-                -type => 'text/javascript',
-                -src => $path_web_js.'/js.js',
-            },
-	    ]
+		-style=>
+		{
+			'src' => 
+				[
+					$path_web_css.'/css.css',
+					$path_web_css.'/bootstrap.min.css',
+					$path_web_css.'/jquery.dataTables.min.css',
+				]
+		},
+		-lang=>'es-ES',
+		-script=>
+		[
+			{
+				-type => 'text/javascript',
+				-src => $path_web_js.'/jquery.1.11.2.min.js',
+			},
+			{
+				-type => 'text/javascript',
+				-src => $path_web_js.'/bootstrap.min.js',
+			},
+			{
+				-type => 'text/javascript',
+				-src => $path_web_js.'/jquery.dataTables.js',
+			},
+			{
+				-type => 'text/javascript',
+				-src => $path_web_js.'/js.js',
+			},
+		]
 	);
 }
 
@@ -72,6 +71,7 @@ sub errores2DivErrores($){
 	';
 }
 
+# Collection of buttons
 # navigation of miHeader
 sub miNavigation(){
 	################### Boton 'INICIO'
@@ -178,42 +178,42 @@ sub generarFormLogin() {
 	print $q->header();  # cualquier print (aunque sea header imposibilita el redirect)
 	
 	&headHtmlTag();
-    my $error = shift;
+	my $error = shift;
 
-    print ' <div class="container"><div class="row"><div class="col-md-offset-5 col-md-3"><div class="form-login">';
-    print $q->h4($titulo_web);
-    print $q->span({class=>"text-danger"},"USUARIO/CONTRASE&Ntilde;A INCORRECTOS") if $error;
-    # Forms
-    print $q->start_form(
-        -name     => 'main_form',
-        -method   => 'POST',
-        # -onsubmit => 'return javascript:validation_function()',
-        -action   => $q->self_url,                               # Defaults to
-             # the current program
-    );
-    print "usuario";
-    print $q->textfield(
-        -name      		=> 'usuario',
-        # -value    	=> 'user1',
-        -class 			=> "form-control input-sm chat-input",
-        -placeholder 	=> "usuario",
-        -size      		=> 20,
-        -maxlength 		=> 30,
-    );
-    print $q->br;
-    print "contrase&ntilde;a";
-    print $q->password_field(
-        -name      => 'passw',
-        # -value     => '1',
-        -class 			=> "form-control input-sm chat-input",
-        -placeholder 	=> "contrasena",
-        -size      => 20,
-        -maxlength => 30,
-    );
-    print $q->br . $q->submit({class=>"btn btn-primary btn-md", value=>'Logearme'});
-    print $q->end_form;
-    print '</div></div></div></div>'; # cierro class="contaniner" y class="row" class="col-md-offset-5 col-md-3"y class="form-login"
-    # miSyslog( Dumper(%params) );
-    print $q->end_html;
+	print ' <div class="container"><div class="row"><div class="col-md-offset-5 col-md-3"><div class="form-login">';
+	print $q->h4($titulo_web);
+	print $q->span({class=>"text-danger"},"USUARIO/CONTRASE&Ntilde;A INCORRECTOS") if $error;
+	# Forms
+	print $q->start_form(
+		-name     => 'main_form',
+		-method   => 'POST',
+		# -onsubmit => 'return javascript:validation_function()',
+		-action   => $q->self_url,                               # Defaults to
+			 # the current program
+	);
+	print "usuario";
+	print $q->textfield(
+		-name      		=> 'usuario',
+		# -value    	=> 'user1',
+		-class 			=> "form-control input-sm chat-input",
+		-placeholder 	=> "usuario",
+		-size      		=> 20,
+		-maxlength 		=> 30,
+	);
+	print $q->br;
+	print "contrase&ntilde;a";
+	print $q->password_field(
+		-name      => 'passw',
+		# -value     => '1',
+		-class 			=> "form-control input-sm chat-input",
+		-placeholder 	=> "contrasena",
+		-size      => 20,
+		-maxlength => 30,
+	);
+	print $q->br . $q->submit({class=>"btn btn-primary btn-md", value=>'Logearme'});
+	print $q->end_form;
+	print '</div></div></div></div>'; # cierro class="contaniner" y class="row" class="col-md-offset-5 col-md-3"y class="form-login"
+	# miSyslog( Dumper(%params) );
+	print $q->end_html;
 }
 1;
