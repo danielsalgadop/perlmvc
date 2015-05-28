@@ -7,8 +7,6 @@ sub enrutador{
 
 	# TODO study the use of $ENV{PATH_INFO}
 
-	# debug2File({ref=>\$path_web_rutas,titulo=>"path_web_rutas debe ser igual a [".$server_ip.$ENV{REQUEST_URI}."]"});
-
 	if($ENV{REQUEST_URI} =~ /index.pl$/) # estamos en landing tras login.pl
 	{
 		wtHome(); # home
