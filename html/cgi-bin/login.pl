@@ -6,10 +6,9 @@ use perlmvc;
 
 our $q; # our $q = CGI->new;
 # my $q = CGI->new;
-our $path_web_cgi;
 my %params = $q->Vars;
 
-# debug2File({ref=>\$path_web_cgi,titulo=>"aqui estas"});
+# debug2File({ref=>\$Paths::cgi,titulo=>"aqui estas"});
 
 # esta logeado?
 my %r_estaLogeado = estaLogeado();
@@ -17,7 +16,7 @@ my %r_estaLogeado = estaLogeado();
 # debug2File({ref=>\%r_estaLogeado,titulo=>"estaLogeado"});
 
 if ( $r_estaLogeado{status} eq "OK" ) {
-    print $q->redirect(-uri=>$path_web_cgi."/index.pl"); # si estas logeado, fuera de aqui
+    print $q->redirect(-uri=>$Paths::cgi."/index.pl"); # si estas logeado, fuera de aqui
 }
 # esta intentando acreditarse?
 if( $params{usuario} and $params{passw}){ # Need this $params
@@ -39,7 +38,7 @@ if( $params{usuario} and $params{passw}){ # Need this $params
 	    # almaceno alias del usario en session
 	    $session->param(alias => $params{usuario});
 	    # creo cookie y redirijo a index.pl
-	    print $q->redirect(-uri=>$path_web_cgi."/index.pl",-cookie=>$cookie);
+	    print $q->redirect(-uri=>$Paths::cgi."/index.pl",-cookie=>$cookie);
 	}
 }
 

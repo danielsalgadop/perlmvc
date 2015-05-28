@@ -6,19 +6,11 @@ use strict;
 our $nombre_app = "perlmvc";
 
 my $path_absoluto_app 			= "/var/www/html";
-our $path_absoluto_debug_app	= "/tmp/debug2file_".$nombre_app;
-my $path_web 					= "/".$nombre_app."/html";    
-our $path_web_css 				= $path_web."/css"; 
-our $path_web_js 				= $path_web."/js";
-
 my $server_ip 					= "http://10.0.191.102";
-our $path_web_cgi				= $server_ip."/".$nombre_app."/html/cgi-bin";
 
-# our $path_absoluto_modelos = $path_absoluto_app."/".$nombre_app."/models"; # users.json y grupos.json
 
-our $path_web_rutas				= $path_web_cgi."/index.pl";  # todas las rutas cuelgan de aqui
+# our $Paths::web				= $path_web_cgi."/index.pl";  # todas las rutas cuelgan de aqui
 
-our $path_absoluto_logs			= $path_absoluto_app."/".$nombre_app."/cgi-bin/logs";
 
 package Paths;
 use warnings;
@@ -34,7 +26,14 @@ sub myIp()
 }
 my $server_ip 			= "http://10.0.191.102";  # you can use myIp() in some machines
 my $nombre_app 			= "perlmvc";  # TODO bring this from variables_globales
+my $path_web 			= "/".$nombre_app."/html";    
 my $path_absoluto_app 	= "/var/www/html";
+our $path_web_cgi		= $server_ip."/".$nombre_app."/html/cgi-bin";
 our $modelos 			= $path_absoluto_app."/".$nombre_app."/models"; # usually jsons
 our $sessiones 			= "/tmp/sessiones_".$nombre_app;
 our $debug_app 			= "/tmp/debug2file_".$nombre_app;
+our $css 				= $path_web."/css"; 
+our $js 				= $path_web."/js";
+our $cgi				= $server_ip."/".$nombre_app."/html/cgi-bin";
+our $web 				= $path_web_cgi."/index.pl";  # todas las rutas cuelgan de aqui
+our $logs				= $path_absoluto_app."/".$nombre_app."/cgi-bin/logs";

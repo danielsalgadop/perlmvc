@@ -6,12 +6,10 @@ our $q;
 
 # wrapper para CGI->start_html
 our $titulo_web;
-our $path_web_rutas;
+# our $Paths::web;
 
 # content of html's <head> tag
 sub headHtmlTag{
-	our $path_web_css;
-	our $path_web_js;
 	print $q->start_html(
 		-title=> $titulo_web,
 		-encoding=> "utf-8",
@@ -30,9 +28,9 @@ sub headHtmlTag{
 		{
 			'src' => 
 				[
-					$path_web_css.'/css.css',
-					$path_web_css.'/bootstrap.min.css',
-					$path_web_css.'/jquery.dataTables.min.css',
+					$Paths::css.'/css.css',
+					$Paths::css.'/bootstrap.min.css',
+					$Paths::css.'/jquery.dataTables.min.css',
 				]
 		},
 		-lang=>'es-ES',
@@ -40,19 +38,19 @@ sub headHtmlTag{
 		[
 			{
 				-type => 'text/javascript',
-				-src => $path_web_js.'/jquery.1.11.2.min.js',
+				-src => $Paths::js.'/jquery.1.11.2.min.js',
 			},
 			{
 				-type => 'text/javascript',
-				-src => $path_web_js.'/bootstrap.min.js',
+				-src => $Paths::js.'/bootstrap.min.js',
 			},
 			{
 				-type => 'text/javascript',
-				-src => $path_web_js.'/jquery.dataTables.js',
+				-src => $Paths::js.'/jquery.dataTables.js',
 			},
 			{
 				-type => 'text/javascript',
-				-src => $path_web_js.'/js.js',
+				-src => $Paths::js.'/js.js',
 			},
 		]
 	);
@@ -78,7 +76,7 @@ sub miNavigation(){
 	print $q->a
 	(
 		{
-			href=>$path_web_rutas,
+			href=>$Paths::web,
 			class=>"btn btn-default  pull-left"
 		},
 		"INICIO"
@@ -87,7 +85,7 @@ sub miNavigation(){
 	print $q->a
 	(
 		{
-			href=>$path_web_rutas."/static_page",
+			href=>$Paths::web."/static_page",
 			class=>"btn btn-default  pull-left"
 		},
 		"STATIC PAGE"
@@ -96,7 +94,7 @@ sub miNavigation(){
 	print $q->a
 	(
 		{
-			href=>$path_web_rutas."/datatable",
+			href=>$Paths::web."/datatable",
 			class=>"btn btn-default  pull-left"
 		},
 		"DATATABLE"
@@ -105,7 +103,7 @@ sub miNavigation(){
 	print $q->a
 	(
 		{
-			href=>$path_web_rutas."/read_value_from_url/",
+			href=>$Paths::web."/read_value_from_url/",
 			class=>"btn btn-default  pull-left"
 		},
 		"READ VALUE FROM URL"
@@ -114,7 +112,7 @@ sub miNavigation(){
 	print $q->a
 	(
 		{
-			href=>$path_web_rutas."/model_changer",
+			href=>$Paths::web."/model_changer",
 			class=>"btn btn-default  pull-left"
 		},
 		"MODEL CHANGER (TODO)"
@@ -139,7 +137,7 @@ sub wtHeader(){
 			a
 			(
 				{
-					href=>$path_web_rutas."/desconectar"
+					href=>$Paths::web."/desconectar"
 				},
 				# "desconectar".imgPrinter("disconnect")
 				"desconectar"

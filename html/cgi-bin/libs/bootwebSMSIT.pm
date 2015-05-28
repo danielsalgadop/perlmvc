@@ -10,6 +10,6 @@ use strict;
 
 
 # must be readable and writable
-# $path_absoluto_logs
+# $Paths::logs
 
 1;

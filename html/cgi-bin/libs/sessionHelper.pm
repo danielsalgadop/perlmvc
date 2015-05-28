@@ -66,14 +66,13 @@ sub disconnectSession()
 	$session->flush(); # Recommended practice says use flush() after delete().
 	        # go to home (that is going to redirect to login)
     our $q;
-    our $path_web_cgi;
     our $name_cookie_that_stores_session_id;
 
     # DELETE COOKIE
     # create a cookie with negative time to expire, to delete it
 
     my $cookie = $q->cookie(-name=>$name_cookie_that_stores_session_id,-value=>"going_to_die",-expires=>'-1h');
-    print $q->redirect(-uri=>$path_web_cgi.'/login.pl',-cookie=>$cookie);
+    print $q->redirect(-uri=>$Paths::cgi.'/login.pl',-cookie=>$cookie);
 }
 
 1;

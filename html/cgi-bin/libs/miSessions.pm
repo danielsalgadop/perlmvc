@@ -61,8 +61,7 @@ sub sigueLogeado() {
 			return 1;
 		}
 	}
-	our $path_web_cgi;
-	print $q->redirect($path_web_cgi.'/login.pl');
+	print $q->redirect($Paths::cgi.'/login.pl');
 	exit;
 	# return(status=>"ERROR");
 }
