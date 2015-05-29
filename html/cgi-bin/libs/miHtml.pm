@@ -186,7 +186,7 @@ sub generarFormLogin() {
 		-name     => 'main_form',
 		-method   => 'POST',
 		# -onsubmit => 'return javascript:validation_function()',
-		-action   => $q->self_url,                               # Defaults to
+		# -action   => $q->self_url,                               # Defaults to
 			 # the current program
 	);
 	print "usuario";
@@ -211,7 +211,6 @@ sub generarFormLogin() {
 	print $q->br . $q->submit({class=>"btn btn-primary btn-md", value=>'Logearme'});
 	print $q->end_form;
 	print '</div></div></div></div>'; # cierro class="contaniner" y class="row" class="col-md-offset-5 col-md-3"y class="form-login"
-	# miSyslog( Dumper(%params) );
 	print $q->end_html;
 	exit;
 }
