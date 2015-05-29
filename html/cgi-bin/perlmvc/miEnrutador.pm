@@ -18,10 +18,12 @@ sub enrutador{
     }
 	elsif($ENV{REQUEST_URI} =~ /static_page$/)
 	{
+		# normally when no calculation is needed you call template
 		wtStaticPage();
 	}
 	elsif($ENV{REQUEST_URI} =~ /datatable$/)
 	{
+		# because you need to read models to build dataTable you call a controller (that will call template) 
 		cDataTable();
 	}
 	elsif($ENV{REQUEST_URI} =~ m!read_value_from_url[/]*(.*)!)
@@ -30,11 +32,11 @@ sub enrutador{
 	}
 	elsif($ENV{REQUEST_URI} =~ m!user_defined_subs$!)
 	{
-		# wtHome();
 		cUserDefinedLib();
 	}
 	else
 	{
+		# did not match any defined route => error
 		wtError("404 - Page not found");
 	}
 }
