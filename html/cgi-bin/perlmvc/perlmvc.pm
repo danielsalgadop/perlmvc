@@ -7,7 +7,7 @@ use CGI::Carp qw(fatalsToBrowser);
 use CGI qw(:standard);
 use CGI::Session;
 use Data::Dumper;
-use lib 'libs';
+use lib '.';
 use debug;
 use miJSON;
 use miEnrutador;
