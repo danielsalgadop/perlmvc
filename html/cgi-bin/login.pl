@@ -7,22 +7,22 @@ use perlmvc;
 our $q; # our $q = CGI->new;
 # my $q = CGI->new;
 my %params = $q->Vars;
-
-# debug2File({ref=>\$Paths::cgi,titulo=>"aqui estas"});
+# debug2File({ref=>\%params,titulo=>"params"}) if %params;
 
 # esta logeado?
 my %r_estaLogeado = estaLogeado();
-# debug2File({ref=>\%params,titulo=>"params"}) if %params;
-
 # debug2File({ref=>\%r_estaLogeado,titulo=>"estaLogeado"});
 
-if ( $r_estaLogeado{status} eq "OK" ) {
+if ( $r_estaLogeado{status} eq "OK" )
+{
     print $q->redirect(-uri=>$Paths::cgi."/index.pl"); # si estas logeado, fuera de aqui
 }
 # esta intentando acreditarse?
-if( $params{usuario} and $params{passw}){ # Need this $params
-	if( &credencialesOK(\%params)){
-        # el usuario y passw coinciden con valores en modelos
+if(exists $params{usuario}) # Need this param
+{
+	if( &credencialesOK(\%params)) # el usuario y passw coinciden con valores en modelos
+	{
+		# usuario y passw OK
         our $name_cookie_that_stores_session_id;
         # debug2File({ref=>\"credenciales OK = 1",titulo=>"Paths::sessiones [".$Paths::sessiones."] name_cookie_that_stores_session_id [".$name_cookie_that_stores_session_id."]"});
 
@@ -41,8 +41,8 @@ if( $params{usuario} and $params{passw}){ # Need this $params
 	    # creo cookie y redirijo a index.pl
 	    print $q->redirect(-uri=>$Paths::cgi."/index.pl",-cookie=>$cookie);
 	}
+	&generarFormLogin("error");
 }
 
-# si has llegado aqui, es que es NO has logeado bien (o acabas de llegar)
-# BAD credenciales
-(%params)?&generarFormLogin("hay_error"):&generarFormLogin();
+# User has not send $params{usuario}, probably is the first time user in web
+&generarFormLogin();
