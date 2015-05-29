@@ -7,10 +7,6 @@ use variables_globales;
 # Es llamado desde miEnrutador
 # hace los calculos necesarios y llama a los templates
 
-our $q;
-our %user;
-our $nombre_user_logeado;
-
 sub cDataTable()
 {
 	# FAKE Read Model

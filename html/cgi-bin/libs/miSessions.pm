@@ -5,8 +5,6 @@
 #
 use warnings FATAL=>all;
 use strict;
-our $q;
-our $name_cookie_that_stores_session_id;
 
 ###################################
 # Compares values
@@ -38,7 +36,7 @@ sub cookieAndSessionEqual($){
 # returns{stauts} == ERROR if not,
 ###################################
 sub estaLogeado() {
-	my $existia_cookie = $q->cookie($name_cookie_that_stores_session_id);
+	my $existia_cookie = $Globals::q->cookie($Globals::name_cookie_that_stores_session_id);
 	my ($r_cookieAndSessionEqual,$session)	= &cookieAndSessionEqual($existia_cookie);
 	if ($r_cookieAndSessionEqual){
 		return(status=>"OK",session=>$session);
@@ -61,7 +59,7 @@ sub sigueLogeado() {
 			return 1;
 		}
 	}
-	print $q->redirect($Paths::cgi.'/login.pl');
+	print $Globals::q->redirect($Paths::cgi.'/login.pl');
 	exit;
 	# return(status=>"ERROR");
 }

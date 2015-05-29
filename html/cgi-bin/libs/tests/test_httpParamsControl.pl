@@ -12,9 +12,8 @@ use Test::More 'no_plan';
 
 use httpParamsControl;
 
-our $q;
 # construct mock Params
-$q = CGI->new( {'key1'=>'barney',
+$Globals::q = CGI->new( {'key1'=>'barney',
     'song'=>'I love you',
     'friends'=>[qw/Jessica George Nancy/]}
 );

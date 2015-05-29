@@ -2,10 +2,8 @@
 use warnings FATAL=>all;
 use strict;
 use Data::Dumper;
-# returns values from session
-our $q;
-our $name_cookie_that_stores_session_id;
 
+# returns values from session
 # POR AHORA, se usa para retreive 'alias'
 # Return '-1' if not founded  # OJO, problemas si el valor buscado ES -1
 sub getterSession($){
@@ -16,7 +14,7 @@ sub getterSession($){
 		return $session->param($name_to_get) if $session->param($name_to_get);
 	}
 	return 0;
-	# my $value_of_cookie = $q->cookie($name_cookie_that_stores_session_id);
+	# my $value_of_cookie = $Globals::q->cookie($Globals::name_cookie_that_stores_session_id);
 	# if ($value_of_cookie) # solo si la cookie existia creo $session (sino creo sesiones cada vez q recargan pagina al no estar logados)
 	# { 
 	# 	my $session = new CGI::Session("driver:File", $value_of_cookie, {Directory=>$Paths::sessiones}) or die CGI::Session->errstr;
@@ -34,7 +32,7 @@ sub setterSession($$){
 		$session->param(-name=>$name_to_set,-value=>$value_to_set);
 	}
 	return 1;
-	# my $value_of_cookie = $q->cookie($name_cookie_that_stores_session_id);
+	# my $value_of_cookie = $Globals::q->cookie($Globals::name_cookie_that_stores_session_id);
 	# if ($value_of_cookie)
 	# { 
 	# 	my $session = new CGI::Session("driver:File", $value_of_cookie, {Directory=>$Paths::sessiones}) or die CGI::Session->errstr;
@@ -45,10 +43,10 @@ sub setterSession($$){
 
 sub returnActiveSession()
 {
-	use CGI qw(:standard);
-	use CGI::Session;
-	my $q = CGI->new;
-	my $value_of_cookie = $q->cookie($name_cookie_that_stores_session_id);
+	# use CGI qw(:standard);
+	# use CGI::Session;
+	# my $Globals::q = CGI->new;
+	my $value_of_cookie = $Globals::q->cookie($Globals::name_cookie_that_stores_session_id);
 	my $session;
 	if($value_of_cookie)
 	{
@@ -65,14 +63,12 @@ sub disconnectSession()
 	$session->delete();
 	$session->flush(); # Recommended practice says use flush() after delete().
 	        # go to home (that is going to redirect to login)
-    our $q;
-    our $name_cookie_that_stores_session_id;
 
     # DELETE COOKIE
     # create a cookie with negative time to expire, to delete it
 
-    my $cookie = $q->cookie(-name=>$name_cookie_that_stores_session_id,-value=>"going_to_die",-expires=>'-1h');
-    print $q->redirect(-uri=>$Paths::cgi.'/login.pl',-cookie=>$cookie);
+    my $cookie = $Globals::q->cookie(-name=>$Globals::name_cookie_that_stores_session_id,-value=>"going_to_die",-expires=>'-1h');
+    print $Globals::q->redirect(-uri=>$Paths::cgi.'/login.pl',-cookie=>$cookie);
 }
 
 1;

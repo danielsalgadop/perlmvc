@@ -4,9 +4,9 @@ use strict;
 use lib 'perlmvc';
 use perlmvc;
 
-our $q; # our $q = CGI->new;
+# our $q; # our $q = CGI->new;
 # my $q = CGI->new;
-my %params = $q->Vars;
+my %params = $Globals::q->Vars;
 # debug2File({ref=>\%params,titulo=>"params"}) if %params;
 
 # esta logeado?
@@ -15,7 +15,7 @@ my %r_estaLogeado = estaLogeado();
 
 if ( $r_estaLogeado{status} eq "OK" )
 {
-    print $q->redirect(-uri=>$Paths::cgi."/index.pl"); # si estas logeado, fuera de aqui
+    print $Globals::q->redirect(-uri=>$Paths::cgi."/index.pl"); # si estas logeado, fuera de aqui
 }
 # esta intentando acreditarse?
 if(exists $params{usuario}) # Need this param
@@ -23,15 +23,14 @@ if(exists $params{usuario}) # Need this param
 	if( &credencialesOK(\%params)) # el usuario y passw coinciden con valores en modelos
 	{
 		# usuario y passw OK
-        our $name_cookie_that_stores_session_id;
-        # debug2File({ref=>\"credenciales OK = 1",titulo=>"Paths::sessiones [".$Paths::sessiones."] name_cookie_that_stores_session_id [".$name_cookie_that_stores_session_id."]"});
+        # debug2File({ref=>\"credenciales OK = 1",titulo=>"Paths::sessiones [".$Paths::sessiones."] Globals::name_cookie_that_stores_session_id [".$Globals::name_cookie_that_stores_session_id."]"});
 
 	    # genero nueva session ...
 	    my $session = new CGI::Session("driver:File", undef, {Directory=>$Paths::sessiones}) or die CGI::Session->errstr; # TODO, put here AppError not a die
 	    # ... y almaceno el identificativo de session en variable cookie
 	    my $cookie = 
-            $q->cookie(
-                -name=>$name_cookie_that_stores_session_id,
+            $Globals::q->cookie(
+                -name=>$Globals::name_cookie_that_stores_session_id,
                 -value=>$session->id(),
                 -expires=>"+1h"
 	    );
@@ -39,7 +38,7 @@ if(exists $params{usuario}) # Need this param
 	    # almaceno alias del usario en session
 	    $session->param(alias => $params{usuario});
 	    # creo cookie y redirijo a index.pl
-	    print $q->redirect(-uri=>$Paths::cgi."/index.pl",-cookie=>$cookie);
+	    print $Globals::q->redirect(-uri=>$Paths::cgi."/index.pl",-cookie=>$cookie);
 	}
 	&generarFormLogin("error");
 }

@@ -4,27 +4,27 @@ use strict;
 # Place to MAP an URL => controller (or view)
 # place to define web templates (wt = web_templates)
 
-our $q;
+# our $Globals::q;
 
 #################################### Templates de paginas
 sub wtHome(){
 	wtHeader();
 	print '<div class="row">';
-	print $q->p("Bienvenido");
+	print $Globals::q->p("Bienvenido");
 	print '</div>';
 	wtFooter();
 }
 
 sub wtError(){
 	wtHeader();
-	print $q->h1("P&aacute;gina no encontrada");
+	print $Globals::q->h1("P&aacute;gina no encontrada");
 	print Dumper(%ENV);  # coment this line in production
 	wtFooter();
 }
 
 sub wtStaticPage(){
 	wtHeader();
-	print $q->h1
+	print $Globals::q->h1
 	(
 		"P&aacute;gina Est&aacute;tica"
 	),
@@ -79,13 +79,13 @@ sub wtReadValueFromUrl(;$)
 {
     my $value_in_url = shift;
     wtHeader();
-    print $q->h3
+    print $Globals::q->h3
     (
         "READ VALUE FROM URL",
     );
     if($value_in_url)
     {
-        print $q->p
+        print $Globals::q->p
         (
             "VALUE in URL IS ==> "
                 .h1
@@ -96,7 +96,7 @@ sub wtReadValueFromUrl(;$)
     }
     else
     {
-        print $q->p
+        print $Globals::q->p
         (
             "Add some characters to the url and reload page",
         );

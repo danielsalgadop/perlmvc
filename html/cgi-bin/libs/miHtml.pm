@@ -2,16 +2,10 @@
 use warnings FATAL=>all;
 use strict;
 
-our $q;
-
-# wrapper para CGI->start_html
-our $titulo_web;
-# our $Paths::web;
-
 # content of html's <head> tag
 sub headHtmlTag{
-	print $q->start_html(
-		-title=> $titulo_web,
+	print $Globals::q->start_html(
+		-title=> $Globals::titulo_web,
 		-encoding=> "utf-8",
 		-dtd=> "4.0",
 		-head=>[
@@ -73,7 +67,7 @@ sub errores2DivErrores($){
 # navigation of miHeader
 sub miNavigation(){
 	################### Boton 'INICIO'
-	print $q->a
+	print $Globals::q->a
 	(
 		{
 			href=>$Paths::web,
@@ -82,7 +76,7 @@ sub miNavigation(){
 		"INICIO"
 	);	
 	################### Boton 'static_page'
-	print $q->a
+	print $Globals::q->a
 	(
 		{
 			href=>$Paths::web."/static_page",
@@ -91,7 +85,7 @@ sub miNavigation(){
 		"STATIC PAGE"
 	);
 	################### Boton 'datatable'
-	print $q->a
+	print $Globals::q->a
 	(
 		{
 			href=>$Paths::web."/datatable",
@@ -100,7 +94,7 @@ sub miNavigation(){
 		"DATATABLE"
 	);
 	################### Boton 'read value form url'
-	print $q->a
+	print $Globals::q->a
 	(
 		{
 			href=>$Paths::web."/read_value_from_url/",
@@ -109,7 +103,7 @@ sub miNavigation(){
 		"READ VALUE FROM URL"
 	);
 	################### Boton 'MODEL_CHANGER'
-	print $q->a
+	print $Globals::q->a
 	(
 		{
 			href=>$Paths::web."/model_changer",
@@ -122,11 +116,11 @@ sub miNavigation(){
 
 ###################################
 sub wtHeader(){
-	print $q->header();
+	print $Globals::q->header();
 	headHtmlTag();
 	print '<div class="container-fluid">';
 	print '<div class="row">';
-	print $q->div({id=>"header"},
+	print $Globals::q->div({id=>"header"},
 		div
 		(
 			{
@@ -143,27 +137,27 @@ sub wtHeader(){
 				"desconectar"
 			)
 		),
-		h1($titulo_web),
+		h1($Globals::titulo_web),
 	);
 	miNavigation();
 	print '</div>';
-	print $q->hr;
-	print $q->div({id=>"errores"},"");
+	print $Globals::q->hr;
+	print $Globals::q->div({id=>"errores"},"");
 }
 sub wtFooter(){
-	# print $q->div({id=>"footer"},h3("contacto Grupo PMS"));
+	# print $Globals::q->div({id=>"footer"},h3("contacto Grupo PMS"));
 	print "</div>";  #close container-fluid
-	print $q->end_html;
+	print $Globals::q->end_html;
 	exit; # <<< needed to avoid 2 pages being shown. When an error ocurred inside a web Template and a cError=>wtError is called. 
 }
 
 
-# returns (string) of $q, <img src="parameter">
+# returns (string) of $Globals::q, <img src="parameter">
 # all images must be png and be in $path_web_img
 sub imgPrinter($){
 	our $path_web_img;
 	my $image_wanted;
-	my $return = $q->img({
+	my $return = $Globals::q->img({
 		src => $path_web_img.'/'.(shift).'.png',
 	});
 	return($return);
@@ -173,24 +167,24 @@ sub imgPrinter($){
 # Function generarFormLogin
 # used in login.pl
 sub generarFormLogin() {
-	print $q->header();  # cualquier print (aunque sea header imposibilita el redirect)
+	print $Globals::q->header();  # cualquier print (aunque sea header imposibilita el redirect)
 	
 	&headHtmlTag();
 	my $error = shift;
 
 	print ' <div class="container"><div class="row"><div class="col-md-offset-5 col-md-3"><div class="form-login">';
-	print $q->h4($titulo_web);
-	print $q->span({class=>"text-danger"},"USUARIO/CONTRASE&Ntilde;A INCORRECTOS") if $error;
+	print $Globals::q->h4($Globals::titulo_web);
+	print $Globals::q->span({class=>"text-danger"},"USUARIO/CONTRASE&Ntilde;A INCORRECTOS") if $error;
 	# Forms
-	print $q->start_form(
+	print $Globals::q->start_form(
 		-name     => 'main_form',
 		-method   => 'POST',
 		# -onsubmit => 'return javascript:validation_function()',
-		# -action   => $q->self_url,                               # Defaults to
+		# -action   => $Globals::q->self_url,                               # Defaults to
 			 # the current program
 	);
 	print "usuario";
-	print $q->textfield(
+	print $Globals::q->textfield(
 		-name      		=> 'usuario',
 		# -value    	=> 'user1',
 		-class 			=> "form-control input-sm chat-input",
@@ -198,9 +192,9 @@ sub generarFormLogin() {
 		-size      		=> 20,
 		-maxlength 		=> 30,
 	);
-	print $q->br;
+	print $Globals::q->br;
 	print "contrase&ntilde;a";
-	print $q->password_field(
+	print $Globals::q->password_field(
 		-name      => 'passw',
 		# -value     => '1',
 		-class 			=> "form-control input-sm chat-input",
@@ -208,10 +202,10 @@ sub generarFormLogin() {
 		-size      => 20,
 		-maxlength => 30,
 	);
-	print $q->br . $q->submit({class=>"btn btn-primary btn-md", value=>'Logearme'});
-	print $q->end_form;
+	print $Globals::q->br . $Globals::q->submit({class=>"btn btn-primary btn-md", value=>'Logearme'});
+	print $Globals::q->end_form;
 	print '</div></div></div></div>'; # cierro class="contaniner" y class="row" class="col-md-offset-5 col-md-3"y class="form-login"
-	print $q->end_html;
+	print $Globals::q->end_html;
 	exit;
 }
 1;
