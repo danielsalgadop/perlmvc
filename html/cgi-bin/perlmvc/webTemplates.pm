@@ -15,10 +15,10 @@ sub wtHome(){
 	wtFooter();
 }
 
-sub wtError(){
+sub wtError(;$){
+    my $error_message = shift || "Error indefenido";
 	wtHeader();
-	print $Globals::q->h1("P&aacute;gina no encontrada");
-	print Dumper(%ENV);  # coment this line in production
+	print $Globals::q->h1($error_message);
 	wtFooter();
 }
 
@@ -108,7 +108,7 @@ sub wtUserDefinedLib(;$)
 {
     my $value = shift;
     wtHeader();
-    print $Globals::q->h1("User defined SUBS can use perlmvc subs");
+    print $Globals::q->h3("USER DEFINED SUBS CAN USE PERLMVC SUBS");
     print $Globals::q->start_ul();
     print "<li>Using a SUB defined in cgi/libs/ (user subs space)";
     print q(<pre>

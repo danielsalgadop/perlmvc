@@ -35,7 +35,7 @@ sub enrutador{
 	}
 	else
 	{
-		wtError();
+		wtError("404 - Page not found");
 	}
 }
 1;

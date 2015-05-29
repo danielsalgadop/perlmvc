@@ -40,8 +40,4 @@ sub cUserDefinedLib()
 	# but also inside it uses a sub perlmvc validaciones.pm (trimSpaces)
 	wtUserDefinedLib(userSub());
 }
-sub cError()
-{
-	&wtError();
-}
 1;

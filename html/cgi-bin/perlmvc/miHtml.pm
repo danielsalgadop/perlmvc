@@ -157,7 +157,7 @@ sub wtFooter(){
 	# print $Globals::q->div({id=>"footer"},h3("contacto Grupo PMS"));
 	print "</div>";  #close container-fluid
 	print $Globals::q->end_html;
-	exit; # <<< needed to avoid 2 pages being shown. When an error ocurred inside a web Template and a cError=>wtError is called. 
+	exit; # <<< needed to avoid 2 pages being shown. For example When an error ocurred inside a web Template and a cError=>wtError is called.
 }
 
 
