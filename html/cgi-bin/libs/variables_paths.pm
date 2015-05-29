@@ -1,17 +1,4 @@
 #!/usr/bin/perl
-use warnings;
-use strict;
-
-
-our $nombre_app = "perlmvc";
-
-my $path_absoluto_app 			= "/var/www/html";
-my $server_ip 					= "http://10.0.191.102";
-
-
-# our $Paths::web				= $path_web_cgi."/index.pl";  # todas las rutas cuelgan de aqui
-
-
 package Paths;
 use warnings;
 use strict;
