@@ -33,7 +33,13 @@ sub cDataTable()
 	# pass this data to de View
 	wtDataTable(\@data);
 }
-
+sub cUserDefinedLib()
+{
+	# interesting example
+	# userSub is defined in 'libs' folder
+	# but also inside it uses a sub perlmvc validaciones.pm (trimSpaces)
+	wtUserDefinedLib(userSub());
+}
 sub cError()
 {
 	&wtError();

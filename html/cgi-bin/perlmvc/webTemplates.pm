@@ -103,4 +103,24 @@ sub wtReadValueFromUrl(;$)
     }
     wtFooter();
 }
+
+sub wtUserDefinedLib(;$)
+{
+    my $value = shift;
+    wtHeader();
+    print $Globals::q->h1("User defined SUBS can use perlmvc subs");
+    print $Globals::q->start_ul();
+    print "<li>Using a SUB defined in cgi/libs/ (user subs space)";
+    print q(<pre>
+sub userSub()
+{
+    return trimSpaces("     Using a perlmvc function to be trimmed  ");
+}</pre></li>);
+    print "<li>Note it uses <b>trimSpaces</b> defined in cgi/perlmvc/ (perlmvc sub space)</li>";
+    print $Globals::q->end_ul();
+
+    print "The below value has reached wtUserDefinedLib from userSub()";
+    print "<pre>".$value."</pre>";
+    wtFooter();
+}
 1;

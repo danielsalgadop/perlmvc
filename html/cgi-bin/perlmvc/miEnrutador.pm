@@ -28,6 +28,11 @@ sub enrutador{
 	{
 		wtReadValueFromUrl($1);
 	}
+	elsif($ENV{REQUEST_URI} =~ m!user_defined_subs$!)
+	{
+		# wtHome();
+		cUserDefinedLib();
+	}
 	else
 	{
 		wtError();

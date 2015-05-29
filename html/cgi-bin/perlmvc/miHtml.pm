@@ -102,6 +102,15 @@ sub miNavigation(){
 		},
 		"READ VALUE FROM URL"
 	);
+	################### Boton 'USER DEFINED SUBS'
+	print $Globals::q->a
+	(
+		{
+			href=>$Paths::web."/user_defined_subs",
+			class=>"btn btn-default  pull-left"
+		},
+		"USER DEFINED SUBS"
+	);
 	################### Boton 'MODEL_CHANGER'
 	print $Globals::q->a
 	(
