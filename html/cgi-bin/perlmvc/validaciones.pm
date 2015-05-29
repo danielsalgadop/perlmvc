@@ -1,19 +1,8 @@
 #!/usr/bin/perl -w
-
 use strict;
 
-my $validaciones="toe";
-
-
-sub esUsuarioOK($){
-	my $usuario = shift;
-	$usuario = trimSpaces($usuario);
-}
-
-sub esContrasenyaOK($){
-	return(1);
-}
-
+# Function: trimSpaces
+# trimming spaces
 sub trimSpaces($){
 	my $str_to_trim = shift;
 	$str_to_trim =~ s/^\s+|\s+$//g;
