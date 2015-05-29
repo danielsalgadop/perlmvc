@@ -59,7 +59,7 @@ sub sigueLogeado() {
 			return 1;
 		}
 	}
-	print $Globals::q->redirect($Paths::cgi.'/login.pl');
+	print $Globals::q->redirect($Paths::web_cgi.'/login.pl');
 	exit;
 	# return(status=>"ERROR");
 }

@@ -68,7 +68,7 @@ sub disconnectSession()
     # create a cookie with negative time to expire, to delete it
 
     my $cookie = $Globals::q->cookie(-name=>$Globals::name_cookie_that_stores_session_id,-value=>"going_to_die",-expires=>'-1h');
-    print $Globals::q->redirect(-uri=>$Paths::cgi.'/login.pl',-cookie=>$cookie);
+    print $Globals::q->redirect(-uri=>$Paths::web_cgi.'/login.pl',-cookie=>$cookie);
 }
 
 1;

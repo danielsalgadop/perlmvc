@@ -15,7 +15,7 @@ my %r_estaLogeado = estaLogeado();
 
 if ( $r_estaLogeado{status} eq "OK" )
 {
-    print $Globals::q->redirect(-uri=>$Paths::cgi."/index.pl"); # si estas logeado, fuera de aqui
+    print $Globals::q->redirect(-uri=>$Paths::web_cgi."/index.pl"); # si estas logeado, fuera de aqui
 }
 # esta intentando acreditarse?
 if(exists $params{usuario}) # Need this param
@@ -38,7 +38,7 @@ if(exists $params{usuario}) # Need this param
 	    # almaceno alias del usario en session
 	    $session->param(alias => $params{usuario});
 	    # creo cookie y redirijo a index.pl
-	    print $Globals::q->redirect(-uri=>$Paths::cgi."/index.pl",-cookie=>$cookie);
+	    print $Globals::q->redirect(-uri=>$Paths::web_cgi."/index.pl",-cookie=>$cookie);
 	}
 	&generarFormLogin("error");
 }
