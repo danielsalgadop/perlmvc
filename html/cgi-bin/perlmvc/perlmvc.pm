@@ -2,12 +2,12 @@
 use warnings FATAL=>all;  # use in development
 use strict;
 
-#perlmvc libs
+# perl core functions
 use CGI::Carp qw(fatalsToBrowser);
 use CGI qw(:standard);
 use CGI::Session;
 use Data::Dumper;
-use lib '.';
+#perlmvc libs
 use debug;
 use miJSON;
 use miEnrutador;
@@ -19,4 +19,6 @@ use sessionHelper;
 # use cargarModelos;
 use controladores;
 use validaciones;
+use lib 'perlmvc/vendors';
+use HTML::Template;
 1;

@@ -123,4 +123,18 @@ sub userSub()
     print "<pre>".$value."</pre>";
     wtFooter();
 }
+
+sub wtTemplates()
+{
+        wtHeader();
+        print "doing templates";
+        # open the html template
+        my $template = HTML::Template->new(filename => $Paths::templates.'/template1.tmpl');
+        # fill in some parameters
+        $template->param(HOME => $ENV{HOME});
+        $template->param(PATH => $ENV{PATH});
+        # $template->param(INEXISTENTPARAM => "eoeoeo");  # will die !!!
+        print $template->output;
+        wtFooter();
+}
 1;

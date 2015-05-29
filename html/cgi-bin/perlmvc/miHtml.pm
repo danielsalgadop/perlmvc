@@ -111,6 +111,15 @@ sub miNavigation(){
 		},
 		"USER DEFINED SUBS"
 	);
+	################### Boton 'TEMPLATES'
+	print $Globals::q->a
+	(
+		{
+			href=>$Paths::web."/templates",
+			class=>"btn btn-default  pull-left"
+		},
+		"TEMPLATES"
+	);
 	################### Boton 'MODEL_CHANGER'
 	print $Globals::q->a
 	(

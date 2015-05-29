@@ -34,6 +34,10 @@ sub enrutador{
 	{
 		cUserDefinedLib();
 	}
+	elsif($ENV{REQUEST_URI} =~ m!templates$!)
+	{
+		wtTemplates();
+	}
 	else
 	{
 		# did not match any defined route => error
