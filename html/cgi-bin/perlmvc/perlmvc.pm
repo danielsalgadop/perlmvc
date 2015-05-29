@@ -1,8 +1,8 @@
 #!/usr/bin/perl
-# Libs of mvc and libs of user (cgi-bin/libs) are charged
-# use warnings FATAL=>all;  # use in development
-# use strict;
+use warnings FATAL=>all;  # use in development
+use strict;
 
+#perlmvc libs
 use CGI::Carp qw(fatalsToBrowser);
 use CGI qw(:standard);
 use CGI::Session;
