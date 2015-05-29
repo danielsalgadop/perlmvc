@@ -6,7 +6,7 @@ use strict;
 use Data::Dumper;
 use lib '../';
 use CGI qw(:standard);
-use variables_globales;
+use globals;
 use paths;
 use Test::More 'no_plan';
 

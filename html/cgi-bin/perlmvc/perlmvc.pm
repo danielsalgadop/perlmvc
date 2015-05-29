@@ -12,7 +12,7 @@ use debug;
 use miJSON;
 use miEnrutador;
 use miHtml;
-use variables_globales;
+use globals;
 use paths;
 use miSessions;
 use sessionHelper;

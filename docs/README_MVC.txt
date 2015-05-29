@@ -26,7 +26,7 @@ html/cgi-bin/lib_proyect/   # folder with ALL libs used in mvc, or app (THIS wil
 		- miEnrutador.pm    	# (mvc) Maps url => controllers or view (web templates) . See below
 		- controladores.pm  	# (mvc) controllers 
 		- webTemplates.pm 		# (mvc) views
-		- variables_globales.pm # (app) super global variables, are seen in all app
+		- globals.pm # (app) super global variables, are seen in all app
 		- paths.pm 	# (app) paths used in app
 		- proyectHelpers.pm     # (app) extending functionality for app or mvc libraries
 		- PROJECT-libraries     # (app) unique for this proyect

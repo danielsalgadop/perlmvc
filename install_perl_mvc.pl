@@ -29,7 +29,7 @@ exit;
 #		|		miPermisos.pm
 #		|		httpHelpers.pm
 #		|		miEnrutador.pm
-#		|		variables_globales.pm
+#		|		globals.pm
 #		|		paths.pm
 #		|
 #		|	tests/
@@ -100,7 +100,7 @@ sub createEmptyScaffold(){
 	# makes Fourth level of FILES
 	#############################	
 	#(html/cgi-bin/libs_$proyects_name/*)	 
-	foreach my $dir (qw(miLogin.pm miPermisos.pm httpHelpers.pm miEnrutador.pm variables_globales.pm paths.pm)){
+	foreach my $dir (qw(miLogin.pm miPermisos.pm httpHelpers.pm miEnrutador.pm globals.pm paths.pm)){
 		open (TOE ">".$proyects_name."/html/cgi-bin/libs_".$proyects_name."/".$dir);
 		chmod 0755, $proyects_name."/html/cgi-bin/".$dir;   # makes them executable
 		close TOE;

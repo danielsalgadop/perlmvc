@@ -5,7 +5,7 @@ use strict;
 
 # place for global variables
 
-# my $nombre_app 			= "perlmvc";  # TODO bring this from variables_globales
+# my $nombre_app 			= "perlmvc";  # TODO bring this from globals
 
 our $session;  # creo que no se usa
 our %usersJson; # memory representation of users.json

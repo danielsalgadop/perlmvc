@@ -12,7 +12,7 @@ sub myIp()
 	return $localip;
 }
 # my $server_ip 			= "http://10.0.191.222";  # you can use myIp() in some machines
-my $nombre_app 			= "perlmvc";  # TODO bring this from variables_globales
+my $nombre_app 			= "perlmvc";  # TODO bring this from globals
 my $path_web 			= "/".$nombre_app."/html";    
 my $path_absoluto_app 	= "/var/www/html";
 our $path_web_cgi		= $Globals::server_ip."/".$nombre_app."/html/cgi-bin";
