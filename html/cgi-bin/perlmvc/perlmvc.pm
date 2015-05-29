@@ -13,7 +13,7 @@ use miJSON;
 use miEnrutador;
 use miHtml;
 use variables_globales;
-use variables_paths;
+use paths;
 use miSessions;
 use sessionHelper;
 # use cargarModelos;

@@ -5,7 +5,7 @@ use warnings FATAL=>all;
 use strict;
 use Data::Dumper;
 use lib '../';
-use variables_paths;
+use paths;
 
 use logsHelpers qw(logs2Hash1Grupo);
 use Test::More 'no_plan';

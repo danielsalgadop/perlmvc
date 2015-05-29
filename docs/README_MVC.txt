@@ -27,7 +27,7 @@ html/cgi-bin/lib_proyect/   # folder with ALL libs used in mvc, or app (THIS wil
 		- controladores.pm  	# (mvc) controllers 
 		- webTemplates.pm 		# (mvc) views
 		- variables_globales.pm # (app) super global variables, are seen in all app
-		- variables_paths.pm 	# (app) paths used in app
+		- paths.pm 	# (app) paths used in app
 		- proyectHelpers.pm     # (app) extending functionality for app or mvc libraries
 		- PROJECT-libraries     # (app) unique for this proyect
 		- common-libraries.pm   # (common) multipurpose libraries time.pm, debug.pm, write2FileWithBlocker.pmm, miJson.pm miSession, are equal in all proyects. Details inside each library
