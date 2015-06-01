@@ -32,7 +32,7 @@ if(exists $params{usuario}) # Need this param
             $Globals::q->cookie(
                 -name=>$Globals::name_cookie_that_stores_session_id,
                 -value=>$session->id(),
-                -expires=>"+1h"
+                -expires=>$Globals::expire_time
 	    );
 
 	    # almaceno alias del usario en session
