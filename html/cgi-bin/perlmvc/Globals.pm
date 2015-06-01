@@ -18,4 +18,4 @@ our $server_ip 				= "http://10.0.191.102";
 # our $server_ip 				= &myIp();
 our $titulo_web 			= "PERL MVC"; # web <title>, header <h1> and login header
 our $name_cookie_that_stores_session_id = "CGISESSIONID_PERLMVC";
-our $expire_time			= "+10s"; # time that session expires (saved in cookie)
+our $expire_time			= "+3s"; # time that session expires (saved in cookie)

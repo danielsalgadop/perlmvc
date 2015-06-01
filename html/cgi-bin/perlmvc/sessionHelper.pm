@@ -58,6 +58,7 @@ sub returnActiveSession()
 
 sub disconnectSession()
 {
+	debug2File({ref=>\"entras en disconnectSession"});
 	# DELETE SESSION
 	my $session = new CGI::Session("driver:File", getterSession("_SESSION_ID"), {Directory=>$Paths::sessiones}) or die CGI::Session->errstr;
 	$session->delete();

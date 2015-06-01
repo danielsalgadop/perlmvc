@@ -59,6 +59,8 @@ sub sigueLogeado() {
 			return 1;
 		}
 	}
+	# TODO borrar antigua cookie (si existe)
+	# disconnectSession();
 	print $Globals::q->redirect($Paths::web_cgi.'/login.pl');
 	exit;
 	# return(status=>"ERROR");
