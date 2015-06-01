@@ -3,14 +3,6 @@ package Paths;
 use warnings;
 use strict;
 
-# Function that retrurns server ip, to avoid hasrdcoding, OJO no funciona en todas las maquinas
-sub myIp()
-{
-	use Sys::Hostname qw(hostname); # not strictly necessary; exports it by default
-	use Socket;
-	my($localip) = inet_ntoa( (gethostbyname(hostname()))[4] );
-	return $localip;
-}
 my $path_web 			= "/".$Globals::nombre_app."/html";    
 my $path_absoluto_app 	= "/var/www/html";
 our $modelos 			= $path_absoluto_app."/".$Globals::nombre_app."/models"; # usually jsons
