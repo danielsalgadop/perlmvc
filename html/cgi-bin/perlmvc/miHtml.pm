@@ -134,7 +134,7 @@ sub miNavigation(){
 
 ###################################
 sub wtHeader(){
-
+	print $Globals::q->header(-cookie=>$Globals::cookie);
 	headHtmlTag();
 	print '<div class="container-fluid">';
 	print '<div class="row">';

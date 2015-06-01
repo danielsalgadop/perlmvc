@@ -46,8 +46,8 @@ sub estaLogeado() {
 ###################################
 # Function: sigueLogeado
 # es la extension de estaLogeado Hace lo mismo y admeas comprueba que exista valor en session alias 
-# returns{status} == OK if so
-# returns{stauts} == ERROR if not,
+# returns{status} == 1 if so
+# returns{stauts} == 0 if not
 ###################################
 sub sigueLogeado() {
 	my %r_estaLogeado = &estaLogeado();
@@ -56,13 +56,11 @@ sub sigueLogeado() {
 		my $session = $r_estaLogeado{session};
 		if($session->param('alias') )
 		{
+
 			return 1;
 		}
 	}
-	# TODO borrar antigua cookie (si existe)
-	# disconnectSession();
-	print $Globals::q->redirect($Paths::web_cgi.'/login.pl');
-	exit;
+	return 0;
 	# return(status=>"ERROR");
 }
 
