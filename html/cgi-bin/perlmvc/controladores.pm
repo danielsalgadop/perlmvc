@@ -3,7 +3,7 @@ use warnings FATAL=>all;
 use strict;
 use lib '.';
 use webTemplates;
-use globals;
+use Globals;
 # Es llamado desde miEnrutador
 # hace los calculos necesarios y llama a los templates
 

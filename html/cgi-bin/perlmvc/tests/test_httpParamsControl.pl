@@ -6,8 +6,8 @@ use strict;
 use Data::Dumper;
 use lib '../';
 use CGI qw(:standard);
-use globals;
-use paths;
+use Globals;
+use Paths;
 use Test::More 'no_plan';
 
 use httpParamsControl;
