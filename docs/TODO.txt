@@ -1,0 +1,8 @@
+__IMPRPVEMENTS FOR MVC__
+- Separate app libs from perlmvc libs
+- Include an cfg for populating globals.pm or paths.pm
+- Enable utf-8 for using spanish accents in html
+- TEMPLATES:
+	- enable its own folder
+	- use templates for header()
+- SESSION: use correctly array inside sessions with variables that expires. So you could distinguish between a new user from a expired-session-user. Nowadays when a session expires the session file is erased.

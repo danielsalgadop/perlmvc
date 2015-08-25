@@ -1,28 +1,25 @@
 ____DESCRITPTION____
-perl libraries
-	uses CGI  (perl built-in)
-	uses JSON
-css
-	bootstrap_3
-js libraries
-	jquery 1.11.2
-	bootstrap_3
-	datatables
-
-tiny mvc written in perl with user validation.
+tiny mvc written in perl with user authentication.
 Tested in IE8+ and Firefox 3.5+
 
+perlmvc used libraries
+	uses CGI  (perl built-in)
+	uses JSON
+	HTML::Temlate (portable lib --no need to install--)
+css/
+	bootstrap_3
+js/ libraries
+	jquery 1.11.2
+	datatables
 
-____BASIC STRUCTURE OF A PROJECT____
-(there are small variations from proyect to proyect, for example place of /models )
+
+
+____BASIC STRUCTURE OF MVC____
 ============
-html/js/   				 	# all javscript code (and libraries)
-html/css/ 					# all css code 
-html/img/ 					# front-end images
-html/cgi-bin/index.pl    	# ALL petitions pass throw here (once you are loged in)
-html/cgi-bin/login.pl 		# for login in
-html/cgi-bin/models/   		# models (usually .json)
-html/cgi-bin/lib_proyect/   # folder with ALL libs used in mvc, or app (THIS wil be re-distributed in following versions)
+login.pl 		# for login in
+index.pl    	# ALL petitions pass throw here (once you are loged in)
+models/   		# models (usually .json)
+lib_proyect/   # folder with ALL libs used in mvc, or app (THIS wil be re-distributed in following versions)
 		- miEnrutador.pm    	# (mvc) Maps url => controllers or view (web templates) . See below
 		- controladores.pm  	# (mvc) controllers 
 		- webTemplates.pm 		# (mvc) views
@@ -31,21 +28,15 @@ html/cgi-bin/lib_proyect/   # folder with ALL libs used in mvc, or app (THIS wil
 		- proyectHelpers.pm     # (app) extending functionality for app or mvc libraries
 		- PROJECT-libraries     # (app) unique for this proyect
 		- common-libraries.pm   # (common) multipurpose libraries time.pm, debug.pm, write2FileWithBlocker.pmm, miJson.pm miSession, are equal in all proyects. Details inside each library
-html/cgi-bin/lib_proyect/tests  unit test of any sub
-============
-docs/    					# requirements
-docs/svgs/    				# schemes of requirementes
-============
-deploy/ 					# shell script with rsync configured
-============
+		tests/ -  unit test of perlmvc's libs
 
 ____MVC____
 From wikipedia:
 MVC (Model-View-Comtroller) is an architectural pattern for implementing user interfaces. It divides the app intro three interconected parts
 
-Model (inside models/ folder)  - manages the data, logic and rules of the aplication.
-Controller (defined in controladores.pm lib) - can send messages to model (to update the model state). Can send messages to view to change representation.
-View (defined in webTemplates.pm lib) - any representation of a model
+#Model# 		- has the data of the aplication.
+#Controller# 	- (defined in controladores.pm) can send messages to model (to update the model state). Can send messages to view to change representation.
+#View# 			- (defined in webTemplates.pm lib) - any representation of a model
 
 login.pl to verifies log against models/users.json
 stores de id_number in a cookie
@@ -145,5 +136,5 @@ debug.pm 				- write 2 debug file can be called in any place of app
 
 
 TODO-
-html/cgi-bin/lib_proyect/ is too populated
+lib_proyect/ is too populated
 separate pure mvc-libraries form helpers, from common-libraries form proyect-libraries from helper-libraries and super global variables
